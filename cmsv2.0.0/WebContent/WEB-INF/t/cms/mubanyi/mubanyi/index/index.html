@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+[#include "../include/head.html" /]
+</head>
+<script type="text/javascript">
+var indexContentArr = [];
+var nowContentIndex = 0;
+function preContent(){
+	if(nowContentIndex == 0){
+		nowContentIndex = indexContentArr.length;
+	}
+	nowContentIndex--;
+	var content = indexContentArr[nowContentIndex];
+		jQuery("#typeImg").attr('src',content.img); 
+		jQuery("#url").attr('href',content.url); 
+}
+function nextContent(){
+	if(nowContentIndex == indexContentArr.length - 1){
+		nowContentIndex = -1;
+	}
+	nowContentIndex++;
+	var content = indexContentArr[nowContentIndex];
+	jQuery("#typeImg").attr('src',content.img); 
+	jQuery("#url").attr('href',content.url); 
+}
+</script>
+<body>
+<div class="bg">
+   <div class="center_960">
+        
+        <div class="index_top">
+           <div class="logo"><img src="${base+site.logoPath!}" /></div>
+           <div id="loginIn"><a href="${loginUrl}" class="login">登录</a></div>
+           <div id="loginOut" class="login_out" style="display:none;">
+	      	<span id="loginName" style="padding-right:8px;"></span>
+	      	<a href="javascript:MbyGlobal.loginOut();">退出</a>
+	      	<span>|</span>
+	      	<a href="/datacenter/" target="black">进入数字化校园</a>
+	      </div>
+[#include "../include/search.html" /]
+           <div class="index_nav">
+           <ul>
+           	[@cms_channel_list]
+           	
+           	<li><a href="${indexUrl}" title="班级首页">班级首页</a></li>
+           	<li><img src="/${res}/images/index_navline.png"/></li>
+           		[#list tag_list as a]
+           			[#if a_index <5]
+	           			<li><a href="${a.url}" title="${a.name}">${a.name}</a></li>
+	              		[#if a_index < 4]<li><img src="/${res}/images/index_navline.png"/></li>[/#if]
+              		[/#if]
+           		[/#list]
+           	[/@cms_channel_list]
+           </ul>
+           </div>
+         
+     </div>
+        
+        <div class="index_left">
+            <div class="online">
+            [@cms_channel path='zygg'][#if tag_bean??]<a href="${tag_bean.url}"><img  class="online_link" src="/${res}/images/index_online01.png"/></a>[#else]<a href="#"><img  class="online_link" src="/${res}/images/index_online01.png"/></a>[/#if][/@cms_channel]
+            [@cms_channel path='zyfk'][#if tag_bean??]<a href="${tag_bean.url}"><img  class="online_link" src="/${res}/images/index_online02.png"/></a>[#else]<a href="#"><img  class="online_link" src="/${res}/images/index_online02.png"/></a>[/#if][/@cms_channel]
+            </div>
+            
+            <div class="notice1">
+            <p>班级公告</p>
+            
+            <ul>
+             [@cms_content_list count='7' channelPath='bjgg' titlen='25' append='...']
+             [#if tag_list?size>0]
+             	[#list tag_list as a]
+               		<li><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len = titlen append = append /]</a><span>${a.releaseDate?string('yyyy-MM-dd')}</span></li>
+               	[/#list]
+               [/#if]
+             [/@cms_content_list]
+            </ul>
+            </div>
+            
+            
+            
+            <div class="star">
+            	[@cms_content_list channelPath='bjzx' count='1' titlen='50' append='...']
+            	[#if tag_list?size>0]
+            	[#list tag_list as a]
+                <div class="star_photobg">
+                   <div class="star_photo"><a href="${a.url}" title="${a.title}"><img width='138' height='140' src="${a.typeImg!site.defImg}"/></a></div>
+                </div>
+                <p id="star_tittle">${a.title}</p>
+                <p>[@text_cut s=a.description len=titlen append=append/]</p>
+                [/#list]
+                [/#if]
+                [/@cms_content_list]
+            </div>
+            
+            <div class="activity1">
+            <p>班级活动</p>
+            <ul>
+            [@cms_content_list count='7' channelPath='bjhd' titlen='25' append='...']
+            [#if tag_list?size>0]
+             	[#list tag_list as a]
+               <li><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len = titlen append = append /]</a><span>${a.releaseDate?string('yyyy-MM-dd')}</span></li>
+               [/#list]
+               [/#if]
+             [/@cms_content_list]
+            </ul>
+            </div>
+        </div>
+        
+        <div class="index_right">
+             [@cms_channel path='bjjs']
+             	[#if tag_bean ??]
+		             <div class="family"><img class="family_pic" src="${base+tag_bean.contentImg!site.defImg}"/></div>
+		        [#else]
+		        	<div class="family"><img class="family_pic" src="${site.defImg}"/></div>
+	           	[/#if]
+		       [/@cms_channel]
+		        [@cms_channel path='bjjs' titlen='110' append='...']
+		             <a href="#"><p class="class_tittle">班级介绍</p></a>
+		             [#if tag_bean??]
+		             	<p class="class_text" title="${tag_bean.description!'暂无描述信息'}">[@text_cut s=tag_bean.description len=titlen append=append /]</p>
+		             [/#if]
+             [/@cms_channel]
+             <a href="#"><p class="class_tittle">班级相册</p></a>
+            [@cms_content_list channelPath='bjxc']
+	             <a href="javascript:preContent();"><img class="arrowl" src="/${res}/images/index_arrowl.png"/></a>
+	             [#if tag_list?size > 0]
+	             [#list tag_list as a]
+	             		<script>
+		           			indexContentArr["${a_index}"] = {img:"${a.typeImg!}",url:"${a.url}"};
+		            	</script>
+	             	[#if a_index=0]
+	          		<div class="class_picsbg"><a href="${a.url}" id="url"><img id="typeImg" class="class_pics" src="${a.typeImg!site.defImg}"/></a></div>
+	          		[/#if]
+	          	 [/#list]
+	             <a href="javascript:nextContent();"><img class="arrowr" src="/${res}/images/index_arrowr.png"/></a>
+	             [/#if]
+             [/@cms_content_list]
+        </div>
+        <div class="clear"></div>
+   </div>
+   
+[#include "../include/footer.html" /]
+</div>
+</body>
+</html>

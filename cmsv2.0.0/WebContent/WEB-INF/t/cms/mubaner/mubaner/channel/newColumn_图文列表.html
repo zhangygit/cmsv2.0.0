@@ -1,0 +1,27 @@
+[#include "../include/head.html"/] 
+[#include "../include/leftMenu.html"/] 
+  <div class="sub_right">
+     <div class="sub_tittle710">
+       [#include "../include/mbx.html"/] 
+    </div>
+    
+    <div class="sub_content">
+    	[@cms_content_page channelId=channel.id count=channel.pageSize titlen='20' append='...' orderBy='4']
+    		[#if tag_list??]
+         		[#list tag_list as con]
+			         <div class="pictext">
+			             <img src="${base+con.typeImg!base+site.defImg}" />
+			             <a href="${con.url}">[@text_cut s=con.title len=titlen append=append /]</a>
+			             <p>[@text_cut s=con.description len='160' append=append /]</p>
+			             <div class="clear"></div>
+			         </div>
+         		[/#list]
+         	[/#if]
+         [#include "../include/page.html"/] 
+         [/@cms_content_page] 
+    </div>
+    
+  </div>
+  
+  <div class="clear"></div>
+[#include "../include/footer.html"/] 

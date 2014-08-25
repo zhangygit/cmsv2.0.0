@@ -1,0 +1,120 @@
+[#include "../include/header.html"/]
+<script type="text/javascript">
+var isHasGuestbookCtg = false;
+jQuery(function() {
+	jQuery("#guestbookForm").validate( {
+		submitHandler : function(form) {
+			if(isHasGuestbookCtg === false){
+				AppUtils.AlertBox("留言类型为空，请提示管理员添加留言类型。");
+				return;
+			}
+			jQuery(form).ajaxSubmit( {
+				"success" : function(data) {
+					if(data.status==0) {
+						AppUtils.AlertBox("留言提交成功");
+						jQuery("#guestbookForm").clearForm();
+						jQuery("#guestbookCaptcha").click();
+					}else if(data.status==1) {
+						AppUtils.AlertBox("验证码错误");
+						$("#guestbookCaptcha").click();
+					}else {
+						AppUtils.AlertBox("留言提交失败");
+						jQuery("#guestbookCaptcha").click();
+					}
+				},
+				"dataType" : "json"
+			});
+		}
+	});
+});
+</script>
+<div class="center">
+      [#include "../include/left_search.html"/]
+      <div class="right">
+         [#include "../include/location.html"/]
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+                    <div class="messageboard">
+                    <p>感谢您访问北京第一附属中学网站,如果您有任何咨询或问题，请在此处留言，我们会尽快与您联系。</p>
+                    <form id="guestbookForm" action="${guestbookUrl}" method="post">
+                    <table>
+                    	<tr>
+                         	<td class="sub-login-name">类型</td>
+                         	<td>
+                         	<select class="sub-class" id="ctgId" name="ctgId" style="height:22px;line-height:22px;">
+		                     	[@cms_guestbook_ctg_list siteId=site.id  titLen='18' append='...' checked='6' count=channel.pageSize orderBy='4']
+		                     		[#if tag_list?size > 0]
+		                     		<script>isHasGuestbookCtg = true;</script>
+		                     		[/#if]
+		                     		[#list tag_list as ctg]
+		                     			<option value="${ctg.id}">${ctg.name!}</option>
+		                     		[/#list]
+		                     	[/@cms_guestbook_ctg_list]
+		                    </select>
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">主题</td>
+                         	<td>
+                         		<input type="text" size="40" id="textfield5"   class="sub-login-frame" name="title"  vld="{required:true,maxlength:15}">
+                         	</td>
+                         </tr>
+                         
+                         <tr>
+                         	<td class="sub-login-name">内容</td>
+                         	<td>
+                         		<textarea class="mb-text" rows="5" cols="60" id="textarea" name="content"  vld="{required:true,maxlength:200}" ></textarea>
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">验证码</td>
+                         	<td>
+                         		<input name="captcha" type="text"  class="sub-login-frame" size="40" vld="{required:true}" style="margin-top:10px;"/>
+                         		<span><img style="cursor:pointer;" title="点击刷新验证码" align="top" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td></td>
+                         	<td><input type="submit" class="sub-button-submit" value="提交" alt="提交按钮"/></td>
+                         </tr>
+                    </table>
+                    </form>
+                    </div>
+                   </div>
+                   <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+                    
+                <div class="write">
+                    <div class="write-tittle">留言记录</div>
+                     [@cms_guestbook_page siteId=site.id titLen='18' append='...' checked='6' count='4' orderBy='4']
+                      	 	[#if tag_list?size > 0]
+	                      	 	[#list tag_list as m]
+	                      			<div class="question">
+							        	  <div class="question-tittle"> 
+							        	  	<a href="javascript:;">${m.titleHtml!}</a><span class="from">[#if m.member??]${m.member.username}[#else]游客[/#if]</span><span class="time">${m.createTime?string('yyyy-MM-dd')}</span>
+							        	  </div>
+							        	  <p>${m.contentHtml!}</p>
+							        </div>
+							        	  [#if m.reply??]
+								            <div class="answer">
+									            <div class="question-tittle">
+										            <span class="to">[#if m.admin??]${m.admin.username}[/#if]</span>
+										            <span class="time">${m.replayTime?string('yyyy-MM-dd')!}</span>
+									            </div>
+									            <p>${m.replyHtml!}</p>
+											</div>
+										  [/#if]
+	           					[/#list]
+           					[#else]
+           						<div class="no_info">暂无留言</div>
+           					[/#if]
+                     	 [#include "../include/page_list.html" /]
+                      [/@cms_guestbook_page]
+                </div>    
+             
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+
+[#include "../include/footer.html"/]

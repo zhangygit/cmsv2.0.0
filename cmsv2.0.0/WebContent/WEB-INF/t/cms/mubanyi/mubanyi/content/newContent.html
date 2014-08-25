@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文章内容</title>
+[#include "../include/head.html" /]
+</head>
+
+<body>
+<div class="bg">
+    <div class="center_960">
+[#include "../include/left.html" /]
+       <div class="sec_right">
+          <img src="/${res}/images/sec_line.jpg"/>
+          <img class="sec_banner" src="/${res}/images/sec_banner.jpg"/>
+          
+          <div class="sec_content">
+          
+             <div class="sec_location"><img class="sec_locationimg" src="/${res}/images/sec_location.jpg"/><a href="${base}">首页</a>&nbsp;>&nbsp;${channel.name}</div>
+             
+             <div class="sec_classpics">
+                <div class="sec_moretittle">${content.title}</div>
+                <div class="sec_moreauthor">发布时间：${content.releaseDate!} </div>
+                <div class="sec_moretext">
+                <div id="medias">
+           			[#if content.medias?? && content.medias?size > 0]
+					[#list content.medias as cm]
+						<p style="margin: 5px auto; text-align: center">
+							<object height="450" width="550" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+						        <param name="movie" value="/${res}/images/flvplayer.swf" />
+						        <param name="quality" value="high" />
+						        <param name="allowFullScreen" value="true" />
+						        <param name="FlashVars" value="vcastr_file=${base+cm.path!}&BufferTime=3" />
+						        <embed height="450" width="550" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" flashvars="vcastr_file=${base+cm.path!}" allowfullscreen="true" src="/${res}/images/flvplayer.swf"></embed>
+					        </object>
+					        </p>
+					        <p>${cm.description!}</p>
+						[/#list]
+					[/#if]
+           		</div> 
+                <p>${txt!}</p>
+				<div id="pictures" style="text-align: center;">
+                 	[#if content.pictures?? && content.pictures?size > 0]
+                 		 [#list content.pictures as p]
+                 		 <span>
+	                    <a href="${base}/${p.imgPath}" target="black" id="imgHref${p_index}"><img src="" style="width:600px;"/></a></br>
+	                    <span style="font-size:12px;word-wrap:break-word;">${p.description!}</span></br>
+	                    </span>
+	                    <script>
+						var src = jQuery('#imgHref${p_index}').attr('href');
+						src = src.replace('-thumb','');
+						jQuery('#imgHref${p_index}').attr('href',src);
+						jQuery('#imgHref${p_index} > img').attr('src',src);
+						</script>
+                 		 [/#list]
+                 	[/#if]
+             </div>
+             [#include "../include/content_page.html"/]
+             [#if p.firstPage]
+            <script>
+  				jQuery('#medias').show();	
+          </script>
+          [#else]
+          	<script>
+  				jQuery('#medias').hide();	
+          </script>
+          [/#if]
+           [#if p.lastPage]
+           	<script>
+  				jQuery('#pictures').show();	
+          </script>
+           [#else]
+           <script>
+  				jQuery('#pictures').hide();	
+          </script>
+           [/#if]
+             <div>
+				[#if content.attachments?size gt 0] 
+				<div style="font-size:14px;font-weight:bold;margin-left:22px;margin-bottom:8px;">附件列表</div> 
+					<ul style="list-style:none;margin-left:22px;">
+					[#list content.attachments as attach] 
+					<li style="line-height:30px;width:400px; border:1px #CCCCCC solid;padding-left:5px;margin-top:-1px;"><a class="attach" id="attach${attach_index}">${attach.name}</a></li> 
+					[/#list] 
+					</ul> 
+				[/#if] 
+			</div> 
+		</div> 
+             </div> 
+          
+          </div>
+       
+      </div>
+       
+       <div class="clear"></div>
+    
+    </div>
+    <script>
+		jQuery(document).ready(function(){
+			Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+			Cms.viewCount("${base}","${content.id}");
+			Cms.siteFlow("${base}",location.href, document.referrer);
+				});
+	</script>
+    [#include "../include/footer.html" /]
+</div>
+</body>
+</html>

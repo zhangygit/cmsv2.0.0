@@ -1,0 +1,39 @@
+<div class="header">
+	<div class="logo">
+		<span class="log_t"> <a id="loginIn" href="${loginUrl}">登录</a>
+			<div id="loginOut">
+				<span id="loginName" style="padding-right: 8px;"></span> <a
+					href="javascript:MbwGlobal.loginOut();">退出</a> <a
+					href="/datacenter/" target="black">进入数字化校园</a>
+			</div> </span> <span><img src="${base+site.logoPath!}" width="279"
+			height="28" />
+		</span>
+	</div>
+	<div class="nav">
+		<ul class="sf-menu" id="main_sub">
+			<li><a href="${indexUrl}">首页</a></li> 
+			[@cms_channel_list]
+				[#if tag_list?size>0]
+					[#list tag_list as a]
+						<li><a [#if channel?? && channel.id == a.id]class="selected"[/#if] [#if a.child?? && a.child?size>0]href="#"[#else]href="${a.url}"[/#if]>${a.name}</a>
+							[@cms_channel_list parentId = a.id]
+                				[#if tag_list?size > 0]
+								<ul class="subnav">
+					            		[#list tag_list as b]
+					                		<li><a href="${b.url}">${b.name}</a></li>
+					                	[/#list]
+					            </ul>
+				            [/#if]
+				            [/@cms_channel_list]
+						</li> 
+					[/#list]
+				[/#if]	
+			[/@cms_channel_list]
+		</ul>
+	</div>
+				<script>
+                	jQuery("#main_sub").superfish();
+                	jQuery('.sf-with-ul > span').hide();
+                </script>
+	<div class="shadow"></div>
+</div>

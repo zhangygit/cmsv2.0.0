@@ -1,0 +1,98 @@
+           [#assign p=pagination/]
+			[#if p.totalPage gt 1]
+			<div class="pagination_page">
+				<ul>
+				[#if !p.firstPage]
+ 					<li id="first" class="fn"><a href="${content.id}.jhtml">首页</a></li>
+ 					<li id="next" class="fn"><a href="${content.id}[#if p.prePage gt 1]_${p.prePage}.jhtml[#else].jhtml[/#if]">上一页</a></li>
+ 				[#else]
+					<li id="first" class="page_grey"><a title="已经是第一页了" href="javascript:;">首页</a></li>
+					<li id="next" class="page_grey"><a title="已经是第一页了" href="javascript:;">上一页</a></li>
+				[/#if]
+				 [#if p.totalPage > 6]  
+					[#if p.pageNo+5 gt p.totalPage]  
+						[#assign begin=p.pageNo - (6-(p.totalPage - p.pageNo + 1))/]  
+						[#assign end=p.totalPage/]  
+					[#elseif p.pageNo-5 lt 1]  
+						[#assign begin=1/]  
+						[#assign end=6/]  
+					[#else]  
+						[#assign begin=p.pageNo - 5/]  
+						[#assign end=p.pageNo + 5/]  
+					[/#if]  
+				[#else]  
+					[#assign begin=1/]  
+					[#assign end=p.totalPage/]  
+				[/#if]
+
+				[#if p.pageNo ==1]
+				 <li class="number"><a class="selected"  title="${p.pageNo}" href="${hrefFormer}[#if p.pageNo gt 1]_${p.pageNo}[/#if]${hrefLatter}" >${p.pageNo}</a></li>
+					[#if p.pageNo+1 lt p.totalPage || p.pageNo+1 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+1}" href="${hrefFormer}[#if p.pageNo+1 gt 1]_${p.pageNo+1}[/#if]${hrefLatter}" >${p.pageNo+1}</a></li>
+					[/#if]
+					[#if p.pageNo+2 lt p.totalPage || p.pageNo+2 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+2}" href="${hrefFormer}[#if p.pageNo+2 gt 1]_${p.pageNo+2}[/#if]${hrefLatter}" >${p.pageNo+2}</a></li>
+					[/#if]
+					[#if p.pageNo+3 lt p.totalPage || p.pageNo+3 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+3}" href="${hrefFormer}[#if p.pageNo+3 gt 1]_${p.pageNo+3}[/#if]${hrefLatter}" >${p.pageNo+3}</a></li>
+					[/#if]
+					[#if p.pageNo+4 lt p.totalPage || p.pageNo+4 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+4}" href="${hrefFormer}[#if p.pageNo+4 gt 1]_${p.pageNo+4}[/#if]${hrefLatter}" >${p.pageNo+4}</a></li>
+					[/#if]
+					[#if p.pageNo+5 lt p.totalPage || p.pageNo+5 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+5}" href="${hrefFormer}[#if p.pageNo+5 gt 1]_${p.pageNo+5}[/#if]${hrefLatter}" >${p.pageNo+5}</a></li>
+					[/#if]
+					[#if p.pageNo+6 lt p.totalPage || p.pageNo+6 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+6}" href="${hrefFormer}[#if p.pageNo+6 gt 1]_${p.pageNo+6}[/#if]${hrefLatter}" >${p.pageNo+6}</a></li>
+					[/#if]
+				[#elseif p.pageNo == p.totalPage]
+					[#if p.pageNo-6 gt 0&&p.pageNo-6 lt p.totalPage || p.pageNo-6 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-6}" href="${hrefFormer}[#if p.pageNo-6 gt 1]_${p.pageNo-6}[/#if]${hrefLatter}" >${p.pageNo-6}</a></li>
+					[/#if]
+					[#if p.pageNo-5 gt 0&&p.pageNo-5 lt p.totalPage || p.pageNo-5 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-5}" href="${hrefFormer}[#if p.pageNo-5 gt 1]_${p.pageNo-5}[/#if]${hrefLatter}" >${p.pageNo-5}</a></li>
+					[/#if]
+					[#if p.pageNo-4 gt 0&&p.pageNo-4 lt p.totalPage || p.pageNo-4 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-4}" href="${hrefFormer}[#if p.pageNo-4 gt 1]_${p.pageNo-4}[/#if]${hrefLatter}" >${p.pageNo-4}</a></li>
+					[/#if]
+					[#if p.pageNo-3 gt 0&&p.pageNo-3 lt p.totalPage || p.pageNo-3 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-3}" href="${hrefFormer}[#if p.pageNo-3 gt 1]_${p.pageNo-3}[/#if]${hrefLatter}" >${p.pageNo-3}</a></li>
+					[/#if]
+					[#if p.pageNo-2 gt 0&&p.pageNo-2 lt p.totalPage || p.pageNo-2 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-2}" href="${hrefFormer}[#if p.pageNo-2 gt 1]_${p.pageNo-2}[/#if]${hrefLatter}" >${p.pageNo-2}</a></li>
+					[/#if]
+					[#if p.pageNo-1 gt 0&&p.pageNo-1 lt p.totalPage || p.pageNo-1 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-1}" href="${hrefFormer}[#if p.pageNo-1 gt 1]_${p.pageNo-1}[/#if]${hrefLatter}" >${p.pageNo-1}</a></li>
+					[/#if]
+				<li class="number"><a class="selected"  title="${p.pageNo}" href="${hrefFormer}[#if p.pageNo gt 1]_${p.pageNo}[/#if]${hrefLatter}" >${p.pageNo}</a></li>
+				[#else]
+					[#if p.pageNo-3 gt 0&&p.pageNo-3 lt p.totalPage || p.pageNo-3 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-3}" href="${hrefFormer}[#if p.pageNo-3 gt 1]_${p.pageNo-3}[/#if]${hrefLatter}" >${p.pageNo-3}</a></li>
+					[/#if]
+					[#if p.pageNo-2 gt 0&&p.pageNo-2 lt p.totalPage || p.pageNo-2 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-2}" href="${hrefFormer}[#if p.pageNo-2 gt 1]_${p.pageNo-2}[/#if]${hrefLatter}" >${p.pageNo-2}</a></li>
+					[/#if]
+					[#if p.pageNo-1 gt 0&& p.pageNo-1 lt p.totalPage || p.pageNo-1 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo-1}" href="${hrefFormer}[#if p.pageNo-1 gt 1]_${p.pageNo-1}[/#if]${hrefLatter}" >${p.pageNo-1}</a></li>
+					[/#if]
+					<li class="number"><a class="selected"  title="${p.pageNo}" href="${hrefFormer}[#if p.pageNo gt 1]_${p.pageNo}[/#if]${hrefLatter}" >${p.pageNo}</a></li>
+					[#if p.pageNo+1 lt p.totalPage || p.pageNo+1 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+1}" href="${hrefFormer}[#if p.pageNo+1 gt 1]_${p.pageNo+1}[/#if]${hrefLatter}" >${p.pageNo+1}</a></li>
+					[/#if]
+					[#if p.pageNo+2 lt p.totalPage || p.pageNo+2 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+2}" href="${hrefFormer}[#if p.pageNo+2 gt 1]_${p.pageNo+2}[/#if]${hrefLatter}" >${p.pageNo+2}</a></li>
+					[/#if]
+					[#if p.pageNo+3 lt p.totalPage || p.pageNo+3 == p.totalPage]
+					<li class="number"><a  title="${p.pageNo+3}" href="${hrefFormer}[#if p.pageNo+3 gt 1]_${p.pageNo+3}[/#if]${hrefLatter}" >${p.pageNo+3}</a></li>
+					[/#if]
+				[/#if]
+				[#if !p.lastPage]
+					<li id="next" class="fn"><a href="${content.id}_${p.nextPage}.jhtml">下一页</a></li>
+					<li id="first" class="fn"><a href="${content.id}_${p.totalPage}.jhtml">末页</a></li>
+				[#else]
+					<li id="next" class="page_grey"><a title="已经是最后一页了" href="javascript:;">下一页</a></li>
+					<li id="first" class="page_grey"><a title="已经是最后一页了" href="javascript:;">尾页</a></li>
+				[/#if]
+				</ul>
+			</div>
+			[/#if]

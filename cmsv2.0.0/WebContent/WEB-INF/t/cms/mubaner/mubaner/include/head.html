@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="${resSys}/jquery.js?${VERSION}" type="text/javascript"></script>
+<link href="/${res}/css/css.css" type="text/css" rel="stylesheet" />
+<script src="/${res}/js/superfish.js" type="text/javascript"></script>
+<script src="/${res}/js/global.js" type="text/javascript"></script>
+<script type="text/javascript" src="/datacenter/dwr/interface/SecurityAuthenticationController.js"></script> 
+<script type="text/javascript" src="/datacenter/dwr/interface/UserController.js"></script>   
+<script type="text/javascript" src="${base}/dwr/interface/MessageController.js?${VERSION}"></script>
+<title>${site.name}</title>
+<script type="text/javascript"> 
+jQuery(document).ready(function(){
+	Global.initLoginDiv();
+});
+document.onkeydown=function(event){
+	e=event ? event : (window.event ? window.event : null);
+	if(e.keyCode == 13 && (document.activeElement.id=='username' || document.activeElement.id == 'password')){
+		Global.login();
+	}
+}
+
+function AddFavorite(sURL, sTitle)
+{
+    try
+    {
+        window.external.addFavorite(sURL, sTitle);
+    }
+    catch (e)
+    {
+        try
+        {
+            window.sidebar.addPanel(sTitle, sURL, "");
+        }
+        catch (e)
+        {
+            alert("加入收藏失败，请使用Ctrl+D进行添加");
+        }
+    }
+}
+var defaultTxt = '请输入关键词...';
+function onFocusSearch(obj){
+	if(jQuery(obj).hasClass('default_search')){
+		jQuery(obj).val('');
+		jQuery(obj).removeClass('default_search');
+		jQuery(obj).addClass('searching');
+	}
+	
+}
+function onBlurSearch(obj){
+	if(!jQuery.trim(jQuery(obj).val())){
+		jQuery(obj).removeClass('searching');
+		jQuery(obj).addClass('default_search');
+		jQuery(obj).val(defaultTxt);
+	}else{
+		jQuery(obj).removeClass('default_search');
+		jQuery(obj).addClass('searching');
+	}
+}
+function cheackSearch(){
+	if(jQuery('#searchKey').hasClass('default_search') || !jQuery.trim(jQuery('#searchKey').val())){
+		return false;
+	}
+	return true;
+}
+</script>
+<!--IE下png图片透明  -->
+<!--[if lt IE 7]>
+	<script src="${resSys}/DD_belatedPNG.js" type="text/javascript"></script> 
+	<script type="text/javascript"> 
+	jQuery(document).ready(function(){ 
+		DD_belatedPNG.fix('img');
+	}); 
+	</script> 
+<![endif]-->
+<!--IE下png背景图片透明  -->
+<!--[if IE 6]>
+	<script type="text/javascript" src="${resSys}/DD_belatedPNG.js" ></script>
+	<script type="text/javascript">
+	DD_belatedPNG.fix('.links,.button_submit,.button_login,.page_grey,.fn');
+	</script>
+	<![endif]-->
+</head>
+[#assign indexUrl = base + '/' + site.path + "/index.jhtml"]
+[#assign searchUrl = base + '/' + site.path + "/search.jspx"]
+[#assign guestbookUrl = base + '/' + site.path + "/guestbook.jspx"]
+[#assign loginUrl = base + '/' + site.path + "/login.jspx"]
+<body>
+<div class="w960">
+  <div class="header">
+     <div class="logo"><img src="${base+site.logoPath!}" /></div>
+    <div class="login">
+     <table>
+     		<tr id="loginIn" style="display:none;">
+     			<td><span style="color:#fff" id="loginName"></span></td>
+                <td><a href="javascript:Global.loginOut();">退出</a></td>
+                <td>|</td>
+                <td><a href="/datacenter">进入数字校园</a></td>
+           </tr>
+           <tr id="loginOut" style="display:none;">
+                <td><a href="${base}/login.jspx">登录</a></td>
+                <td>|</td>
+                <td><a href="/datacenter">进入数字校园</a></td>
+           </tr>
+     </table>
+    </div>
+     
+     <div class="search">
+     <form name="sform" action="${base}/search.jspx" onsubmit="return cheackSearch();" autocomplete="off" target="_blank" >
+     <table>
+     <tr>
+          <td><input type="text"  id="searchKey" name="q" [#if q??]class="searching search_frame" [#else]class="default_search search_frame"[/#if] value="${q!'请输入关键字...'}" onfocus="onFocusSearch(this);" onblur="onBlurSearch(this);"/></td>
+          <td><input type="submit" onclick="return cheackSearch();" class="button_login" value="搜索" alt="搜索按钮" /></td>
+     </tr>
+     </table>
+     </form>
+     </div>
+     
+  </div>
+  [@cms_channel_list]
+  <div class="nav">
+	 [#if tag_list?size gt 0]
+	  <ul id="channel_ul">
+	 	 <li><a href="${indexUrl!base}">首页</a></li>
+		  	[#list tag_list as ch]
+		  	[#if ch_index lt 7]
+		 	 <li><a [#if ch.child??][@cms_channel_list parentId=ch.id][#list tag_list as chd][#if chd_index=0]href="${chd.url}"[/#if][/#list][/@cms_channel_list][/#if]href="${ch.url}">${ch.name}</a>
+			 	 [#if ch.child?? && ch.child?size>0]
+			 	 	<ul class="nav_menu">
+			 	 		[#list ch.child as sub]
+				       		<li><a href="${sub.url}">${sub.name}</a></li>
+				       [/#list]
+				 	</ul>
+				 [/#if]
+		 	 </li>
+		 	 [/#if]
+		 	[/#list] 
+	  </ul>
+	  [/#if]
+  </div>
+  [/@cms_channel_list]
+  <script>
+  	jQuery("#channel_ul").superfish();
+  	jQuery('#channel_ul > li').last().attr('id','nav_last');
+  </script>

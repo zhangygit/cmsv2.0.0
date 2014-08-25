@@ -1,0 +1,123 @@
+[#include "../include/top.html"/]
+<div id="bd">
+	<div id="innerpg" class="bd-inner">
+		<div class="clearfix layout-innerpg ">
+			<div class="col-main">
+				<div class="main-wrap">
+					<div id="block-comments" class="block first-comment block-comments"
+						rel="books">
+						<div class="block-head">
+							<div class="head-inner">
+								<h2 class="title">默认表单</h2>
+							</div>
+						</div>
+						<div id='books-list' class="block-content clearfix">
+							<form id="form-comment"
+								class="form form-validate form-ajax form-comment"
+								action="http://6229.open.www313.com/books/add" method="post">
+								<input type='hidden' name='data[b_relatedid]' value='12180' />
+								<div class="row clearfix">
+									<div class="label">
+										<span class="required">*</span> <label>昵称：</label>
+									</div>
+									<div class="enter">
+										<input id='field0' name='data[field0]'
+											class="text w7 required" maxlength="12" type="text" value=""
+											style="width: 100px" />
+									</div>
+									<span class="tips" title="名称 必填">名称 必填</span>
+								</div>
+								<div class="row clearfix">
+									<div class="label">
+										<span class="required">*</span> <label>留言内容：</label>
+									</div>
+									<div class="enter">
+										<textarea id='field1' name='data[field1]'
+											class="required  w15 v-length ajax-clear" value='' rows='4'
+											style="width: 300px"></textarea>
+									</div>
+									<span class="tips" title="内容必填">内容必填</span>
+								</div>
+								<div class="row clearfix">
+									<div class="label">
+										<label>联系电话：</label>
+									</div>
+									<div class="enter">
+										<input id='field2' name='data[field2]'
+											class="text w7 ajax-clear" maxlength="12" type="text"
+											value="" style="width: 200px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="label">
+										<label>性别：</label>
+									</div>
+									<div class="enter">
+										<select id='field4' name='data[field4]'>
+											<option value='0' checked>男</option>
+											<option value='1'>女</option>
+										</select>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="label">
+										<span class="required">*</span> <label>验证码：</label>
+									</div>
+									<div class="enter">
+										<input class="text required w3 v-captcha" name="data[code]"
+											type="text" autocomplete="off" /> <input type='hidden'
+											name='formCode' value='405949' />
+									</div>
+									<img id="imgCaptcha" class="img-captcha"
+										src="captcha/show/bookSend/0.png"
+										rel="/captcha/show/bookSend/0.42330900 1408436548"
+										alt="点击刷新验证码" title="点击刷新验证码" />
+								</div>
+								<div class="row row-submit clearfix">
+									<div class="buttons">
+										<span class="btnwrap"><span class="clr">.</span>
+										<button class="btn-inner" type="submit">提交</button></span> <span
+											class="btnwrap"><span class="clr">.</span>
+										<button class="btn-inner" type="reset">重设</button></span>
+									</div>
+								</div>
+							</form>
+							<ol id="list-comments" class="commentslist clearfix">
+							</ol>
+						</div>
+						<div class="block-foot">
+							<div>
+								<div>-</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-sub">
+				<div class="block first-block " id="block-slide-63022" rel="63022">
+					<div class="block-head">
+						<div class="head-inner">
+							<h2 class="title">推荐景点</h2>
+						</div>
+					</div>
+					<div class="block-content clearfix">
+						<div class="content-text">
+							<embed type="application/x-shockwave-flash"
+								src="themed/common/img/focus_1.swf" style="" name="focus_1"
+								quality="high" menu="false" wmode="opaque"
+								flashvars="borderwidth=230&borderheight=150&textheight=20&interval_time=5&pics=http://demo.open.www313.com/documents/show/4071|http://demo.open.www313.com/documents/show/4072|http://demo.313.com/documents/show/65803|http://demo.313.com/documents/show/65801|http://demo.313.com/documents/show/6679&links=/products/view/xinluxian/100993.html|/products/view/xinluxian/100992.html|/products/view/xinluxian/100991.html|/products/view/xinluxian/100990.html|/products/view/bihailantian/100989.html&texts=三坊七巷|泡温泉|芙蓉镇|大理|5天4晚特色游"
+								height="180" width="230">
+						</div>
+					</div>
+					<div class="block-foot">
+						<div>
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+[#include "../include/footer.html"/]

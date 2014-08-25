@@ -1,0 +1,89 @@
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			20em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+	width:			100%;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+	z-index:		1199; 
+}
+.sf-menu li a{
+	height:38px;	
+	float:left;
+}
+.sf-menu li li{
+	border-bottom:1px solid #416cb1;
+	_height:28px;
+
+}
+.sf-menu li li a{
+	_position:none;
+	_height:28px;
+	_padding-top:1px;
+	width:208px;
+	}
+.sf-menu a {
+	display:		block;
+	position:		relative; 
+	_position:		none; 
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul{
+	left:			0;
+	top:			2.5em; /* match top ul list item height */
+	z-index:		1199;
+	background:#1d50a2;
+	position:absolute;
+	height:auto;
+	background:url(../images/tri.png) 35px 0 no-repeat #1d50a2;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	background:#1d50a2;
+	width:240px;
+	margin-left:120px;
+	
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+.sf-sub-indicator {
+	position:		absolute;
+	display:		block;
+	right:			.75em;
+	top:			1.05em; /* IE6 only */
+	width:			10px;
+	height:			10px;
+	text-indent: 	-999em;
+	overflow:		hidden;
+	background:		url('../images/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+}

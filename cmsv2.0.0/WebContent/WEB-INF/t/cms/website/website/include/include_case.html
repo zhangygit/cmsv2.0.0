@@ -1,0 +1,248 @@
+		[@cms_channel id="6"]
+		<div id="case_6"  style="display:none;">
+		[@cms_content_page channelId=tag_bean.id     count=tag_bean.pageSize orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+			[#if tag_pagination.list?size = 0]
+			<div class="no_info">暂无信息</div>
+           	[#else]
+           		<ul class="caselist clearfix">
+            	[#list tag_pagination.list as t]
+            		<li>
+						<div class="imgbox">
+							<a href="${t.url}"> 
+								<img src="${base+t.typeImg!(site.defImg)}"
+								alt="${t.title}" title="${t.title}" /> <em>${t.title}</em>
+							</a>
+						</div>
+						<div class="text">
+							<h4>
+								<a href="${t.url}">${t.title}</a>
+							</h4>
+							${tag_bean.name}
+						</div>
+					</li>
+            	[/#list]
+                </ul>
+              [/#if]
+            [#assign p=tag_pagination/]
+	          [#if tag_pagination.list?size lt p.pageSize && p.pageNo==1]
+	          [#else]
+		          [#if p.totalPage gt 0]
+           <div class="page">
+            <a href="${hrefFormer}_1${hrefLatter}">首页</a>
+            <a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>
+            	<strong>
+         			[#if p.totalPage > 11] 
+					[#if p.pageNo+5 gt p.totalPage] 
+						[#assign begin=p.pageNo - (11-(p.totalPage - p.pageNo + 1))/] 
+						[#assign end=p.totalPage/] 
+					[#elseif p.pageNo-5 lt 1] 
+						[#assign begin=1/] 
+						[#assign end=11/] 
+					[#else] 
+						[#assign begin=p.pageNo - 5/] 
+						[#assign end=p.pageNo + 5/] 
+					[/#if] 
+					[#else] 
+						[#assign begin=1/] 
+						[#assign end=p.totalPage/] 
+					[/#if]
+					[#list begin..end as i] 
+						[#if p.pageNo == i]
+						${i}
+						[/#if] 
+					[/#list] 
+                </strong>
+                <a href="${hrefFormer+'_'+p.nextPage+hrefLatter}">下一页</a>
+                <a href="${hrefFormer+'_'+p.totalPage+hrefLatter}">尾页</a>
+            </div>
+            [/#if]
+			[/#if]
+           [/@cms_content_page]
+           </div>
+          [/@cms_channel]
+          [@cms_channel id="13"]
+          <div id="case_13"  style="display:none;">
+		[@cms_content_page channelId=tag_bean.id     count=tag_bean.pageSize orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+			[#if tag_pagination.list?size = 0]
+			<div class="no_info">暂无信息</div>
+           	[#else]
+           		<ul class="caselist clearfix">
+            	[#list tag_pagination.list as t]
+            		<li>
+						<div class="imgbox">
+							<a href="${t.url}"> 
+								<img src="${base+t.typeImg!(site.defImg)}"
+								alt="${t.title}" title="${t.title}" /> <em>${t.title}</em>
+							</a>
+						</div>
+						<div class="text">
+							<h4>
+								<a href="${t.url}">${t.title}</a>
+							</h4>
+							${tag_bean.name}
+						</div>
+					</li>
+            	[/#list]
+                </ul>
+              [/#if]
+            [#assign p=tag_pagination/]
+	          [#if tag_pagination.list?size lt p.pageSize && p.pageNo==1]
+	          [#else]
+		          [#if p.totalPage gt 0]
+           <div class="page">
+            <a href="${hrefFormer}_1${hrefLatter}">首页</a>
+            <a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>
+            	<strong>
+         			[#if p.totalPage > 11] 
+					[#if p.pageNo+5 gt p.totalPage] 
+						[#assign begin=p.pageNo - (11-(p.totalPage - p.pageNo + 1))/] 
+						[#assign end=p.totalPage/] 
+					[#elseif p.pageNo-5 lt 1] 
+						[#assign begin=1/] 
+						[#assign end=11/] 
+					[#else] 
+						[#assign begin=p.pageNo - 5/] 
+						[#assign end=p.pageNo + 5/] 
+					[/#if] 
+					[#else] 
+						[#assign begin=1/] 
+						[#assign end=p.totalPage/] 
+					[/#if]
+					[#list begin..end as i] 
+						[#if p.pageNo == i]
+						${i}
+						[/#if] 
+					[/#list] 
+                </strong>
+                <a href="${hrefFormer+'_'+p.nextPage+hrefLatter}">下一页</a>
+                <a href="${hrefFormer+'_'+p.totalPage+hrefLatter}">尾页</a>
+            </div>
+            [/#if]
+			[/#if]
+           [/@cms_content_page]
+           </div>
+          [/@cms_channel]
+          [@cms_channel id="14"]
+          <div id="case_14"  style="display:none;">
+		[@cms_content_page channelId=tag_bean.id     count=tag_bean.pageSize orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+			[#if tag_pagination.list?size = 0]
+			<div class="no_info">暂无信息</div>
+           	[#else]
+           		<ul class="caselist clearfix">
+            	[#list tag_pagination.list as t]
+            		<li>
+						<div class="imgbox">
+							<a href="${t.url}"> 
+								<img src="${base+t.typeImg!(site.defImg)}"
+								alt="${t.title}" title="${t.title}" /> <em>${t.title}</em>
+							</a>
+						</div>
+						<div class="text">
+							<h4>
+								<a href="${t.url}">${t.title}</a>
+							</h4>
+							${tag_bean.name}
+						</div>
+					</li>
+            	[/#list]
+                </ul>
+              [/#if]
+            [#assign p=tag_pagination/]
+	          [#if tag_pagination.list?size lt p.pageSize && p.pageNo==1]
+	          [#else]
+		          [#if p.totalPage gt 0]
+           <div class="page">
+            <a href="${hrefFormer}_1${hrefLatter}">首页</a>
+            <a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>
+            	<strong>
+         			[#if p.totalPage > 11] 
+					[#if p.pageNo+5 gt p.totalPage] 
+						[#assign begin=p.pageNo - (11-(p.totalPage - p.pageNo + 1))/] 
+						[#assign end=p.totalPage/] 
+					[#elseif p.pageNo-5 lt 1] 
+						[#assign begin=1/] 
+						[#assign end=11/] 
+					[#else] 
+						[#assign begin=p.pageNo - 5/] 
+						[#assign end=p.pageNo + 5/] 
+					[/#if] 
+					[#else] 
+						[#assign begin=1/] 
+						[#assign end=p.totalPage/] 
+					[/#if]
+					[#list begin..end as i] 
+						[#if p.pageNo == i]
+						${i}
+						[/#if] 
+					[/#list] 
+                </strong>
+                <a href="${hrefFormer+'_'+p.nextPage+hrefLatter}">下一页</a>
+                <a href="${hrefFormer+'_'+p.totalPage+hrefLatter}">尾页</a>
+            </div>
+            [/#if]
+			[/#if]
+           [/@cms_content_page]
+           </div>
+          [/@cms_channel]
+          [@cms_channel id="15"]
+          <div id="case_15" style="display:none;">
+		[@cms_content_page channelId=tag_bean.id     count=tag_bean.pageSize orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+			[#if tag_pagination.list?size = 0]
+			<div class="no_info">暂无信息</div>
+           	[#else]
+           		<ul class="caselist clearfix">
+            	[#list tag_pagination.list as t]
+            		<li>
+						<div class="imgbox">
+							<a href="${t.url}"> 
+								<img src="${base+t.typeImg!(site.defImg)}"
+								alt="${t.title}" title="${t.title}" /> <em>${t.title}</em>
+							</a>
+						</div>
+						<div class="text">
+							<h4>
+								<a href="${t.url}">${t.title}</a>
+							</h4>
+							${tag_bean.name}
+						</div>
+					</li>
+            	[/#list]
+                </ul>
+              [/#if]
+            [#assign p=tag_pagination/]
+	          [#if tag_pagination.list?size lt p.pageSize && p.pageNo==1]
+	          [#else]
+		          [#if p.totalPage gt 0]
+           <div class="page">
+            <a href="${hrefFormer}_1${hrefLatter}">首页</a>
+            <a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>
+            	<strong>
+         			[#if p.totalPage > 11] 
+					[#if p.pageNo+5 gt p.totalPage] 
+						[#assign begin=p.pageNo - (11-(p.totalPage - p.pageNo + 1))/] 
+						[#assign end=p.totalPage/] 
+					[#elseif p.pageNo-5 lt 1] 
+						[#assign begin=1/] 
+						[#assign end=11/] 
+					[#else] 
+						[#assign begin=p.pageNo - 5/] 
+						[#assign end=p.pageNo + 5/] 
+					[/#if] 
+					[#else] 
+						[#assign begin=1/] 
+						[#assign end=p.totalPage/] 
+					[/#if]
+					[#list begin..end as i] 
+						[#if p.pageNo == i]
+						${i}
+						[/#if] 
+					[/#list] 
+                </strong>
+                <a href="${hrefFormer+'_'+p.nextPage+hrefLatter}">下一页</a>
+                <a href="${hrefFormer+'_'+p.totalPage+hrefLatter}">尾页</a>
+            </div>
+            [/#if]
+			[/#if]
+           [/@cms_content_page]
+           </div>
+          [/@cms_channel]

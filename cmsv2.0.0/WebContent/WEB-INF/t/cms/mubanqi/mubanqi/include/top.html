@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.name}</title>
+<meta name="keywords" content="企业网站建设,网页设计制作,企业网站设计,企业网站制作">
+<meta name="description"
+	content="飞浪网络技术有限公司业务主要集中于企业网站建设、网页设计制作、企业网站设计、企业网站制作、网站推广服务，互联网应用服务和电子商务应用服务。专注点包含单页设计、PS切图、web前端开发等，同时对网站建设和制作过程中注重网站的人性化，注重网站交互性的,并且符合搜索引擎收录要求。 ">
+<link href="/${res}/css/base.css" rel="stylesheet" type="text/css" />
+<link href="/${res}/css/commona477.css" rel="stylesheet" type="text/css" />
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/${res}/js/common.js"></script>
+<script type="text/javascript" src="/${res}/js/auto_edit.js"></script>
+<script src="${resSys}/jquery.js?${VERSION}" type="text/javascript"></script>
+<script src="${resSys}/front.js?${VERSION}" type="text/javascript"></script>
+<script src="/${res}/js/jquery.cycle.all.min.js"></script>
+<style>
+</style>
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="logo_tip">
+				<div class="logo">
+					<div id="edit_logo">
+						<a href="index.html"><img
+							src="/${res}/images/themes84.png" /></a>
+					</div>
+				</div>
+				<div class="tip">
+					<div class="tip_content">
+						<span><a href="javascript:void(0)"
+							onClick="var strHref=window.location.href;this.style.behavior='url(#default#homepage)';this.setHomePage('themes84.3135.com');">设为首页
+						</a> | <a
+							onClick="try{window.external.addFavorite('index.html','茶叶公司');}catch(e){alert('加入收藏失败，请使用Ctrl+D进行添加');}"
+							href="javascript:void(0)">加入收藏</a></span>
+					</div>
+					<div class="phone">全国统一热线：0592-5505028</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="nav_t">
+				<div class="nav" id="edit_nav">
+					<ul>
+						<li class="first_li"><a href="index.html" class="hover">首页</a></li>
+						[@cms_channel id="72"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						[@cms_channel id="76"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						[@cms_channel id="79"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						[@cms_channel id="84"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						[@cms_channel id="83"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						[@cms_channel id="85"]<li  class="last_li"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="banner">
+				<div class="focus_pic" id="edit_focus">
+					<script src="/${res}/js/jquery.cycle.all.min.js"></script>
+					<script>
+						$(document).ready(function() {
+							$('#slideshow').show();
+							$('#slideshow').cycle({
+								fx : 'scrollDown',
+								speed : 'slow',
+								timeout : 5000,
+								next : '#nextList',
+								prev : '#prevList',
+								pager : '#pager',
+								pagerEvent : 'mouseover',
+								pagerAnchorBuilder : function(idx, slide) {
+									return '<a href="#"></a>';
+								}
+							});
+						});
+					</script>
+					<div class="focusRoll" id="slideshow"
+						style="margin: 0 auto; overflow-x: hidden; overflow-y: hidden;">
+						<ul
+							style="position: absolute; top: 0px; left: 0px; width: 1000px; height: 350px; opacity: 1; z-index: 2; display: none;">
+							<a href="index.html" target="_blank"><img
+								src="/${res}/images/default_bannber_01.jpg" /></a>
+						</ul>
+						<ul
+							style="position: absolute; top: 0px; left: 0px; width: 1000px; height: 350px; opacity: 1; z-index: 2; display: none;">
+							<a href="index.html" target="_blank"><img
+								src="/${res}/images/1375857086649.jpg" /></a>
+						</ul>
+						<ul
+							style="position: absolute; top: 0px; left: 0px; width: 1000px; height: 350px; opacity: 1; z-index: 2; display: none;">
+							<a href="index.html" target="_blank"><img
+								src="/${res}/images/138415573236647.jpg" /></a>
+						</ul>
+						<ul
+							style="position: absolute; top: 0px; left: 0px; width: 1000px; height: 350px; opacity: 1; z-index: 2; display: none;">
+							<a href="index.html" target="_blank"><img
+								src="/${res}/images/1378966444931.jpg" /></a>
+						</ul>
+					</div>
+					<div class="n_v_page" style="display: none">
+						<div class="dot_c" id="pager"></div>
+					</div>
+				</div>
+			</div>
+		</div>

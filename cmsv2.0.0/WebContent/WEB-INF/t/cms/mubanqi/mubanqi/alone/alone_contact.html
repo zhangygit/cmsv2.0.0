@@ -1,0 +1,85 @@
+ [#include "../include/top.html"/]
+<div class="child_container">
+	<div class="lc_container">
+		<h4>关于我们</h4>
+		<div class="side_nav">
+			<ul>
+				<li><a href="about-21.html">公司简介</a></li>
+				<li><a href="about-79.html">荣誉资质</a></li>
+			</ul>
+		</div>
+
+
+		<div class="right_box">
+			<h3>
+				<span><a href="contact.html" class="more"></a></span><a class="chn">联系我们</a><a
+					href="javascript:void(0)" class="eng">LINK</a>
+			</h3>
+			<div class="contact_list">
+				<b><img src="/${res}/images/pic1.jpg" /></b>
+				<div class="contact">
+					<span><div id="edit_contact_eidt">
+							联系电话：<span
+								ondblclick="autoEdit('contact','contact_set','contact_tel')">0592-5505028,5505029</span><br>
+							Email：<span
+								ondblclick="autoEdit('contact','contact_set','contact_email')">kefu@3135.com</span><br>
+							联系人：<span
+								ondblclick="autoEdit('contact','contact_set','contact_user')">3135智能建站</span><br>
+							联系地址：<span
+								ondblclick="autoEdit('contact','contact_set','contact_address')">福建省厦门市湖里区台湾街5号606室（科瑞大厦A栋）</span>
+						</div></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rc_container">
+		<h3>
+			<span>当前位置：<a href="index.html">首页</a> > <a
+				href="contact.html">联系我们</a>
+			</span>联系我们<a href="javascript:void(0)" class="eng"> / CONTACT</a>
+		</h3>
+		<div class="contact_page">
+			<div class="ContactContent" id="edit_contact">
+				<img src="/${res}/images/kf.jpg">
+				<ul>
+					<li><span>联系人：</span>3135智能建站</li>
+					<li><span>联系电话：</span>0592-5505028,5505029</li>
+					<li><span>传真：</span>0592-6018032</li>
+					<li><span>联系QQ：</span>712699019</li>
+					<li><span>Email：</span>kefu@3135.com</li>
+					<li><span>联系地址：</span>福建省厦门市湖里区台湾街5号606室（科瑞大厦A栋）</li>
+				</ul>
+			</div>
+			<div class="baidumap" id="map"></div>
+			<script src="http://api.map.baidu.com/api?v=1.0&amp;services=true"
+				type="text/javascript"></script>
+			<script type="text/javascript">
+var map = new BMap.Map("map");
+map.enableScrollWheelZoom();                  // 启用滚轮放大缩小。
+map.enableKeyboard();                         // 启用键盘操作。
+//map.addControl(new BMap.NavigationControl());   //向地图添加一个平移缩放控件
+//map.addControl(new BMap.ScaleControl());   //向地图添加一个比例尺控件
+map.addControl(new BMap.OverviewMapControl());  //向地图添加一个缩略图控件
+var nid="";
+if(nid!="")
+{
+var point = new BMap.Point();    // 创建点坐标
+map.centerAndZoom(point,16);
+map.addOverlay(new BMap.Marker(point));
+}
+else
+{
+var myGeo = new BMap.Geocoder();				// 创建地址解析器实例
+myGeo.getPoint("福建省厦门市湖里区台湾街5号606室（科瑞大厦A栋）", function(point){	// 将地址解析结果显示在地图上，并调整地图视野
+  if (point) {
+map.centerAndZoom(point, 16);
+map.addOverlay(new BMap.Marker(point));
+  }
+}, "厦门");
+}
+        </script>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

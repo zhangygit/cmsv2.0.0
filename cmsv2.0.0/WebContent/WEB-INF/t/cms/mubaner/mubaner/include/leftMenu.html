@@ -1,0 +1,38 @@
+<div class="sub_left">
+       <div class="leftnav_tittle">
+       	[#if channel.parent??]
+       		${channel.parent.name}
+       	[#else]
+       		${channel.name}
+       	[/#if]
+       </div>
+       <div class="leftnav">
+	       <ul>
+				[#if channel.parent??]
+		        	[@cms_channel_list parentId=channel.parent.id]
+		        		[#list tag_list as con]
+		        			<li><a [#if channel.id=con.id]class="leftnav_select"[/#if] href="${con.url}">${con.name}</a></li>
+		        		[/#list]
+		        	[/@cms_channel_list]
+	        	[/#if]
+	        	[#if channel.child??]
+	    			[@cms_channel_list parentId=channel.id]
+		        		[#list tag_list as con]
+		        			<li><a [#if channel.id=con.id]class="leftnav_select"[/#if] href="${con.url}">${con.name}</a></li>
+		        		[/#list]
+		        	[/@cms_channel_list]  
+	    		[#else]
+		        	[@cms_channel_list channelId=channel.id]
+		        		[#list tag_list as con]
+		        			<li><a [#if channel.id=con.id]class="leftnav_select"[/#if] href="${con.url}">${con.name}</a></li>
+		        		[/#list]
+		        	[/@cms_channel_list]    	
+	        	[/#if]
+        	</ul>
+       </div>
+       
+       <div class="map">
+           <a href="http://map.baidu.com" target="blank"><img src="/${res}/images/map.jpg" /><span>北大大兴附中</span></a>
+       </div>
+       
+  </div>

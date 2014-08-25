@@ -1,0 +1,33 @@
+<div class="fl left">
+   <div class="menu">
+   [@cms_channel id=channel.id] <h4 class="m_name">[#if channel.parentId??]${channel.parent.name}[#else]${channel.name}[/#if]</h4>[/@cms_channel]
+      <div class="m_ul"> 
+	     	<ul>
+     	[#if channel.parent??]
+	     	[@cms_channel_list parentId=channel.parent.id]
+	     	[#if tag_list?size > 0]
+	     		[#list tag_list as a]
+	         	<li><a [#if channel.id = a.id]class="lf_select"[/#if] href="${a.url}">${a.name}</a></li>
+	             [/#list]
+	         [/#if]
+	         [/@cms_channel_list]
+         [#else]
+	         [@cms_channel_list parentId=channel.id]
+	     	[#if tag_list?size > 0]
+	     		[#list tag_list as a]
+	         	<li><a [#if channel.id = a.id]class="lf_select"[/#if] href="${a.url}">${a.name}</a></li>
+	             [/#list]
+	         [/#if]
+	         [/@cms_channel_list]
+         [/#if]
+	         </ul>
+     </div>
+    </div>
+   [#include "../include/search.html"/]
+   </div>
+   <script>
+   	var name = jQuery('.m_name').html();
+   	var frist = name.substring(0,1);
+   	var remainder = name.substring(1);
+   	jQuery('.m_name').html("<span>"+frist+"</span>"+remainder);
+   </script>

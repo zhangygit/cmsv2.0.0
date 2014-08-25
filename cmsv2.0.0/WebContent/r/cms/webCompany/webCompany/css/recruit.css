@@ -1,0 +1,74 @@
+﻿@charset "utf-8";
+/* CSS Document */
+#retop{ background:#1C1C1C; width:100%; height:364px; position:relative}
+#retop .retop{ width:1130px; margin:0 auto; padding:20px; height:57px; overflow:hidden}
+.retop .relogo{ float:left;}
+.retop .rebanner{ float:left; width:580px; margin-left:360px;}
+.retop .rebanner ul{ list-style:none; width:700px;}
+.retop .rebanner li{ font-size:14px ; color:#fff; float:left; width:78px; margin:10px 0px;}
+.retop .rebanner li a{ float:left; color:#fff; width:78px; height:30px; line-height:30px; font-size:14px;}
+.retop .rebanner li a:hover{ background:url(../images/2013-04-24_121854.jpg) no-repeat; line-height:30px; height:30px; width:78px; font-size:14px;font-weight:800;}
+.retop .rebanner .guo{ background:url(../images/2013-04-24_121854.jpg) no-repeat; line-height:30px; height:30px; width:78px; font-weight:800;font-size:14px;}
+#retop .renav{ width:1126px; margin:0 auto; border-bottom:5px solid #CACCD0;}
+.topbottom{ width:1126px; margin:0 auto; background:#AD0707;}
+.topbottom .topb1{ width:211px; height:45px; line-height:45px; text-align:left; text-indent:20px;color:#fff; font-size:14px;}
+.topb2{ width:1100px; margin-left:20px; height:60px; line-height:60px; overflow:hidden; margin-bottom:20px}
+.topb2 .duo1{ float:left; width:522px; color:#fff; }
+.topb2 .duo1 table{ width:100%; height:30px;}
+.topb2 .duo2{ float:left; width:211px;color:#fff; margin-left:100px;}
+.topb2 .duo3{ float:left; width:361px; color:#fff;margin-left:150px;}
+.topb2 .duo3 .dd1{ float:left; color:#fff;}
+.topb2 .duo3 .dd2{ float:left; margin-top:20px;}
+.topb2 .duo3 .dd2 input{ height:18px; border:1px solid #fff}
+.topb2 .duo3 .dd3{ float:left; margin-left:10px; margin-top:20px;}
+
+.reabout{ width:1124px; margin:20px auto; overflow:hidden; clear:both; border:1px solid #E2E2E2; background:#F5F5F5; padding-bottom:20px;}
+.reabout h1{ text-align:left; text-indent:4em; background:url(../images/2013-04-24_122313.jpg) no-repeat left; color:#262626; font-size:14px; font-family:"黑体"; font-weight:800px; padding-left:10px; height:45px; line-height:45px;}
+.reabout .jianjie{ width:1080px;}
+.reabout .jianjie p{ text-align:left; text-indent:1em; line-height:200%; margin-left:20px;}
+.reabout .jianjie p img { float:left; margin:0px 15px 5px 0px;}
+
+.kong{ clear:both; background:#fff; height:80px; width:100%;}
+.kong1{ clear:both; background:#fff; height:20px; width:100%;}
+.job{width:1124px; margin:0 auto; overflow:hidden; clear:both; border:1px solid #E2E2E2; background:#F5F5F5}
+.job h1{ text-align:left; text-indent:3em; background:url(../images/2013-04-24_122256.jpg) left no-repeat; color:#262626; font-size:14px; font-family:"黑体"; font-weight:800px; padding-left:0px; height:45px; line-height:45px;}
+.job .fenlei{ list-style:none;  overflow:hidden;}
+.job .fenlei li{ float:left; width:124px; height:35px; color:#3E3E3E; color:#6C6C6C; line-height:35px;}
+.job .fenlei1{ list-style:none; background-color:#E4E4E4; overflow:hidden;}
+.job .fenlei1 li{ float:left; width:124px; height:35px; color:#3E3E3E; background:#E4E4E4; line-height:35px;}
+.job .fenlei2{ list-style:none; overflow:hidden}
+.job .fenlei2 li{ float:left; width:124px; height:35px; line-height:35px;}
+.job .fenlei2 .color a{color:#056B9C;}
+.job .fenlei2 .color a:hover{ text-decoration:underline;}
+.job .fenlei1 .color a{color:#056B9C;}
+.job .fenlei1 .color a:hover{ text-decoration:underline;}
+.job .color{ color:blue;}
+.lianxi{ width:1124px; margin:0 auto; overflow:hidden; clear:both; border:1px solid #E2E2E2; background:#F5F5F5}
+.lianxi .shi{ float:left; width:250px; margin-left:20px;}
+.lianxi .xu{ float:left; width:300px; margin-left:20px;}
+.lianxi h1{ text-align:left; text-indent:4em; background:url(../images/2013-04-24_122241.jpg) no-repeat left; color:#262626; font-size:14px; font-family:"黑体"; margin-left:5px; font-weight:800px; padding-left:20px; height:45px; line-height:45px;}
+.lianxi .shi p{ height:30px; line-height:30px; color:#787878; text-align:left}
+.lianxi .shi .frist{ font-size:14px; font-weight:800; height:40px; line-height:40px}
+.lianxi .xu .dong{ overflow:hidden; height:30px; line-height:30px}
+.lianxi .xu .tu{ float:left;}
+.lianxi .xu .zi{ float:left; color:#787878;}
+.lianxi .xu .budong{ clear:both; margin-left:50px; color:#787878; text-align:left; height:20px; line-height:20px}
+/*-=============招聘详细================*/
+.cenmil{ width:1124px; boredr:1px solid #E2E2E2; background:#F5F5F5; margin:0 AUTO; overflow:hidden}
+.cenmil .mtop{ border-bottom:1px solid #e2e2e2; background:#EBEBEB; text-align:left; height:30px; line-height:30px; font-size:#4E4E4E; clear:both;  padding-left:30px; font-size:14px; color:#4E4E4E}
+.cenmil .mleft{ width:688px; float:left; margin-top:20px; margin-bottom:20px; margin-right:15px; padding-right:15px; border-right:1px solid #eaeaea; text-align:left;}
+.cenmil .mright{ width:400px; float:left}
+.cenmil h1{ height:45px; line-height:45px; margin-top:20px; text-align:left; margin-left:30px}
+.cenmil p{ line-height:30px; text-align:left; color:#4E4E4E; margin-left:30px; white-space:normal;}
+.cenmil .p1{ font-weight:600;}
+.cenmil .kuangzi{ width:522px; background:#EFEFEF; padding:20px; margin-left:30px}
+.cenmil .kuangzi p{ color:#969696}
+.diji{ margin:15px 0px 20px 30px; background:#ED1B23; width:90px; height:30px; line-height:30px;}
+.diji a{color:#fff; text-decoration:none}
+.diji a:hover{color:#fff; text-decoration:underline}
+.mright ul{ list-style:none; margin-top:20px}
+.mright ul li{ float:left; width:180px; border:1px solid #DCDCDC; height:40px; line-height:40px;}
+.mright ul li:hover{ color:White; background-color:Gray;}
+.mright .er{ border-left:none}
+.mright .yi{ border-top:none}
+

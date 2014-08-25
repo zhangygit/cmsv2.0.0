@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+[#include "../include/head.html" /]
+<script src="/${res}/js/yu.js" type="text/javascript"></script>
+<script src="/${res}/js/tb.js" type="text/javascript"></script>
+<link href="/${res}/css/img.css" type="text/css" rel="stylesheet" />
+
+</head>
+<script type="text/javascript">
+	var news = [];
+	var size = 0;
+	var i = 0;
+	function next(num){
+		var con=news[num];
+		var des = con.des;
+		var title = con.title;
+		var dl='';
+		var tl='';
+		if(des.length > 110){
+			 dl='...';
+		}
+		if(title.length > 13){
+			tl='...';
+		}
+		jQuery("#newstitle").html(title.substring(0,13)+tl);
+		jQuery("#newsdes").html(des.substring(0,110)+dl).attr('title',con.des).attr('href',con.url);
+		jQuery(".img_a_x").removeClass('img_a_x');
+		jQuery("#img_"+num).addClass('img_a_x');
+		jQuery("#imgHref").attr('href',con.url);
+		jQuery("#imgId").attr('src',con.img);
+		
+	}
+	function show(){
+		i++;
+		jQuery('#img_'+i).click();
+		if(i ==4){
+			i= -1;
+		}
+	}
+	window.setInterval(show,3000);
+</script>
+<body>
+	<div class="mian_980">
+[#include "../include/top.html" /]
+         <!--nav start-->
+ [#include "../include/nav.html" /] 
+        <!--nav end-->
+        <!--主要内容 start-->
+        	<div class="mian">
+            	<!--mian_left stat-->
+           	  <div class="mian_left">
+                    	<!-- 图片转换 start-->
+                        	<div class="img_huan">
+                       	    		<div id="MainPromotionBanner">
+										<div id="SlidePlayer">
+						  				 	<ul class="Slides">
+						  				 	[@cms_channel_list]
+						  				 		[#list tag_list as b]
+						  				 		[#if tag_list?size > 0]
+						  				 		[#if b_index=0]
+						  				      	[@cms_content_list channelId=b.id channelOption='1' count='5' orderBy=4]
+							   					  [#if tag_list?size > 0]
+							   					  	 [#list tag_list as a]
+							   					  	 	[#if a.typeImg??]
+							   					  		 <li><a title="点击查看相关信息" id="imgHref" href="${a.url}"><img id="imgId" width="324" height="198" src="${(a.typeImg!(base+site.defImg))}"/></a></li>
+							   					  		
+							   					  		<script>
+							   					  		   news['${a_index}'] = {title:"${a.title!}",img:"${a.typeImg!base+site.defImg}",des:"${a.description!'无描述信息'}",url:"${a.url!}"};
+							   					  		</script>
+							   					  		[/#if]
+							   					  	 [/#list]	
+							   					  [#else]
+							   					  	<li><a title="暂无图片" href="javascript:;"><img src="${base+site.defImg}"/></a></li>
+							   					  [/#if]
+						   	  				  [/@cms_content_list]
+						   	  				  [/#if]
+						   	  				  [/#if]
+						   	  				  [/#list]
+						   	  				[/@cms_channel_list]
+						  					 </ul>  
+										</div>
+									</div> 
+                       	    </div>
+                            <div class="img_text">
+                            	<div class="img_a"><a href="javascript:;" onclick="next(0)" id="img_0" class="img_a_x">1</a><a href="javascript:;" onclick="next(1)" id="img_1">2</a><a href="javascript:;" onclick="next(2)" id="img_2">3</a><a id="img_3" onclick="next(3)" href="javascript:;">4</a><a id="img_4" href="javascript:;" onclick="next(4)">5</a></div>
+                                [@cms_channel_list]
+		                                [#list tag_list as b]
+		                                [#if tag_list?size > 0]
+			                                [#if b_index=0]
+				                                [@cms_content_list channelId=b.id titlen='10' append='...' channelOption='1' orderBy=4]
+				                                	[#list tag_list as a]
+				                                	[#if a_index=0]
+						                                <div class="img_text_title" id="newstitle">[@text_cut s =a.title len=titlen append=append /]</div>
+						                                <div class="img_font"><a href="${a.url}" title="${a.description!}" id="newsdes">[@text_cut s =a.description!'无描述信息' len='90' append=append /]</a></div>
+					                                [/#if]
+					                                [/#list]
+				                                [/@cms_content_list]
+			                                [/#if]
+			                              [/#if]
+		                                [/#list]
+                                [/@cms_channel_list]
+                            </div>
+                        <!-- 图片转换 end-->
+                        <div class="main_line_one">
+                        <!--教师风采 start-->
+            		[@cms_channel_list]
+                      [#list tag_list as b]
+                       [#if tag_list?size > 0]
+                       [#if b_index=1]
+                        [@cms_content_list channelId=b.id count='3' channelOption='1' titlen='20' append='...']
+                        	<div class="mian_line">
+                            	<div class="mian_line_title mian_line_title_1">
+                                	${b.name!}
+                                	[#if b.child??][@cms_channel_list parentId=b.id][#list tag_list as c][#if c_index=0]<a href="${c.url!}">more</a>[/#if][/#list][/@cms_channel_list][#else]<a href="${b.url!}">more</a>[/#if]
+                                </div>
+                                [#list tag_list as a]
+                                [#if a_index=0]
+                                <div class="m_l_img">
+                           	    	<dl>
+                                    	<dt><a href="${a.url}" title="${a.title}"><img src="${a.typeImg!site.defImg}" width="60" height="40" /></a></dt>
+                                        <dd><span><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></span><a href="${a.url}" title="${a.description!'无描述信息'}">[@text_cut s=a.description!'无描述信息' len=titlen append=append /]</a></dd>
+                                    </dl>
+                                    <div class="clear"></div>
+                               </div>
+                                [/#if]
+                               [/#list]
+                               <div class="m_l_line">
+                               	
+                               		<ul>
+                               		[#list tag_list as a]
+                               			[#if a_index>0]
+                                    	<li><img src="/${res}/images/dian.png" width="3" height="3" /><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></li>
+                                    	[/#if]
+                                    [/#list]
+                                    </ul>
+                               </div>
+                              
+                            </div>
+                         [/@cms_content_list]
+                         [/#if]
+                         [/#if]
+                        [/#list]
+                      [/@cms_channel_list]
+                        <!--教师风采end-->
+                         <!--学生风貌 start-->
+                              [@cms_channel_list]
+			                      [#list tag_list as b]
+			                       [#if tag_list?size > 0]
+			                       [#if b_index=2]
+                        	<div class="mian_line main_line_1">
+                            	<div class="mian_line_title">
+                                	${b.name!}[#if b.child??][@cms_channel_list parentId=b.id][#list tag_list as c][#if c_index=0]<a href="${c.url!}">more</a>[/#if][/#list][/@cms_channel_list][#else]<a href="${b.url!}">more</a>[/#if]
+                                </div>
+                                [@cms_content_list channelId=b.id channelOption='1' count='5' titlen='20' append='...']
+                               <div class="m_l_line">
+                               		<ul>
+                               		[#list tag_list as a]
+                                    	<li><img src="/${res}/images/dian.png" width="3" height="3" /><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></li>
+                                    [/#list]
+                                    </ul>
+                               </div>
+                               [/@cms_content_list]
+                            </div>
+                               [/#if]
+                               [/#if]
+                        [/#list]
+                      [/@cms_channel_list]
+                        <!--学生风貌end-->
+                        </div>
+                         <div class="main_line_one">
+                        <!--教育科研 start-->
+                                [@cms_channel_list]
+			                      [#list tag_list as b]
+			                       [#if tag_list?size > 0]
+			                       [#if b_index=3]
+                        	<div class="mian_line">
+                            	<div class="mian_line_title mian_line_title_b">
+                                	${b.name!}[#if b.child??][@cms_channel_list parentId=b.id][#list tag_list as c][#if c_index=0]<a href="${c.url!}">more</a>[/#if][/#list][/@cms_channel_list][#else]<a href="${b.url!}">more</a>[/#if]
+                                </div>
+                                [@cms_content_list channelId=b.id channelOption='1' count='5' titlen='14' append='...']
+                                <div class="m_l_img m_l_img_border">
+                           	    	<dl>
+                           	    	[#list tag_list as a]
+                                		[#if a_index=0]
+                                    	<dt><a href="${a.url}" title="${a.title}"><img src="${a.typeImg!base+site.defImg}" width="60" height="40" /></a></dt>
+                                        <dd><span>[@text_cut s=a.title len=titlen append=append /]</span>
+                                        [@text_cut s=a.description!'无描述信息' len=titlen append=append /]
+										<a href="${a.url}">>>详细</a></dd>	
+										[/#if]
+									[/#list]
+                                    </dl>
+                                    <div class="clear"></div>
+                               </div>
+                               <div class="m_l_line">
+                               		<ul>
+                               		[#list tag_list as a]
+                               			[#if a_index>0]
+                                    	<li><img src="/${res}/images/dian.png" width="3" height="3" /><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></li>
+                                    	[/#if]
+                                    [/#list]	
+                                    </ul>
+                               </div>
+                               [/@cms_content_list]
+                            </div>
+                               [/#if]
+                               [/#if]
+                        [/#list]
+                      [/@cms_channel_list]
+                        <!--教育科研 end-->
+                         <!--办学特色 start-->
+                                [@cms_channel_list]
+			                      [#list tag_list as b]
+			                       [#if tag_list?size > 0]
+			                       [#if b_index=4]
+                        	<div class="mian_line main_line_1">
+                            	<div class="mian_line_title mian_line_title_b mian_line_title_b_2">
+                                	${b.name!}[#if b.child??][@cms_channel_list parentId=b.id][#list tag_list as c][#if c_index=0]<a href="${c.url!}">more</a>[/#if][/#list][/@cms_channel_list][#else]<a href="${b.url!}">more</a>[/#if]
+                                </div>
+                                [@cms_content_list channelId=b.id channelOption='1' count='5' titlen='14' append='...']
+                               <div class="m_l_img m_l_img_border">
+                           	    	<dl>
+                           	    		[#list tag_list as a]
+                                		[#if a_index=0]
+                                    	<dt><a href="${a.url}" title="${a.title}"><img src="${base+a.typeImg!base+site.defImg}" width="60" height="40" /></a></dt>
+                                        <dd><span>[@text_cut s=a.title len=titlen append=append /]</span>
+                                        [@text_cut s=a.description!'无描述信息' len=titlen append=append /]<a href="${a.url}">>>详细</a></dd>
+										[/#if]
+									[/#list]
+                                    </dl>
+                                    <div class="clear"></div>
+                               </div>
+                               <div class="m_l_line">
+                               		<ul>
+                               		[#list tag_list as a]
+                               			[#if a_index>0]
+                                    	<li><img src="/${res}/images/dian.png" width="3" height="3" /><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></li>
+                                   		[/#if]
+                                    [/#list]
+                                    </ul>
+                               </div>
+                               [/@cms_content_list]
+                            </div>
+                               [/#if]
+                               [/#if]
+                        [/#list]
+                      [/@cms_channel_list]
+                        <!--办学特色end-->
+                        </div>
+                    </div>
+                <!--mian_left end-->
+                <!--mian_right stat-->
+                	<div class="mian_right">
+                    	<!--校园介绍 start-->
+                        	<div class="school_pro">
+                            	<div class="school_pro_title">
+                                	<ul>
+                                    	<li>学</li>
+                                        <li>校</li>
+                                        <li>简</li>
+                                        <li>介</li>
+                                    </ul>
+                                </div>
+                                <div class="school_font"> 
+                                	[@cms_channel path='xxjj' titlen='30' append='...']
+                                		[#if tag_bean??]
+                                			[@text_cut s=tag_bean.description!'无描述信息' len=titlen append=append /]<a href="${tag_bean.url}">了解更多>></a>
+                                		[/#if]
+                                	[/@cms_channel]
+                                </div>
+                            </div>
+                        <!--校园介绍  end-->
+                        <!--今日作业 start--> 
+                        [@cms_channel_list]
+                        	<div class="zuoye_main">
+                            	<ul>
+                            		[#list tag_list as a]
+                            		[#if a_index <4]
+                                	<li>[#if a.child??][@cms_channel_list parentId=a.id][#list tag_list as c][#if c_index=0]<a href="${c.url}">${a.name}>><span>${a_index+1}</span></a>[/#if][/#list][/@cms_channel_list][#else]<a href="${a.url}">${a.name}>><span>${a_index+1}</span></a>[/#if]</li>
+                                	[/#if]
+                                    [/#list]
+                              </ul>
+                            </div>
+                        [/@cms_channel_list]
+                        <!--今日作业 end--> 
+                    </div>
+                <!--mian_right end-->
+                <div class="clear"></div>
+            </div>
+        <!--主要内容 end-->
+        <!-- copy start-->
+[#include "../include/footer.html" /]
+        <!-- copy end-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.name}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css" />
+<script src="${resSys}/jquery.js?${VERSION}" type="text/javascript"></script>
+<script src="${resSys}/front.js?${VERSION}" type="text/javascript"></script>
+<link type="text/css" href="/${res}/css/common.css" rel="stylesheet" />
+<link type="text/css" href="/${res}/css/index.css" rel="stylesheet" />
+<link type="text/css" href="/${res}/css/menunav.css" rel="stylesheet" />
+<script type="text/javascript" src="/${res}/js/script.js"></script>
+<script src="/${res}/js/jquery.SuperSlide.2.1.1.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
+        $(function () {
+            $(".banner").hover(function () { $("#slideLeftBtn,#slideRightBtn").show(); }, function () { $("#slideLeftBtn,#slideRightBtn").hide(); });
+            $(".mid .box .btn").click(function () { $(this).toggleClass("fold").prev().find(".scroll_detail").toggle() });
+            $(".mid").slide({
+                mainCell: "#slideContent",
+                titCell: "#dot",
+                prevCell: "#slideLeftBtn",
+                nextCell: "#slideRightBtn",
+                effect: "left",
+                autoPlay: true,
+                delayTime: 500,
+                easing: "easeInOutCirc",
+                autoPage: "<span></span>"
+            });
+        });
+    </script>
+</head>
+<body>
+	<form>
+		<div class="mid">
+			<div style="display: none">
+				<a href="http://www.workec.com/">qq客服</a><a
+					href="http://www.workec.com/">在线客服</a>
+			</div>
+
+
+			<div class="tu" id="nav_banner">
+				<script type="text/javascript" src="/${res}/js/nav.js"></script>
+				<div class="nav">
+					<div class="nav_width">
+						<div class="nav_left">
+							<img src="/${res}/images/index_03.png" width="66" height="46" />
+						</div>
+						<div class="nav_center">
+							<div class="logo">
+								<a href="index.html"><img src="/${res}/images/logo_03.png" /></a>
+							</div>
+							<div class="nav_nav">
+								<ul id="sddm">
+									<li class="ding"><a href="${base}" target="_self">首页</a></li>
+			[@cms_channel id="100"]<li><a href="${tag_bean.url}" onmouseover="mopen('m2')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=100]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+			[@cms_channel id="101"]<li><a href="${tag_bean.url}" onmouseover="mopen('m3')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=101]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+			[@cms_channel id="102"]<li><a href="${tag_bean.url}" onmouseover="mopen('m4')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=102]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+			[@cms_channel id="123"]<li><a href="${tag_bean.url}" onmouseover="mopen('m7')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m7" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=123]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+			[@cms_channel id="103"]<li><a href="${tag_bean.url}" onmouseover="mopen('m5')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m5" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=103]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+			[@cms_channel id="126"]<li><a href="${tag_bean.url}" onmouseover="mopen('m6')" onmouseout="mclosetime()">${tag_bean.name}</a>[/@cms_channel]
+										<div id="m6" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+										[@cms_channel_list parentId=126]
+										[#list tag_list as sub ]
+										<a href="${sub.url}">${sub.name}</a>
+										[/#list]
+										[/@cms_channel_list]
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class=" nav_right">
+							<img src="/${res}/images/index_04.png" width="66" height="46" />
+						</div>
+					</div>
+				</div>
+				<!--nav end-->
+
+				<div class="banner">
+					<a id="slideLeftBtn" class="arr_left" title="点击查看上一张图">左移动</a> <a
+						id="slideRightBtn" class="arr_right" title="点击查看下一张图">右移动</a>
+					<div class="bimg" id="slideContent">
+					 [@cms_content_list channelId='128' channelOption='0'   orderBy='4']
+	                 [#list tag_list as a]
+	                    [#if a.typeImg??] 
+	                  	<div class="box">
+							<a href='javascript:;' > 
+							<img src="${a.typeImg?replace('-thumb','')}" width="100%" height="464" style="margin-top: 35px;" alt="${a.title}" title="${a.title}" />
+							</a>
+						</div>
+						[/#if]
+					 [/#list]
+				     [/@cms_content_list]
+					</div>
+				</div>
+				<div class="search">
+					<div class="search_width">
+						<div class="search_center" id="dot"></div>
+						<div class="cearch_right">
+							<div class="c_r_l">
+								<img src="/${res}/images/search_12.png" height="20px" width="30">
+							</div>
+							<div class="c_r_c">
+								<input type="text" name="tempstr" id="tempstr" />
+							</div>
+						</div>
+						<div class="c_r_r">
+							<a href="#"> <img src="/${res}/images/index_04_03.png"/></a>
+						</div>
+					</div>
+				</div>
+
+			</div>

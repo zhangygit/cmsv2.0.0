@@ -1,0 +1,89 @@
+[#include "../include/header.html"/]
+<script type="text/javascript" src="${base}/dwr/interface/MessageController.js?${VERSION}"></script>
+<script type="text/javascript">
+var validator=null;
+jQuery(function() {
+	validator=jQuery("#emailForm").validate();
+});
+	var isSubmit=false;
+	function save(){
+		validator.form();
+		if (!validator.valid()) {
+			return false;
+		}
+		AppUtils.AlertBox( "确定提交吗？" ,{
+			"确定":function(){
+				var name=jQuery('#name').val();
+				var email=jQuery('#email').val();
+				var telephone=jQuery('#telephone').val();
+				var message=jQuery('#message').val();
+				var title = jQuery('#title').val();
+				MessageController.addMessage(name,email,telephone,title,message,function(){
+					AppUtils.AlertBox("留言提交成功");
+					jQuery("#emailForm").clearForm();
+					isSubmit=true;
+				})
+			},
+			"取消":function(){}
+			
+		});
+	}
+</script>
+<div class="center">
+      [#include "../include/left_search.html"/]
+      <div class="right">
+         [#include "../include/location.html"/]
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+                   <div class="mailbox">
+                   <form id="emailForm" action="${base}/email.jspx" method="post" onsubmit="return false;">
+                   <table>
+                         <tr>
+                         	<td class="sub-login-name">姓名</td>
+                         	<td>
+                         	<input type="text" size="30" id="name" class="sub-login-frame" name="name" vld="{required:true,maxlength:20}">
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">邮箱</td>
+                         	<td>
+                         		<input type="text" size="40" id="email" class="sub-login-frame" name="email" vld="{required:true,email:true}">
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">电话</td>
+                         	<td>
+                         	<input type="text" size="40" id="telephone" class="sub-login-frame" name="telephone" vld="{telephoneCN:true}">
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">主题</td>
+                         	<td>
+                         		<input type="text" size="40" id="title" class="sub-login-frame" name="title" vld="{required:true,maxlength:20}">
+                         	</td>
+                         </tr>
+                         
+                         <tr>
+                         	<td class="sub-login-name">内容</td>
+                         	<td>
+                         		<textarea class="mb-text" rows="5" cols="60" id="message" name="message" vld="{required:true,maxlength:300}" style="resize:none;"></textarea>
+                         	</td>
+                         </tr>
+                         
+                         <tr>
+                         	<td></td>
+                         	<td><input type="button" class="sub-button-submit" value="提交" alt="提交按钮"  onclick="save();"/></td>
+                         </tr>
+                   </table>
+                   </form>
+                   </div>
+              </div>
+              <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+         </div>
+         <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]
+

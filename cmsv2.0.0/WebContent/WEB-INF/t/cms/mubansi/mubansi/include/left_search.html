@@ -1,0 +1,22 @@
+<div class="left">
+<div class="leftnav">
+	[@cms_channel path="xxjj"]
+     	[#if tag_bean??]
+	<div class="leftnav-tittle">学校简介</div>
+	<div class="left-school">
+	<img src="${base + tag_bean.contentImg!site.defImg}" />
+	<p>
+	[#if tag_bean.channelTxtSet?? && tag_bean.channelTxtSet?size > 0][@html_cut s=tag_bean.channelTxtSet[0].txt len=28 append='...'/][#else]<div class="no_info">暂无信息</div>[/#if]
+	</p>
+	<a href="${tag_bean.url}">[详细]</a>
+	</div>
+	[/#if]
+    [/@cms_channel]
+</div>
+[@cms_channel path="lxwm" siteId=site.id]
+[#if tag_bean??]
+<a class="map" target="_blank" href="http://map/baidu.com"><img [#if tag_bean.contentImg??]src="${base+tag_bean.contentImg}"[#else]src="/${res}/images/map.jpg"[/#if]><p>${site.name}</p></a>
+[/#if]
+[/@cms_channel]
+<div class="clear"></div>
+</div>

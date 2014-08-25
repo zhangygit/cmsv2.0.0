@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登陆页</title>
+[#include "../include/head.html" /]
+</head>
+
+<body>
+<div class="bg">
+    <div class="center_960">
+       
+       <div class="sec_right" style="margin-left:120px;">
+          <img src="/${res}/images/sec_line.jpg"/>
+          <img class="sec_banner" src="/${res}/images/sec_banner.jpg"/>
+          
+          <div class="sec_content">
+             <div class="sec_location"><img class="sec_locationimg" src="/${res}/images/sec_location.jpg"/><a href="${base}">首页</a>&nbsp;>&nbsp;登录</div>
+             
+             <div class="sec-login">
+                <input class="username" id="username" type="text" />
+                <input class="password" id="password" type="password" />
+                <input class="button-login" type="button" style="cursor:pointer;" onclick="MbyGlobal.login()" />
+             </div>
+          </div>
+       
+      </div>
+       
+       <div class="clear"></div>
+    
+    </div>
+    
+    [#include "../include/footer.html" /]
+</div>
+</body>
+</html>

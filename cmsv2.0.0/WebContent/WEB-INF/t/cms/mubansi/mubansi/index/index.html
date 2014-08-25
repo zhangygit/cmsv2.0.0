@@ -1,0 +1,140 @@
+[#include "../include/header.html"/]
+<script src="/${res}/js/bxCarousel.js" type="text/javascript"></script>
+<div class="center">
+     <div class="news">
+     	  [@cms_channel path="xyxw" siteId=site.id]
+     	  [#if tag_bean??]
+          	  <div class="news-tittle"><span>${tag_bean.name}</span><a href="${tag_bean.url}" title="更多" class="more">更多>></a></div>
+	          [@cms_content_list channelId=tag_bean.id orderBy='4']
+		          <div class="news-pic">
+		          	 [#assign xxxwImgCount = 0]
+		             [#list tag_list as a]
+		             	[#if a.typeImg?? && a.typeImg != '']
+		             		[#assign xxxwImgCount = 1]
+			          	 	<a href="${a.url}"><img [#if a.typeImg?? && a.typeImg?starts_with('/cms/cms')] src="${a.typeImg?substring(4)}"[#elseif a.typeImg?? && a.typeImg?starts_with('/cms')]src="${a.typeImg!site.defImg}"[#else]src="${base+a.typeImg!site.defImg}"[/#if] />[@text_cut s=a.title len=14 append="..."/]</a>
+			          		[#break/]
+		          		[/#if]
+		          	 [/#list]
+		          	 [#if xxxwImgCount=0]
+		          	 	<img src="${base+site.defImg}">
+		          	 [/#if]
+		          </div>
+		          <div class="news-text">
+			          <ul>
+			          	[#if tag_list?size = 0]
+			          		<div class="no_info">暂无信息</div>
+			          	[/#if]
+			          	[#list tag_list as a]
+			          		<li><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=19 append="..."/]</a></li>
+			          		[#if a_index = 6]
+			          			[#break/]
+			          		[/#if]
+			          	[/#list]
+			          </ul>
+		          </div>
+		      [/@cms_content_list]
+		      [/#if]
+          [/@cms_channel]
+     </div>
+     
+     <div class="deyu">
+     	[@cms_channel path="dyjs" siteId=site.id]
+     	[#if tag_bean??]
+          <div class="deyu-tittle"><span>${tag_bean.name}</span><a href="${tag_bean.url}" title="更多" class="more">更多>></a></div>
+          [@cms_content_list channelId=tag_bean.id orderBy='4']
+          	[#assign imgCount_deyu=0]
+          	[#list tag_list as a]
+          		[#if imgCount_deyu=4]
+          			[#break/]
+          		[/#if]
+          		[#if a.typeImg?? && a.typeImg!='']
+          		      [#assign imgCount_deyu=imgCount_deyu+1]
+			          <div class="deyu-pic">
+			              <dl><a title="${a.title}" href="${a.url}"><img [#if a.typeImg?? && a.typeImg?starts_with('/cms/cms')] src="${a.typeImg?substring(4)}"[#elseif a.typeImg?? && a.typeImg?starts_with('/cms')]src="${a.typeImg!site.defImg}"[#else]src="${base+a.typeImg!site.defImg}"[/#if]></a></dl>
+			              <dt><a title="${a.title}" href="${a.url}">[@text_cut s=a.title len=8 append="..."/]</a></dt>
+			          </div>
+	            [/#if]
+           [/#list]
+           [#if imgCount_deyu=0]
+           		<div class="no_info">暂无信息</div>
+           [/#if]
+         [/@cms_content_list]
+         [/#if]
+         [/@cms_channel] 
+     </div>
+     
+     <div class="edu">
+     	[@cms_channel path="jxjy" siteId=site.id]
+     	[#if tag_bean??]
+          <div class="edu-tittle"><span>${tag_bean.name}</span><a href="${tag_bean.url}" title="更多" class="more">更多>></a></div>
+          <ul>
+          	[@cms_content_list channelId=tag_bean.id orderBy='4' count=5 titLen=30 dateFormat='yyyy-MM-dd' append='...']
+	          	[#if tag_list?size = 0]
+	          		<div class="no_info">暂无信息</div>
+	          	[#else]
+	          		[#list tag_list as a]
+	          		<li><span>${a.date?string(dateFormat)}</span><a href="${a.url}" title="${a.title}">[#if a.shortTitle??][@text_cut s=a.shortTitle len=titLen append=append/][#else][@text_cut s=a.title len=titLen append=append/][/#if]</a></li>
+	          		[/#list]
+	          	[/#if]
+          	[/@cms_content_list]
+       </ul>
+       [/#if]
+       [/@cms_channel] 
+     </div>
+    
+     <div class="intro">
+     	[@cms_channel path="xxjj" siteId=site.id]
+     	[#if tag_bean??]
+          <div class="intro-tittle"><span>${tag_bean.name}</span><a title="更多" href="${tag_bean.url}" class="more">详情>></a></div>
+          <div class="intro-pic"><img src="${base + tag_bean.contentImg!site.defImg}" /></div>
+          <div class="intro-text"><p>[#if tag_bean.channelTxtSet?? && tag_bean.channelTxtSet?size > 0][@html_cut s=tag_bean.channelTxtSet[0].txt len=90 append='...'/][#else]<div class="no_info">暂无信息</div>[/#if]</p><!-- <a href="${tag_bean.url}">[详细]</a> --></div>
+        [/#if]
+        [/@cms_channel]
+     </div>
+     
+     <div class="pics">
+     	[@cms_channel path="xyfg" siteId=site.id]
+     	[#if tag_bean??]
+          <div class="pics-tittle bx_wrap"><span>${tag_bean.name}</span><a href="${tag_bean.url}" title="更多" class="more">更多>></a></div>
+          <div class="bottom_pic">
+          <ul id="botPicList" class="bot_img">
+          		[@cms_content_list channelId=tag_bean.id orderBy='4']
+     	  		 	[#if tag_list?size>0]
+     	  		 		[#assign bottomImgCount=0]
+     	  		 		[#list tag_list as a]
+     	  		 			[#list a.pictures as p]
+     	  		 			[#assign bottomImgCount=1]
+     	  		 			<li><a><img src="${base+p.imgPath}" /></a></li>
+     	  		 			[/#list]
+     	  		 		[/#list]
+     	  		 		[#if bottomImgCount=0]
+     	  		 		<li><a href="javascript:;"><img src="${base+site.defImg}"/></a></li>
+     	  		 		[/#if]
+     	  		 	[#else]
+     	  		 	<li><a href="javascript:;"><img src="${base+site.defImg}"/></a></li>
+     	  		 	[/#if]
+	     	  	[/@cms_content_list]
+          </ul>
+          </div>
+        [/#if]
+        [/@cms_channel]  
+<SCRIPT language="javascript" type="text/javascript">
+        jQuery('#botPicList').bxCarousel({
+        	display_num : 7,
+        	move:3,
+        	auto : true,
+        	auto_hover:true,
+        	controls:true,
+        	margin:0,
+        	auto_interval:3000,
+        	prev_image:'/${res}/images/arrow-l.png',
+        	next_image:'/${res}/images/arrow-r.png'
+        	
+        });
+</SCRIPT>
+  </div>
+     
+     <div class="clear"></div>
+     
+</div>
+[#include "../include/footer.html"/]

@@ -1,0 +1,45 @@
+[#include "../include/header.html"/]
+<div class="center">
+     [#include "../include/left_search.html"/]
+      <div class="right">
+         <div class="sub-tittle"> 搜索
+              <div class="breadcrump">您所在位置：<a href="${indexUrl}">首页</a><span class="seperate">></span><a href="#">搜索结果</a>
+             
+           </div>
+        </div>
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+              	<form autocomplete="off" action="${searchUrl}" onsubmit="return cheackSearch();" target="_blank" >
+                    <div class="sub-search">
+	                    <input  id="searchKey" name="q" type="text" [#if q??]class="searching sub-search-in" [#else]class="default_search sub-search-in"[/#if] value="${q!'请输入关键字...'}" onfocus="onFocusSearch(this);" onblur="onBlurSearch(this);" />
+	                    <input type="submit" class=" sub-btn-search" value="搜索" alt="搜索按钮" />
+                    </div>
+				</form>                   
+                    <div class="sub-search-tt">您好！以下是搜索“${q!}”的结果：</div>
+                    
+                    <div class="newslist">
+                    [#if q??]
+    	   			[@cms_lucene_page q=q searchType=searchType channelId=channelId siteId=site.id count=15 orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+                      <ul>
+                       [#if tag_list?size > 0]
+                           		[#list tag_list as a]
+                            		[#if a??]
+                            	    	<li><span>${a.date?string(dateFormat)}</span><a title="${a.title}" href="${a.url}">[@text_cut s=a.title len=titLen append=append/]</a></li>
+                            		[/#if]
+                           		[/#list]
+                        [#else]
+                                <div class="no_info">暂无搜索信息</div>
+                        [/#if]
+                      </ul>
+                      </div>
+                    
+                    [#include "../include/page_list.html"/]
+                    [/@cms_lucene_page]
+                    [/#if]
+              </div>
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

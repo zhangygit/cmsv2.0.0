@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html"/]
+<title>${channel.name}</title>
+</head>
+
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html"/]
+ <!--head E-->
+
+ <div class="contain">
+ <!--左侧菜单_S-->
+ [#include "../include/leftMenu.html"/]
+<!--左侧菜单_E-->
+<!--右侧菜单_S-->
+<div class="fl subr">
+	  [#include "../include/mbx.html"/]
+      <div class="wraplist">
+      [@cms_content_page channelId=channel.id titlen='15' append='...' count=channel.pageSize]
+        <div class="piclist">
+      		<ul>
+      			[#list tag_list as a]
+            	<li><a href="${a.url}" title="${a.title}"><img src="${base+a.typeImg}" width="195px" height="129px"/>
+           	    <p title="${a.title}">[@text_cut s=a.title len=titlen append=appedn /]</p></a></li>
+           	    [/#list]
+            </ul>
+            </div>
+            <div class="clear"></div>
+            <!--页码_S-->
+[#include "../include/page.html"/]
+     <!--页码_E-->
+      [/@cms_content_page]
+      </div>
+ 	</div>
+
+<!--右侧菜单_E-->
+ </div>
+  <div class="clear"></div>
+ <!--foot S-->
+[#include "../include/footer.html"/] <!--foot E-->
+ 
+</div>
+</body>
+</html>

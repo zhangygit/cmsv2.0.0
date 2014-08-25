@@ -1,0 +1,269 @@
+[#include "../include/top.html"/]
+<!-- nav_banner end-->
+<div id="show1" style="margin-top: 30px;">
+	<div id="show">
+		<div id="smiddle">
+			<div style="position: absolute; overflow: hidden; width: 1033px;">
+				<ul>
+				[@cms_channel id="100"] 
+					<li class="one">
+					<a href="${tag_bean.url}">
+							<div class="one_center">
+								<p class="one_p">${tag_bean.name}</p>
+								<div class="one_p2">
+									风格设计制作，程序功能实现<br />网站制作应该包括网站策划、网页设计、网站功能、网站优化技术、网站内容整理；网站制作前期，我们需要对网页制作需求进行调研，沟通清楚客户需求
+									<br />
+									<img src="${base+tag_bean.titleImg?replace('-thumb','')}" style="margin-left: 4px" />并对网站整体定位进行把控。
+								</div>
+							</div>
+					</a>
+					</li>
+				[/@cms_channel]
+				[@cms_channel id="107"] 
+					<li class="one">
+					<a href="${tag_bean.url}">
+							<div class="one_center">
+								<p class="one_p">${tag_bean.name}</p>
+								<div class="one_p2">
+									<p>网站内部结构优化，站外优化</p>
+									网站访问速度及网站代码样式精简化，还包括内部图片的压缩处理、丢失权重页面的重整；站外优化主要根据行业特点针对性进行外链建设，提高网站知名度
+									<p style="float: right">
+										<img src="${base+tag_bean.contentImg?replace('-thumb','')}" />提高百度、谷歌等搜索引擎的认可度，从而快速提升排名。
+									</p>
+								</div>
+							</div>
+					</a>
+					</li>
+				[/@cms_channel]
+				[@cms_channel id="101"] 
+					<li class="one">
+					<a href="${tag_bean.url}">
+							<div class="three_center">
+								<p class="one_p">${tag_bean.name}</p>
+								<div class="one_p3">
+									网站打天下，运营守江山<br />利用营销型网站特质进行网络推广，营销效果见效快而准；推广方式有：网盟广告、百度推广、软文推广、微博营销、微信营销、百度知道、口碑营销、邮件群发等各种广撒网营销方式；<img
+										src="${base+tag_bean.titleImg?replace('-thumb','')}" style="margin-left: 4px" />广而告之，通过网上宣传，还可配合线下活动获得直接销售订单，网络成为您成功的助推器。
+								</div>
+							</div>
+					</a>
+					</li>
+				[/@cms_channel]
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--show end-->
+
+<div id="case">
+	<div class="title">
+		[@cms_channel id="103"]
+		<h1>
+			Template appreciation<span>&nbsp;模板欣赏</span> 
+			<span class="template">
+			<a href="${tag_bean.url}" class="templatemore">MORE>></a></span>
+		</h1>
+		[/@cms_channel]
+		<div class="line1"></div>
+		<div class="line2"></div>
+	</div>
+	<!--title end-->
+	<div id="change">
+		<div class="changeleft">
+			<h2>网站建设模板</h2>
+			<ul>
+				<li class="style">企业网站模板</li>
+				<li>门户网站模板</li>
+			</ul>
+		</div>
+
+		<div class="changeright">
+		 [@cms_content_list channelId='121' channelOption='0'   orderBy='4']
+		 [#list tag_list as a]
+		   [#if a.typeImg??] 
+		 <dl>
+				<dt>
+					<a href="${a.url}" target="_blank"><img src="${a.typeImg}" />
+					<div class="cgsp">${a.title}</div></a>
+				</dt>
+				<dd class="d1">${a.title}</dd>
+				<dd class="d2">${a.title}</dd>
+				<dd class="d3">
+					<a href="${a.url}" target="_blank">详细进入>></a>
+				</dd>
+		</dl>
+		   [/#if]
+		 [/#list]
+		 [/@cms_content_list]
+		</div>
+		<!--changeright end-->
+		<div class="changeright">
+		[@cms_content_list channelId='122' channelOption='0'  orderBy='4']
+		 [#list tag_list as a]
+		   [#if a.typeImg??] 
+		 <dl>
+				<dt>
+					<a href="${a.url}" target="_blank"><img src="${a.typeImg}" />
+					<div class="cgsp">${a.title}</div></a>
+				</dt>
+				<dd class="d1">${a.title}</dd>
+				<dd class="d2">${a.attr.caseType}</dd>
+				<dd class="d3">
+					<a href="${a.url}" target="_blank">详细进入>></a>
+				</dd>
+		</dl>
+		   [/#if]
+		 [/#list]
+		 [/@cms_content_list]	
+		</div>
+	</div>
+	<!--change end-->
+
+</div>
+<!--case end-->
+<div id="part">
+	[@cms_channel id="126" append='...']
+	<div class="part_left">
+		<div class="part_title1">
+			<h3>
+				<span>About US&nbsp;</span>${tag_bean.name}
+			</h3>
+			<div class="line3"></div>
+			<div class="line4"></div>
+		</div>
+		<!--part_title1 end-->
+		<dl class="p_l_center">
+			<dt>
+				<img src="${base+tag_bean.contentImg}" width="246" height="87" />
+			</dt>
+			<dd>
+				[@html_cut s=tag_bean.txt append=append len='38'/]<a href='${tag_bean.url}'> [详细]</a>
+			</dd>
+		</dl>
+	</div>
+	[/@cms_channel]
+	<!--part_left end-->
+	<div class="part_middle">
+		<ul class="p_m_change">
+			<li class="jia">[@cms_channel id="124"]<a href="${tag_bean.url}">${tag_bean.name}</a>[/@cms_channel]</li>
+			[@cms_channel id="125"]<li><a href="${tag_bean.url}">${tag_bean.name}</a>[/@cms_channel]</li>
+			[@cms_channel id="112"]<li><a href="${tag_bean.url}">${tag_bean.name}</a>[/@cms_channel]</li>
+			<span style="float: right; margin-right: 10px; line-height: 35px;">
+			<a href="news.html" class="more" target="_blank">MORE>></a></span>
+		</ul>
+		<div class="new">
+			<ul class="newlist">
+				[@cms_content_list channelId='124' channelOption='0' titlen='23' append='...'   orderBy='4' ]
+		 			[#list tag_list as a]
+		 			<li><a href='${a.url}' target='_blank'>[@text_cut s = a.title len=titlen append=append /]</a><span>[${a.date?substring(0,10)}]</span></li>
+		 			[/#list]
+		 		[/@cms_content_list]
+			</ul>
+			<div class="newtu">
+				[@cms_content_list channelId='124' channelOption='0'   orderBy='4' ]
+		 			[#list tag_list as a]
+		 			  [#if a.typeImg??]
+		 			  	[#if a_index == 0]
+		 			  	<div>
+							<img [#if a.typeImg?? && a.typeImg?starts_with('/cms/cms')] src="${a.typeImg?substring(4)}"[/#if] width="175" height="131" />
+						</div>
+						<br>
+		 			  	[/#if]
+		 			  	[#if a_index ==1]
+		 			  	<div>
+							<img [#if a.typeImg?? && a.typeImg?starts_with('/cms/cms')] src="${a.typeImg?substring(4)}"[/#if] width="175" height="175" />
+						</div>
+		 			  	[/#if]
+		 			  [/#if]
+		 			[/#list]
+		 		[/@cms_content_list]
+			</div>
+		</div>
+		<!--new end-->
+		<div class="new">
+			<ul class="newlist">
+				[@cms_content_list channelId='125' channelOption='0'  title='23' append='...' orderBy='4' dateFormat='yyyy-MM-dd']
+		 			[#list tag_list as a]
+		 			<li><a href='${a.url}' target='_blank'>${a.title}</a><span>[${a.date?substring(0,10)}]</span></li>
+		 			[/#list]
+		 		[/@cms_content_list]
+			</ul>
+			<div class="newtu">
+				[@cms_content_list channelId='125' channelOption='0'   orderBy='4' ]
+		 			[#list tag_list as a]
+		 			  [#if a.typeImg??]
+		 			  	[#if a_index == 0]
+		 			  	<div>
+							<img src="${a.typeImg}" width="175" height="131" />
+						</div>
+						<br>
+		 			  	[/#if]
+		 			  	[#if a_index ==1]
+		 			  	<div>
+							<img src="${a.typeImg}" width="175" height="175" />
+						</div>
+		 			  	[/#if]
+		 			  [/#if]
+		 			[/#list]
+		 		[/@cms_content_list]
+			</div>
+		</div>
+		<!--new end-->
+		<!--new end-->
+		<div class="new">
+			<ul class="newlist">
+				[@cms_content_list channelId='112' channelOption='0'  title='23' append='...' orderBy='4' dateFormat='yyyy-MM-dd']
+		 			[#list tag_list as a]
+		 			<li><a href='${a.url}' target='_blank'>${a.title}</a><span>[${a.date?substring(0,10)}]</span></li>
+		 			[/#list]
+		 		[/@cms_content_list]
+			</ul>
+			<div class="newtu">
+				[@cms_content_list channelId='112' channelOption='0'   orderBy='4' ]
+		 			[#list tag_list as a]
+		 			  [#if a.typeImg??]
+		 			  	[#if a_index == 0]
+		 			  	<div>
+							<img src="${a.typeImg}" width="175" height="131" />
+						</div>
+						<br>
+		 			  	[/#if]
+		 			  	[#if a_index ==1]
+		 			  	<div>
+							<img src="${a.typeImg}" width="175" height="175" />
+						</div>
+		 			  	[/#if]
+		 			  [/#if]
+		 			[/#list]
+		 		[/@cms_content_list]
+			</div>
+		</div>
+		<!--new end-->
+	</div>
+	<!--part_middle end-->
+	<div class="part_right">
+		<div class="part_title1">
+			<h3>
+				<span>Contact US &nbsp;</span>联系我们
+			</h3>
+			<div class="textunderline">
+				<div class="line3"></div>
+				<div class="line4"></div>
+			</div>
+		</div>
+		<!--part_title1 end-->
+		<dl>
+			<dt>
+				<a rel="nofollow"
+					href="http://map.baidu.com/?newmap=1&amp;s=inf%26uid%3D873f237ff7309a1f04026f07%26c%3D289&amp;fr=alasg&amp;from=alamap"
+					target="_blank"><img src="/${res}/images/contactUs.jpg"
+					/ style="width: 256px;"></a>
+			</dt>
+			[@cms_channel id="127"][#if tag_bean.txt??]${tag_bean.txt} [/#if][/@cms_channel]
+		</dl>
+	</div>
+	<!--part_right end-->
+</div>
+<!--part end-->
+
+[#include "../include/footer.html"/]

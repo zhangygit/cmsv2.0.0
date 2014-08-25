@@ -1,0 +1,87 @@
+[#include "../include/top.html"/]
+<link type="text/css" href="/${res}/css/common.css" rel="stylesheet" />
+<link type="text/css" href="/${res}/css/about.css" rel="stylesheet" />
+<link type="text/css" href="/${res}/css/wzjsxiangxi.css"
+	rel="stylesheet" />
+<!-- nav_banner end-->
+<div id="about">
+	[#include "../include/site_aleft.html"/]
+	 [@cms_channel_list parentId=channel.id count='1'] 
+	     	[#if tag_list?size > 0]
+	     		[#list tag_list as sub ]
+	     			[#if sub_index=0]
+	     			<script>
+					var pitchOn =${sub.id};
+					jQuery("#"+pitchOn).find("a").addClass("select");
+					</script>
+	     				[#assign columnId=sub.id /]
+	     			[/#if]
+	     		[/#list]
+	     	[#else]
+	     		[#assign columnId=channel.id /]
+	     	[/#if]
+     [/@cms_channel_list]
+	<div id="aright">
+		<div class="team">
+			<h1>
+				<span class="r21">WEBSITE</span><span class="r22">网站</span><span
+					class="r23">建设</span> <span class="r24">&nbsp;&nbsp;
+					网络形象策划设计&nbsp;&nbsp; </span>
+			</h1>
+			[@cms_channel id=columnId]
+			<div class="xikuang">
+				<h4>
+					<span
+						style="height: 31px; line-height: 31px; color: #FFF; background: #5EC1D8; padding: 10px 20px 10px 20px; font-size: 18px;">
+						<span id="lbtit1">${tag_bean.name}</span>
+					</span>
+				</h4>
+				[#if tag_bean.txt??]
+				${tag_bean.txt}
+				[/#if]
+				
+			</div>
+			[/@cms_channel]
+			<div class="xikuang">
+				<h4>
+					<span
+						style="height: 31px; line-height: 31px; color: #FFF; background: #5EC1D8; padding: 10px 20px 10px 20px; font-size: 18px;">
+						<span id="lbtit2">企业网站建设</span>（方案）
+					</span>
+				</h4>
+				[#include "../include/scheme_price.html"/]
+				<!--scheme end-->
+			</div>
+			<div class="xikuang">
+				<h4>
+					<span
+						style="height: 31px; line-height: 31px; color: #FFF; background: #5EC1D8; padding: 10px 20px 10px 20px; font-size: 18px;">
+						<span id="lbtit3">企业网站建设</span>（案例）
+					</span>
+				</h4>
+				<ul class="death" id="caseimg">
+
+					<li><a href="case25.html" class="acaseimg"> <img
+							src="/${res}/images/201305181842361968227.jpg" width="271"
+							height="219" class="imghb" /></a> <a class="cspan1"
+						href="case25.html" target="_blank"> <img
+							src="/${res}/images/201307171406547456777.png" height="50px" /></a></li>
+
+					<li><a href="case23.html" class="acaseimg"> <img
+							src="/${res}/images/201305031906226785943.jpg" width="271"
+							height="219" class="imghb" /></a> <a class="cspan1"
+						href="case23.html" target="_blank"> <img
+							src="/${res}/images/201307171406547456777.png" height="50px" /></a></li>
+
+					<li><a href="case69.html" class="acaseimg"> <img
+							src="/${res}/images/20131024132946288078.png" width="271"
+							height="219" class="imghb" /></a> <a class="cspan1"
+						href="case69.html" target="_blank"> <img src="#" height="50px" /></a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- about end-->
+[#include "../include/footer.html"/]

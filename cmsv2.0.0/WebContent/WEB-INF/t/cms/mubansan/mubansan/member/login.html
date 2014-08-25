@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登陆页</title>
+[#include "../include/head.html" /]
+</head>
+<body>
+	<div class="mian_980">
+      <div class="top">
+   	    <img src="/${res}/images/logo.png" width="279" height="28" /></div>
+        <div class="login">
+        	<div class="login_tu" id="box">
+	       	    <ul id="list">
+	       	    	<li><img src="/${res}/images/login_tu.jpg"/></li>
+	       	    </ul>
+       		</div>
+            <div class="login_font">
+            	<div class="login_title">
+       	      <img src="/${res}/images/login_title.jpg" width="320" height="53" /></div>
+                <div class="login_main">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="login_table">
+                    <tr>
+                      <td width="27%" height="50" align="right" valign="middle">用户名：</td>
+                      <td width="73%" height="50"><label>
+                        <input name="username" type="text"  class="liu_input" id="username" size="35"/>
+                      </label></td>
+                    </tr>
+                    <tr>
+                      <td height="50" align="right" valign="middle">密码：</td>
+                      <td height="50"><input name="password" type="password" class="liu_input" id="password" size="35" /></td>
+                    </tr>
+                    <tr>
+                      <td height="50" colspan="2" align="center" valign="middle">
+                      <input type="button" style="cursor:pointer;" value="登录 " onclick="MbsGlobal.login()"  class="login_button"/>
+                      <input type="button" style="cursor:pointer;" value="取消" onclick="javascript:location.href='/cms';" class="login_button login_button_1"/>
+                    </td>
+                    </tr>
+                  </table>
+                </div>
+          </div>
+            
+      </div>
+[#include "../include/footer.html" /]
+        <!-- copy end-->
+    </div>
+</body>
+</html>

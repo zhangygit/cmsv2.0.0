@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.name}</title>
+[#include "../include/head.html"/]
+</head>
+<script type="text/javascript">
+var isSubmit=false;
+	function save(){
+		jQuery("#emailForm").validate( {
+			submitHandler : function(form) {
+				jQuery(form).ajaxSubmit( {
+					"success" : function(data) {
+						if(data.status==0) {
+							var name=jQuery('#name').val();
+							var email=jQuery('#email').val();
+							var telephone=jQuery('#telephone').val();
+							var title=jQuery('#title').val();
+							var message=jQuery('#message').val();
+							MessageController.addMessage(name,email,telephone,title,message,function(){
+								Message.success("#id","操作成功");
+								isSubmit=true;
+								jQuery("#button2").click();
+							})
+						}else if(data.status==1) {
+							if(isSubmit){
+								Message.error("#id","您已经成功提交信息了")																
+							}else{
+							Message.error("#id","验证码错误");
+							$("#guestbookCaptcha").click();
+							}
+						}else {
+							Message.success("#id","信息提交失败");
+						}
+					},
+					"dataType" : "json"
+				});
+			}
+		});
+		
+	}
+</script>
+<body>
+	<div class="mian_980">
+        [#include "../include/top.html"/]
+         <!--nav start-->
+        [#include "../include/nav.html"/]
+        <!--nav end-->
+        <!--left start-->
+        	[#include "../include/leftMenu.html"/]
+        <!--left end-->
+        <!--right start-->
+        	<div class="sub_right">
+            	[#include "../include/mbx.html"/]
+                <!--校长邮箱start-->
+                <div class="emall">
+                <form id="emailForm" action="${base}/email.jspx" method="post">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="liuyan_table">
+              <tr>
+                <td width="20%" height="40" align="right" valign="middle">姓名：</td>
+                <td width="80%" height="40"><label>
+                  <input name="name" type="text"  class="liu_input i-txt" id="name" vld="{required:true,maxlength:20}" size="30"/>
+                </label></td>
+              </tr>
+              <tr>
+                <td height="40" align="right" valign="middle">联系邮箱：</td>
+                <td height="40"><label>
+                  <input name="email" type="text"  class="liu_input i-txt" id="email" vld="{required:true,email:true}" size="40"/>
+                </label></td>
+              </tr>
+              <tr>
+                <td height="40" align="right" valign="middle">联系电话：</td>
+                <td height="40"><label>
+                  <input name="telephone" type="text"  class="liu_input i-txt" id="telephone" vld="{digits:true}" size="40"/>
+                </label></td>
+              </tr>
+              <tr>
+                    <td height="53" align="right" valign="middle">标题：</td>
+                    <td height="53"><label>
+                      <input name="title" type="text"  class="liu_input i-txt" id="title" vld="{required:true,maxlength:20}" size="60"/>
+                    </label></td>
+              </tr>
+                  <tr>
+                    <td height="40" align="right" valign="top">内容：</td>
+                    <td height="40"><label>
+                      <textarea name="message" id="message" cols="60" style="width: 369px; height: 72px;max-width: 480px;max-height: 82px;" rows="2" vld="{required:true,maxlength:300}"  class="textarea i-large"></textarea>
+                    </label></td>
+                  </tr>
+                  <tr>
+			  <td height="53" align="right" valign="middle">验证码：</td>
+			  <td><input class="mb-tittle i-txt" style="width:80px;margin-top:13px;" type="text" name="captcha" vld="{required:true}"/>
+			  	<span><img align="top" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+			  </td>
+			</tr>
+                  <tr>
+                    <td height="116" colspan="2" align="center" valign="middle">
+                      <input type="submit" name="button" id="id" value="" style="cursor: pointer;" onclick="save()" class="liu_button"/>
+                      <input type="reset" name="button2" id="button2" style="cursor: pointer;" value="" class="liu_button liu_button_1"/>
+                   </td>
+                </tr>
+                </table>
+                </form>
+                <script>
+                	jQuery("#button2").click(function(){
+                		jQuery("#guestbookCaptcha").click();
+                	})
+                </script>
+
+</div>
+                 <!---校长邮箱 end-->
+                 <script type="text/javascript">
+				$('#message').textCounter(300);
+			</script>
+            </div>
+        <!--right end-->
+        <!-- copy start-->
+       	  [#include "../include/footer.html"/]
+        <!-- copy end-->
+    </div>
+</body>
+</html>

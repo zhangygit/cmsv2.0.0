@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html" /]
+<title>留言板</title>
+</head>
+<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#guestbookForm").validate( {
+				submitHandler : function(form) {
+					jQuery(form).ajaxSubmit( {
+						"success" : function(data) {
+							if(data.status==0) {
+								Message.success("#id","留言提交成功");
+								location.href=location.href;
+							}else if(data.status==1) {
+								Message.error("#id","验证码错误");
+								$("#guestbookCaptcha").click();
+							}else {
+								Message.success("#id","留言提交失败");
+							}
+						},
+						"dataType" : "json"
+					});
+				}
+			});
+		});
+</script>
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html" /]
+ <!--head E-->
+
+ <div class="contain">
+  <!--左侧菜单_S-->
+[#include "../include/leftMenu.html" /]
+<!--左侧菜单_E--
+<!--右侧菜单_S-->
+<div class="fl subr">
+	  [#include "../include/mbx.html" /]
+      <div class="wraplist">
+      	 <form id="guestbookForm" class="lyb" action="${guestbookUrl}" method="post" > 
+        <table>
+        	<tr>
+			  <td>类别&nbsp;</td>
+			  <td>
+			  <select name="ctgId" class="i-txt" style="width:60px;">
+				[@cms_guestbook_ctg_list siteId='148']
+					[#list tag_list as ctg]
+						<option value="${ctg.id}">${ctg.name}</option>
+					[/#list]
+				[/@cms_guestbook_ctg_list]
+			  </select>	          </td>
+			  </tr>
+        	<tr><td>姓名&nbsp;</td><td><input name="title" class="l_ip i-txt" type="text" /></td></tr>
+            <tr><td>电话&nbsp;</td><td><input name="phone" class="l_ip i-txt" type="text" vld="{digits:true}"/></td></tr>
+            <tr><td>邮箱&nbsp;</td><td><input name="email" class="l_ip i-txt" type="text" vld="{email:true}"/></td></tr>
+            <tr><td valign="top">内容&nbsp;</td><td><textarea class="l_ip l_ip2 textarea i-large" name="content" id="textarea" vld="{required:true,maxlength:250}" style="max-width:550px;"></textarea></td></tr>
+            <tr>
+					 <td>验证码&nbsp;</td>
+					  <td><input class="mb-tittle i-txt" style="width:80px;margin-top:13px;" type="text" name="captcha" vld="{required:true}"/>
+					  	<span><img align="top" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+					  </td>
+		</tr>
+            <tr><td></td><td><input class="ly_btn" type="submit" id="id" value="" style="cursor:pointer;"/></td></tr>
+        </table>
+        </form>
+        <div>
+        [@cms_guestbook_page siteId=site.id titLen='18' append='...' checked='6' count=channel.pageSize orderBy='4']
+	            	[#list tag_list as m]
+            <div class="mec">
+            	<p>${(m.member.username)!'匿名'}：${m.contentHtml!}</p>
+                <div class="answer_b">管理员：${m.replyHtml!}</div>
+                <span class="answer_t">${(m.replayTime?string('yyyy-MM-dd HH:mm:ss'))!}</span>
+            </div>
+            [/#list]
+            <!--页码_S-->
+	   [#include "../include/page.html" /]
+	   [/@cms_guestbook_page]   
+     <!--页码_E-->
+        </div>
+      </div>
+ </div>
+<!--右侧菜单_E-->
+<div class="clear"></div>
+ </div>
+ <!--foot S-->
+ [#include "../include/footer.html" /]
+ <!--foot E-->
+ 
+</div>
+</body>
+</html>

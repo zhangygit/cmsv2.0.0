@@ -1,0 +1,36 @@
+[#include "../include/header.html"/]
+	<!--banner-->
+	<div class="banner wr">
+		<div class="interx">
+			<img src="/${res}/images/feilang.jpg"
+				height="197" />
+		</div>
+	</div>
+	<!--banner end-->
+
+	<!--contain-->
+	<div class="contain">
+	[#include "../include/crumb.html"/]
+		<div class="box clearfix">
+			<!--maincontent-->
+			<div class="maincontent">
+
+				<div class="details">
+					<h2 class="tit">关于我们</h2>
+					[#if channel.txt??]
+						${channel.txt}
+					[/#if]
+				</div>
+
+
+			</div>
+			<!--maincontent end-->
+			<!--sidebar-->
+			[#include "../include/sidebar.html"/]
+			<!--sidebar end-->
+		</div>
+	</div>
+	<!--contain end-->
+
+	<!--bottom-->
+[#include "../include/footer.html"/]

@@ -1,0 +1,22 @@
+  <div class="footer">
+    <div class="links">
+    	[@cms_friendlink_list siteId=site.id]
+    		[#if tag_list?size > 0]
+				[#list tag_list as a]
+					[#if a_index lt 9]
+      	 			<a href="${a.domain}" target="_blank" title="${a.name!}">${a.name!}</a>
+      	 			[/#if]
+				[/#list]
+			[#else]
+				<a class="not_links">暂无友情链接</a>
+			[/#if]
+     	[/@cms_friendlink_list]
+    </div>
+    
+    <div class="footer_text">
+       ${site.copyrightInformation!''}
+    </div>
+  </div>
+</div>
+</body>
+</html>

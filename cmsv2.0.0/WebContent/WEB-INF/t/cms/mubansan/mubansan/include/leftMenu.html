@@ -1,0 +1,24 @@
+<div class="sub_left">
+   [@cms_channel id=channel.id] <div id="subnav-top" class="sub_left_title">[#if channel.parentId??]${channel.parent.name}[#else]${channel.name}[/#if]</div>[/@cms_channel]
+     <div class="sub_left_line"> 
+	     	<ul>
+     	[#if channel.parent??]
+	     	[@cms_channel_list parentId=channel.parent.id]
+	     	[#if tag_list?size > 0]
+	     		[#list tag_list as a]
+	         	<li [#if channel.id = a.id]class="sub_left_hover"[/#if]><a href="${a.url}">${a.name}</a></li>
+	             [/#list]
+	         [/#if]
+	         [/@cms_channel_list]
+         [#else]
+	         [@cms_channel_list parentId=channel.id]
+	     	[#if tag_list?size > 0]
+	     		[#list tag_list as a]
+	         	<li [#if channel.id = a.id]class="sub_left_hover"[/#if]><a href="${a.url}">${a.name}</a></li>
+	             [/#list]
+	         [/#if]
+	         [/@cms_channel_list]
+         [/#if]
+	         </ul>
+     </div>
+</div>

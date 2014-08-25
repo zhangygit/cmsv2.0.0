@@ -1,0 +1,59 @@
+[#include "../include/header.html"/]
+<script>
+jQuery(document).ready(function(){
+var columnId = '${channel.id}';
+jQuery("#head_"+columnId).find("a").addClass("select");
+});
+</script>
+	<!--banner-->
+	<div class="banner wr">
+		<div class="interx">
+			<img src="/${res}/images/thumb_2014030664270609.jpg" />
+		</div>
+	</div>
+	<!--banner end-->
+
+	<!--contain-->
+	<div class="contain">
+		[#include "../include/crumb.html"/]
+		<div class="box clearfix">
+			<!--maincontent-->
+			<div class="maincontent">
+
+				<div class="details">
+					[@cms_content_page channelId=channel.id    count=channel.pageSize orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+					[#if tag_pagination.list?size = 0]
+						<div class="no_info">暂无信息</div>
+		           	[#else]
+						<table border="0" cellpadding="0" cellspacing="0" wIDth="100%">
+						
+				           	[#list tag_pagination.list  as t]
+				           	<tr>
+								<td height="30"><img src="/${res}/images/list_dot.gif" border="0" />&nbsp;<a
+									href="${t.url}" title="${t.title}">[@text_cut s=t.title len=30 append=append/]</a></td>
+								<td wIDth="*" nowrap align=right><span>${t.date?substring(0,10)}</span>&nbsp;</td>
+							</tr>
+							[/#list]
+			           		
+			           
+							
+						</table>
+						[#include "../include/page.html"/]
+					[/#if]
+				[/@cms_content_page]
+				</div>
+
+
+			</div>
+			<!--maincontent end-->
+			<!--sidebar-->
+			[#include "../include/sidebar.html"/]
+			<!--sidebar end-->
+		</div>
+
+		[#include "../include/service.html"/]
+	</div>
+	<!--contain end-->
+
+	<!--bottom-->
+[#include "../include/footer.html"/]

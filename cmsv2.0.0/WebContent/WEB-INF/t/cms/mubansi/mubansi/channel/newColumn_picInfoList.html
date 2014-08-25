@@ -1,0 +1,29 @@
+[#include "../include/header.html"/]
+<div class="center">
+      [#include "../include/left_column.html"/]
+      <div class="right">
+         [#include "../include/location.html"/]
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+                    [@cms_content_page channelId=curColumn.id count=curColumn.pageSize orderBy=4 titLen='25' append='...' dateFormat='yyyy-MM-dd'] 
+                    	[#if tag_list?size = 0]
+                    		<div class="no_info">暂无信息</div>
+                    	[#else]
+                    		[#list tag_list as a]
+                    		<div class="pic-text">
+		                       [#if a.typeImg??] <a href="${a.url}" title="${a.title}">[/#if]<img [#if a.typeImg?? && a.typeImg?starts_with('${base+base}')] src="${a.typeImg?substring(4)}"[#elseif a.typeImg?? && a.typeImg?starts_with('${base}')]src="${a.typeImg!site.defImg}"[#else]src="${base+a.typeImg!site.defImg}"[/#if]>[#if a.typeImg??]</a>[/#if]
+		                        <a class="img_a" href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titLen append=append/]</a>
+		                        <p>[#if a.contentTxtSet?? && a.contentTxtSet?size > 0 && a.contentTxtSet[0].txt??][@html_cut s=a.contentTxtSet[0].txt?replace('_baidu_page_break_tag_','') len=130 append=append/][/#if]</p>
+		                    </div>
+                    		[/#list]
+                    	[/#if]
+                    [#include "../include/page_list.html"/]
+                    [/@cms_content_page]
+              </div>
+              <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background:#F9F9F9}
+#middle{ width:1040px; clear:both; margin:0 auto; padding-top:40px;}
+.lei3{ margin:0 auto; overflow:hidden; padding:20px 0px 20px 100px}
+.lei3 dl{ width:323px; float:left; margin-left:10px; margin-bottom:30px;}
+.lei3 dl dd{ line-height:23px; padding:10px; text-align:left;}
+.lei3 .kk{ margin-right:18px; margin-left:18px;}
+.lei3 p{ text-align:left;line-height:30px; width:300px}
+.lei3 p span{  line-height:25px; font-weight:700; color:#434343}
+.lei5{ width:233px; border:1px solid #EAEAEA; background:#f2f2f2; height:244px;; float:left; margin:15px 20px 10px 0px;}
+.lei5 h1{ font-size:20px; color:#157CBC; height:45px; line-height:45px; font-family:"微软雅黑"; font-weight:500}
+.lei5 p{ width:160px; margin:0 auto; text-align:left; color:#343434; line-height:150%; padding-top:15px; padding-left:10px}
+.lei2{ clear:both}
+.lei6{margin:15px 0px 10px 0px;}
+.lei7{ clear:both}
+.lei1{ margin-left:100px}
+#middle .lei9{ width:1000px; margin:0px 0px 50px 100px; font-family:"微软雅黑"; color:#8b8b8b; border:1px solid #EFEFEF; background:#FAFAFA}
+#middle .question{ width:1100px; text-align:right; font-size:12px; height:35px;; line-height:35px; margin-top:20px;color:#AAAAAA; overflow:hidden}
+#middle .question a{color:#AAAAAA; font-weight:600;}
+#middle .question a:hover{color:#f00; font-weight:600;}
+#middle .ques2{ float:left; margin-left:5px }
+#middle .ques1{ float:left; margin-left:955px; margin-top:5px}

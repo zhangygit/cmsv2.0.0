@@ -1,0 +1,50 @@
+<div class="left">
+<div class="leftnav">
+<!-- 点击顶级栏目且该栏目有子栏目 -->
+[#if channel??]
+	[#if channel.child?? && channel.child?size > 0]
+	<div class="leftnav-tittle">${channel.name}</div>
+		<ul>
+		[#list channel.child as son]
+			<!-- 第一个子栏目 -->
+			[#if son_index = 0 ]
+				[#assign curColumn=son]
+				<li class="on_hover"><a class="main" href="${son.url}" title="${son.name}">${son.name}</a></li>
+			<!-- 非第一个子栏目 -->
+			[#else]	
+				<li><a class="main" href="${son.url}" title="${son.name}">${son.name}</a></li>
+			[/#if]
+		[/#list]
+	</ul>
+	<!-- 点击叶子栏目 -->
+	[#else]
+		<!-- 有父栏目 -->
+		[#if channel.parent??]
+				<div class="leftnav-tittle">${channel.parent.name}</div>
+				<ul>
+				[#list channel.parent.child as son]
+					[#if son.id=channel.id]
+						[#assign curColumn=son]
+						<li class="on_hover"><a class="main" href="${son.url}" title="${son.name}">${son.name}</a></li>
+					[#else]
+						<li><a [#if son.child?? && son.child?size > 0]class="nav2_open"[#else] class="main"[/#if]href="${son.url}" title="${son.name}">${son.name}</a></li>
+					[/#if]
+				[/#list]
+		<!-- 没有父栏目 -->
+		[#else]
+			[#assign curColumn=channel]
+			<div class="leftnav-tittle">${channel.name}</div>
+			<ul>
+				<li class="on_hover"><a href="${channel.url}" title="${channel.name}">${channel.name}</a></li>
+		[/#if]
+		</ul>
+	[/#if]
+[#else]
+[/#if]
+</div>
+[@cms_channel path="lxwm" siteId=site.id]
+[#if tag_bean??]
+<a class="map" target="_blank" href="http://map/baidu.com"><img [#if tag_bean.contentImg??]src="${base+tag_bean.contentImg}"[#else]src="/${res}/images/map.jpg"[/#if]><p>${site.name}</p></a>
+[/#if]
+[/@cms_channel]
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/${res}/css/layout.css" rel="stylesheet" type="text/css"/>
+<title>信息提示页面 - ${site.name}</title>
+</head>
+<body>
+<div class="prompt">
+  <dl>
+    <dt></dt>
+    <dd class="msg">系统信息提示：</dd>
+    <dd>您当前尚未登录，请在首页登录。系统5秒后将自动跳转至首页</dd>
+    <dd>
+    <script>setTimeout("window.location.href ='${indexUrl}';", 2000);</script>
+		【<a href="${indexUrl}">如果您的浏览器没有自动跳转，请点击此链接</a>】
+	</dd>
+  </dl>
+</div>
+</body>
+</html>

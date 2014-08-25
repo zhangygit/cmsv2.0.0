@@ -1,0 +1,13 @@
+		<div class="title-box">
+			<ul class="tabul">
+				[@cms_channel id="8"]<li id="${tag_bean.id}_box"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="9"]<li id="${tag_bean.id}_box"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="10"]<li id="${tag_bean.id}_box"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="11"]<li id="${tag_bean.id}_box"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="12"]<li id="${tag_bean.id}_box"><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+			<script>
+			var channelId = ${channel.id};
+			jQuery("#"+channelId+"_box a").addClass("on");
+			</script>
+			</ul>
+		</div>

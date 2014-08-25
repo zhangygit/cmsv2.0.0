@@ -1,0 +1,15 @@
+<div class="sec_left">
+         <div class="sec_name">${site.name}</div>
+         <div class="sec_nav">
+          <img class="sec_navleft" src="/${res}/images/sec_navleft.jpg"/>
+          <ul>
+             [@cms_channel_list count='6']
+           		[#list tag_list as a]
+           			<li><a [#if channel.id = a.id]style="color:#47ba9f; border-right:solid 4px #47ba9f ;"[/#if] href="${a.url}">${a.name}</a></li>
+           		[/#list]
+           	[/@cms_channel_list]
+          </ul>
+         </div>
+          
+         <img class="sec_leftimg" src="/${res}/images/sec_leftimg.png"/>
+ </div>

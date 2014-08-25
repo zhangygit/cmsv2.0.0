@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html" /]
+<title>学校地址</title>
+</head>
+
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html" /]
+ <!--head E-->
+
+ <div class="contain">
+  <!--左侧菜单_S-->
+ [#include "../include/leftMenu.html" /]
+<!--左侧菜单_E--
+<!--右侧菜单_S-->
+<div class="fl subr">
+	  [#include "../include/mbx.html" /]
+      <div class="wraplist">
+      	<div class="fl ad_map"><img src="${base+channel.contentImg!}" /></div>
+        <div class="fl s_addr">
+	          ${channel.txt!}
+          <p class="luxian"><a href="http://map.baidu.com" target="black"><img src="/${res}/images/map.png" />查看地图与路线</a></p>
+      </div>
+      </div>
+</div>
+<!--右侧菜单_E-->
+<div class="clear"></div>
+ </div>
+ <!--foot S-->
+[#include "../include/footer.html" /]
+ <!--foot E-->
+ 
+</div>
+</body>
+</html>

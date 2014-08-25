@@ -1,0 +1,18 @@
+        <div class="top">
+   	    <img src="${base+site.logoPath!}" width="279" height="28" />
+        <span class="top_right"><a href="javascript:;" onclick="AddFavorite(window.location,document.title)">加入收藏</a> ｜<a id="loginIn" href="${base}/login.jspx"> 登录</a>
+        
+         
+        </span>
+        <div id="loginOut" class="login_out" style="display:none; margin-left:200px;margin-left:650px;">
+	      	<span id="loginName" style="padding-right:8px;"></span>
+	      	<a href="javascript:MbsGlobal.loginOut();">退出</a>
+	      	<span>|</span>
+	      	<a href="/datacenter/" target="black">进入数字化校园</a>
+	      </div>
+        <div class="seart" style="left:750px;">
+        	<form action="${searchUrl}" name="sform" target="_blank" onsubmit='return cheackSearch();'>
+             <input id="searchKey" name="q" type="text" style="height:15px;"  class="seart_input" /><input type="submit" value="" class="seart_btn" />
+             </form>
+         </div>
+        </div>

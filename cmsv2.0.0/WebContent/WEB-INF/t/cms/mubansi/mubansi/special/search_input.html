@@ -1,0 +1,82 @@
+[#include "../include/header.html"/]
+<p class="location">您现在正在浏览：<a href="${base}/search.jspx?q=" title="站内搜索">站内搜索</a></p>
+<div class="sec_search">
+	<div class="sec_sclass">
+		<form action="${base}/search.jspx" onsubmit="return cheackSearch();">
+		<table class="search_td" border="0" cellspacing="0" cellpadding="2">
+			<tr>
+				<td class="search_td_text" width="14%">站内搜索：</td>
+				<td  width="42%"><input id="searchKey" name="q" type="text" [#if q??]class="searching"[#else]class="default_search"[/#if] value="${q!'请输入关键字...'}" onfocus="onFocusSearch(this);" onblur="onBlurSearch(this);"/>
+				
+				</td>
+		
+				<td width="25%"><select id="search_sel" class="lei" size="1" name="searchType">
+						<option value="">所有信息搜索</option>
+						<option value="title">标题搜索</option>
+						<option value="content">内容搜索</option>
+					</select>
+				</td>
+				<td><input type="submit" class="s_button" value=""/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+	<div class="sec_snews">
+	     	[@cms_content_page siteId=site.id count=20 orderBy=4 titLen='45' append='...' dateFormat='yyyy-MM-dd'] 
+				[#if tag_list?size = 0]
+					<div class="no_info">暂无信息</div>
+				[#else]
+				     <ul class="ul_news">
+					[#list tag_list as a]
+				         <li><a title="${a.title}" href="${a.url}">[@text_cut s=a.title len=titLen append=append/]</a>[#if a.pictures?? && a.pictures?size>0]<img title="含图片" src="/${res}/images/123_sec_icon.jpg">[/#if]<span class="span_time">${a.date?string(dateFormat)}</span></li> 
+					[/#list]
+					<div class="clear"></div>
+					</ul>
+				[/#if]
+				
+				[#assign p=tag_pagination/]
+				[#if p.totalPage gt 1]
+				<div class="pagination">
+					<ul>
+					[#if !p.firstPage]
+	 					<li id="first"><a class="big_a" title="firstPage" href="${hrefFormer}_1${hrefLatter}"><img src="/${res}/images/123_sec_19.jpg"/></a></li>
+	 					<li id="next"><a title="prePage" href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}"><img src="/${res}/images/123_sec_21.jpg" /></a></li>
+					[/#if]
+					 [#if p.totalPage > 11]  
+						[#if p.pageNo+5 gt p.totalPage]  
+							[#assign begin=p.pageNo - (11-(p.totalPage - p.pageNo + 1))/]  
+							[#assign end=p.totalPage/]  
+						[#elseif p.pageNo-5 lt 1]  
+							[#assign begin=1/]  
+							[#assign end=11/]  
+						[#else]  
+							[#assign begin=p.pageNo - 5/]  
+							[#assign end=p.pageNo + 5/]  
+						[/#if]  
+					[#else]  
+						[#assign begin=1/]  
+						[#assign end=p.totalPage/]  
+					[/#if]
+	
+					[#list begin..end as i]
+						<li>[#if p.pageNo == i]<a class="page_sel" title="${i}" href="${hrefFormer}[#if i gt 1]_${i}[/#if]${hrefLatter}">[#else]<a title="${i}" href="${hrefFormer}[#if i gt 1]_${i}[/#if]${hrefLatter}">[/#if] ${i}</a></li>
+					[/#list]
+					[#if !p.lastPage]
+						<li><a title="nextPage" href="${hrefFormer+'_'+p.nextPage+hrefLatter}"><img src="/${res}/images/123_sec_23.jpg" /></a></li>
+						<li><a class="big_a" title="lastPage" href="${hrefFormer+'_'+p.totalPage+hrefLatter}"><img src="/${res}/images/123_sec_25.jpg" /></a></li>
+					[/#if]
+					<div class="clear"></div>
+					</ul>
+				</div>
+				[/#if]
+		    [/@cms_content_page]
+	     </div>
+	     <div class="clear"></div>
+</div>
+     <div class="clear"></div>
+        [#include "../include/footer.html"/]
+     </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="footer">
+    <div class="footer-center">
+         <div class="links">
+             <div class="links-tittle">友情链接</div>
+             
+             [@cms_friendlink_list]
+						[#if tag_list?size > 0]
+					    	[#list tag_list as a]
+[#if a_index < 7]
+					    		<a href="${a.domain}" target="_blank" title="${a.name!}">${a.name!}</a>
+[/#if]					    	[/#list]
+					    [#else]
+					    	<span class="no_info" style="display:block;margin-top:10px;">暂无友情链接</span>
+					    [/#if]
+		   [/@cms_friendlink_list]
+         </div>
+         
+         <div class="footer-text">
+             ${site.copyrightInformation!}
+         </div>
+    </div>
+</div>
+</body>
+</html>

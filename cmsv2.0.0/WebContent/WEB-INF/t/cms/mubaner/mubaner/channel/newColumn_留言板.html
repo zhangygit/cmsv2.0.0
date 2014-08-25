@@ -1,0 +1,95 @@
+[#include "../include/head.html"/] 
+<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#guestbookForm").validate( {
+				submitHandler : function(form) {
+					jQuery(form).ajaxSubmit( {
+						"success" : function(data) {
+							if(data.status==0) {
+								Message.success("#id","留言提交成功");
+								location.href=location.href;
+							}else if(data.status==1) {
+								Message.error("#id","验证码错误");
+								$("#guestbookCaptcha").click();
+							}else {
+								Message.success("#id","留言提交失败");
+							}
+						},
+						"dataType" : "json"
+					});
+				}
+			});
+		});
+</script>
+<div class="sub_tittle">
+[#include "../include/mbx.html"/]
+</div>
+  <div class="sub_content2">
+     <div class="messageboard">
+          <div class="message_tittle">留言记录</div>
+          [@cms_guestbook_page siteId='173' titLen='10' count=channel.pageSize checked='1' append='...']
+        	 [#list tag_list as m]
+		          <div class="m_content">
+		               <div class="question">
+		                   <div class="question_tittle">${m.titleHtml!}<span id="q_name">${(m.member.username)!'匿名'}</span><span id="q_time">${m.createTime?string('yyyy-MM-dd')!}</span></div>
+		                   <p>${m.contentHtml!}</p>
+		               </div>
+		               [#if m.reply??]
+		               <div class="answer">
+		                   <div class="answer_tittle"><span id="a_name">管理员回复</span><span id="q_time">${m.replayTime?string('yyyy-MM-dd')!}</span></div>
+		                   <p> ${m.replyHtml!}</p>
+		               </div>
+		               [/#if]
+		          </div>
+            [/#list]
+     		[#include "../include/page.html"/]
+         [/@cms_guestbook_page]
+          <div class="message_bottom"></div>
+     </div>
+  
+     <div class="messageboard">
+        <div class="message_tittle">留言板</div>
+        <form id="guestbookForm" action="${guestbookUrl}" method="post" >
+        <table>
+        <tr>
+             <td class="mb_name">类型</td>
+             <td>
+                 <select name="ctgId">
+                 [@cms_guestbook_ctg_list siteId=site.id]
+					 [#list tag_list as ctg]
+                      	<option value="${ctg.id}">${ctg.name}</option>
+                     [/#list]
+				 [/@cms_guestbook_ctg_list]
+                 </select>
+             </td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">主题</td>
+             <td><input type="text" class="mb_frame" name="title" size="15" vld="{required:true,maxlength:15}"/></td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">内容</td>
+             <td><textarea name="content" style="max-width: 507px;" vld="{required:true,maxlength:200}"></textarea></td>
+        </tr>
+        <tr>
+             <td class="mb_name">验证码</td>
+             <td>
+             	<input type="text" class="mb_frame" name="captcha" size="15" vld="{required:true,maxlength:15}"/>
+             	<span><img align="middle" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+             </td>
+        </tr>
+        <tr>
+             <td class="mb_name"></td>
+             <td><input class="button_submit" type="submit" id="id" value="提交" alt="提交按钮" /></td>
+        </tr>
+        </table>
+        </form>
+        <div class="message_bottom"></div>
+  </div>
+  
+     
+  </div>
+  
+ [#include "../include/footer.html"/] 

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.name}</title>
+[#include "../include/head.html" /]
+</head>
+
+<body>
+<div class="bg">
+    <div class="center_960">
+[#include "../include/left.html" /]
+       
+         
+       <div class="sec_right">
+          <img src="/${res}/images/sec_line.jpg"/>
+          <img class="sec_banner" src="/${res}/images/sec_banner.jpg"/>
+          
+          <div class="sec_content">
+          [@cms_content_page count=channel.pageSize titlen='10' append='...' channelId = channel.id]
+             <div class="sec_location"><img class="sec_locationimg" src="/${res}/images/sec_location.jpg"/><a href="${indexUrl}">首页</a>&nbsp;>&nbsp;${channel.name}</div>
+           <div class="sec_classpics">
+			[#list tag_list as a]	            
+             <div class="sec_classpic"><a href="${a.url}" title="${a.title}"><img src="${base+a.typeImg!site.defImg}"/></a><p>[@text_cut s=a.title len=titlen append=append /]</p></div>
+             [#if a_index % 2 != 0]<div class="clear"></div>[/#if]
+            [/#list]
+           </div> 
+[#include "../include/page.html" /]
+          [/@cms_content_page] 
+          </div>
+       
+       </div>
+       
+       <div class="clear"></div>
+    
+    </div>
+    
+    [#include "../include/footer.html" /]
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html" /]
+<title>${channel.name}</title>
+</head>
+
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html" /]
+ <!--head E-->
+
+ <div class="contain">
+  <!--左侧菜单_S-->
+ [#include "../include/leftMenu.html" /]
+<!--左侧菜单_E--
+<!--右侧菜单_S-->
+<div class="fl subr">
+	  [#include "../include/mbx.html" /]
+      <div class="wraplist">
+      <div class="newlist">
+      		<h4 class="newstit">${content.title}</h4><br></br>
+        <p class="n_info">来源：<span>${content.author!'本站编辑'}</span>&nbsp;&nbsp;&nbsp;&nbsp;日期：<span>${content.releaseDate!}</span></p>
+      	<div class="line_h30">
+      	<div id="medias">
+           			[#if content.medias?? && content.medias?size > 0]
+					[#list content.medias as cm]
+						<p style="margin: 5px auto; text-align: center">
+							<object height="450" width="550" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+					        <param name="movie" value="/${res}/images/flvplayer.swf" />
+					        <param name="quality" value="high" />
+					        <param name="allowFullScreen" value="true" />
+					        <param name="FlashVars" value="vcastr_file=${base+cm.path!}&BufferTime=3" />
+					        <embed height="450" width="550" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" quality="high" flashvars="vcastr_file=${base+cm.path!}" allowfullscreen="true" src="/${res}/images/flvplayer.swf"></embed>
+					        </object>
+					        </p>
+					        <p>${cm.description!}</p>
+						[/#list]
+					[/#if]
+           </div> 
+      		${txt!}
+      		<div id="pictures" style="text-align: center;">
+                 	[#if content.pictures?? && content.pictures?size > 0]
+                 		 [#list content.pictures as p]
+                 		 <span>
+	                    <a href="${base}/${p.imgPath}" target="black" id="imgHref${p_index}"><img src="" style="width:600px;"/></a></br>
+	                    <span style="font-size:12px;word-wrap:break-word;">${p.description!}</span></br>
+	                    </span>
+	                    <script>
+						var src = jQuery('#imgHref${p_index}').attr('href');
+						src = src.replace('-thumb','');
+						jQuery('#imgHref${p_index}').attr('href',src);
+						jQuery('#imgHref${p_index} > img').attr('src',src);
+						</script>
+                 		 [/#list]
+                 	[/#if]
+             </div>
+             [#include "../include/content_page.html"/]
+             [#if p.firstPage]
+            <script>
+  				jQuery('#medias').show();	
+          </script>
+          [#else]
+          	<script>
+  				jQuery('#medias').hide();	
+          </script>
+          [/#if]
+           [#if p.lastPage]
+           	<script>
+  				jQuery('#pictures').show();	
+          </script>
+           [#else]
+           <script>
+  				jQuery('#pictures').hide();	
+          </script>
+           [/#if]
+             <div>
+				[#if content.attachments?size gt 0] 
+				<div style="font-size:14px;font-weight:bold;margin-left:22px;margin-bottom:8px;">附件列表</div> 
+					<ul style="list-style:none;margin-left:22px;">
+					[#list content.attachments as attach] 
+					<li style="line-height:30px;width:400px; border:1px #CCCCCC solid;padding-left:5px;margin-top:-1px;"><a class="attach" id="attach${attach_index}">${attach.name}</a></li> 
+					[/#list] 
+					</ul> 
+				[/#if] 
+			</div> 
+		</div>
+      </div>
+ 	<script>
+		jQuery(document).ready(function(){
+			Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+			Cms.viewCount("${base}","${content.id}");
+			Cms.siteFlow("${base}",location.href, document.referrer);
+				});
+	</script>
+      </div>
+</div>
+<!--右侧菜单_E-->
+ </div>
+  <div class="clear"></div>
+ <!--foot S-->
+[#include "../include/footer.html" /]
+ <!--foot E-->
+ 
+</div>
+</body>
+</html>

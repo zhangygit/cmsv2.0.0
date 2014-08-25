@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.name}</title>
+[#include "../include/head.html" /]
+</head>
+
+<body>
+	<div class="mian_980">
+        [#include "../include/top.html" /]
+         <!--nav start-->
+[#include "../include/nav.html" /]
+        <!--nav end-->
+        <!--left start-->
+        	[#include "../include/leftMenu.html" /]
+        <!--left end-->
+        <!--right start-->
+        	<div class="sub_right">
+            	[#include "../include/mbx.html" /]
+                <!--图片列表start-->
+                [@cms_content_page channelId=channel.id count=channel.pageSize titlen='20' append='...']
+                <div class="tu_line_main">
+                	[#list tag_list as a]
+						<dl>
+						  <dt><a href="${a.url}"><img src="${base+a.typeImg!site.defImg}" width="152" height="105" /></a></dt>
+							<dd><span class="lu_line_span"><a title="${a.title}" href="${a.url}">[@text_cut s = a.title len=titlen append=append /]</a> </span>
+								[@text_cut s=a.description len='110' append=append /]<span class="more_tu"> <a href="${a.url}"> 查看更多</a></span>
+							
+							 </dd><div class="clear"></div>
+						</dl>
+					[/#list]
+				<div class="clear"></div>
+		  </div>
+		 [#include "../include/page.html" /]
+			  [/@cms_content_page]
+                <!---图片列表 end-->
+            </div>
+        <!--right end-->
+        <!-- copy start-->
+       	  [#include "../include/footer.html" /]
+        <!-- copy end-->
+    </div>
+</body>
+</html>

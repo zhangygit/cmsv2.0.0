@@ -1,0 +1,19 @@
+	[#if channel?? && channel.child?? && channel.child?size > 0]
+		[#list channel.child as son]
+			<!-- 第一个子栏目 -->
+			[#if son_index = 0 ]
+				[#assign sonColumn=son]
+			[/#if]
+		[/#list]
+	[/#if]
+
+<div class="sub-tittle">[#if curColumn??]${curColumn.name}[#else]${channel.name}[/#if]
+  <div class="breadcrump">您所在位置：<a href="${indexUrl}">首页 </a><span class="seperate">></span>
+  [#list channel.nodeList as n][#if n.path!='sy']<a href="${n.url}" title="${n.name}">${n.name}</a>
+	[#if n_has_next]<span class="seperate">></span>[/#if][/#if]
+  [/#list]
+   [#if sonColumn??]
+	<span class="seperate">>&nbsp;</span><a href="${sonColumn.url}" title="${sonColumn.name}">${sonColumn.name}</a>
+[/#if]
+  </div>
+</div>

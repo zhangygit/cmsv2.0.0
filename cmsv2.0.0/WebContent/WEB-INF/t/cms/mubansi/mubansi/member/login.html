@@ -1,0 +1,54 @@
+[#include "../include/header.html"/]
+<script>
+jQuery(document).ready(function(){
+	jQuery('.login_table').keyup(function(event){
+		   if(event.keyCode==13 && (document.activeElement.id=='username' || document.activeElement.id == 'password')) {
+			   Tymb4Global.doLogin();
+			}
+	   });
+});
+</script>
+<div class="center">
+      [#include "../include/left_search.html"/]
+      
+      <div class="right">
+         <div class="sub-tittle">用户登录
+              <div class="breadcrump">您所在位置：
+                  <a href="${indexUrl}">首页</a>
+                  <span class="seperate">></span>
+                  <a href="${loginUrl}">登录</a>
+               </div>
+         </div>
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+                   <div class="sub-login">
+                   <form name="loginForm" id="loginForm" onsubmit="return false;" method="post">
+                   		<input name="auth_url" type="hidden" value="${loginUrl}">
+						<input name="auth_key" type="hidden" value="${session_id}">
+						<input name="auth_logining" type="hidden" value="1">
+						<input name="sys_id" type="hidden" value="1">
+                   <table class="login_table">
+                         <tr>
+                         	<td class="sub-login-name">用户名</td>
+                         	<td><input class="sub-login-frame" type="text" id="username"/></td>
+                         </tr>
+                         <tr>
+                         	<td class="sub-login-name">密码</td>
+                         	<td><input class="sub-login-frame" type="password" id="password"/></td>
+                         </tr>
+                         <tr>
+                         	<td></td>
+                         	<td><input type="button" class="sub-button-login" value="登录" alt="登录按钮" onclick="Tymb4Global.login('${indexUrl}');"/></td>
+                         </tr>
+                   </table>
+                   </form>
+                   </div>
+              </div>
+              <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html" /]
+

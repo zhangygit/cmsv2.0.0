@@ -1,0 +1,42 @@
+[#if pagination??]
+[#assign p=pagination/]
+		[#if p.totalPage gt 1]
+		<div class="page_div">
+			<ul>
+			[#if !p.firstPage]
+ 					<li id="prev"><a class="big_a" title="首页" href="${content.id}.jhtml">首页</a></li>
+					<li id="prev"><a title="上一页" href="${content.id}_${p.prePage}.jhtml">上一页</a></li>
+			[#else]
+			<li id="prev"><a class="big_a" style="color:gray;cursor:default;text-decoration: none;" href="javascript:;">首页</a></li>
+					<li id="prev"><a style="color:gray;cursor:default;text-decoration: none;" href="javascript:;">上一页</a></li>
+			[/#if]
+			 [#if p.totalPage > 7]  
+				[#if p.pageNo+3 gt p.totalPage]  
+					[#assign begin=p.pageNo - (7-(p.totalPage - p.pageNo + 1))/]  
+					[#assign end=p.totalPage/]  
+				[#elseif p.pageNo-3 lt 1]  
+					[#assign begin=1/]  
+					[#assign end=7/]  
+				[#else]  
+					[#assign begin=p.pageNo - 3/]  
+					[#assign end=p.pageNo + 3/]  
+				[/#if]  
+			[#else]  
+				[#assign begin=1/]  
+				[#assign end=p.totalPage/]  
+			[/#if]
+
+			[#list begin..end as i]
+				<li [#if p.pageNo == i]class="on_hover"[/#if]><a href="${content.id}[#if i gt 1]_${i}.jhtml[#else].jhtml[/#if]">${i}</a></li>
+			[/#list]
+			[#if !p.lastPage]
+				<li id="prev"><a title="下一页" href="${content.id}_${p.nextPage}.jhtml">下一页</a></li>
+ 				<li id="prev"><a class="big_a" title="尾页" href="${hrefFormer+'_'+p.totalPage+hrefLatter}">尾页</a></li>
+			[#else]
+				<li id="prev"><a style="color:gray;cursor:default;text-decoration: none;" href="javascript:;">下一页</a></li>
+ 				<li id="prev"><a class="big_a" style="color:gray;cursor:default;text-decoration: none;" href="javascript:;">尾页</a></li>
+			[/#if]
+			</ul>
+		</div>
+		[/#if]
+[/#if]

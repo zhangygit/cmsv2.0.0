@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html" /]
+<title>登录我的账户</title>
+</head>
+
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html" /]
+ <!--head E-->
+
+ <div class="contain" style="padding-top:60px;min-height:400px;">
+  <div class="load">
+  	<blockquote>
+  	  <form>
+  	    <table class="l_t">
+  	      <tr>
+  	        <td>用户名&nbsp;</td>
+  	        <td><input name="username" id="username" class="input_t" type="text" /></td>
+	        </tr>
+  	      <tr>
+  	        <td>密&nbsp;码&nbsp;</td>
+  	        <td><input name="password" id="password" class="input_t" type="password" /></td>
+	        </tr>
+  	      <tr>
+  	        <td></td>
+  	        <td><input class="btn1" type="button" onclick="MbwGlobal.login()"/>
+  	          <input class="btn1 btn2"  type="reset" value=""/></td>
+	        </tr>
+	      </table>
+  	  </form>
+	  </blockquote>
+  </div> 
+
+</div>
+<!--右侧菜单_E-->
+	
+  <!--foot S-->
+[#include "../include/footer.html" /]
+ <!--foot E--> 
+ </div>
+ 
+</div>
+</body>
+</html>

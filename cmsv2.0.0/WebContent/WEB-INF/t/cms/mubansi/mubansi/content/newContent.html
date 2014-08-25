@@ -1,0 +1,152 @@
+[#include "../include/header.html"/]
+<script type="text/javascript" src="/${res}/js/jquery.ad-gallery.pack.js"></script>
+<script type="text/javascript" src="/${res}/js/jquery.ad-gallery.js"></script>
+<script type="text/javascript" src="${resource_url}thirdparty/jquery/flowplayer/v3.2.6/flowplayer-3.2.6.min.js?${VERSION}"></script>
+<link href="/${res}/css/jquery.ad-gallery.css" type="text/css" rel="stylesheet" />
+<script>
+jQuery(document).ready(function(){
+	initVedioPlayer();
+	if(jQuery("#text").length !=0&&jQuery("#text").val()!="" ){
+		setTimeout(onEditorReady, 400);
+	}
+	Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+	Cms.viewCount("${base}","${content.id}");
+	jQuery('.ad-gallery').adGallery({loader_image:"/${res}/images/loader.gif"});
+	/* jQuery('.ad-thumb-list').find('img').each(function(){
+		var _this = jQuery(this);
+		var width = _this.width();
+		var height = _this.height();
+		_this.parent().width(width);
+		_this.parent().parent().width(width);
+		_this.css({top:(100-height)/2 + 'px'});
+	}); */
+});
+
+function initVedioPlayer(){
+	if(vedioPlayList && vedioPlayList.length > 0){
+		 var control = flowplayer(
+			"videoPlay", 
+			"${resource_url}thirdparty/jquery/flowplayer/v3.2.6/flowplayer-3.2.7.swf",
+			{
+				playlist : vedioPlayList,
+				plugins : {
+					controls : {
+						playlist : true,
+						autoHide : {
+							fullscreenOnly : true
+						},
+						tooltips : {
+							buttons : true,
+							play : '播放',
+							fullscreen : '全屏',
+							fullscreenExit : '退出全屏',
+							pause : '暂停',
+							mute : '静音',
+							unmute : '取消静音',
+							next : '下一个',
+							previous : '上一个'
+						}
+					}
+				},
+				clip : {
+					scaling : 'fit',
+					autoPlay : false,
+					autoBuffering : true
+				}
+			}
+		 );
+		 var api = flowplayer();
+	 }else{
+		 jQuery('#videoPlay').remove();
+	 }
+}
+function autoTOHeight(){
+	 var doc = document.getElementById('info-content-frame').contentWindow.document;
+	 var height=Math.max(doc.body.scrollHeight,doc.documentElement.scrollHeight);
+	 jQuery("#info-content-frame").height(doc.body.clientHeight+80);
+}
+function onEditorReady(){
+	var doc = document.getElementById('info-content-frame').contentWindow.document;
+	doc.open();
+	doc.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><style>p{word-break: break-all; word-wrap:break-word;}</style><body>'+ jQuery("#text").val() +'</body></html>');
+	doc.close();
+	window.setInterval("autoTOHeight()",200);
+}
+
+</script>
+<div class="center">
+[#if txt??]
+	<input name="text" id="text" value="${txt?replace("\"", "&quot;")}" type="hidden">
+[/#if]
+    [#include "../include/left_column.html"/]
+      <div class="right">
+         [#include "../include/location.html"/]
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+                   <div class="subnews-tittle">${content.title}</div> 
+                   <div class="author"><span>作者：${content.author!'本站编辑'}</span>[#if content.origin??]<span>文章来源：${content.origin!}</span>[/#if]<span>点击次数：${content.views}次</span><span>更新时间：${content.releaseDate!}</span></div>
+              	   <div class="">
+              	   		<!-- 视频begin -->
+					     		<div class="vedio_div" id="videoPlay"></div>
+					     		[#if content.medias?? && content.medias?size > 0]
+									[#list content.medias as media]
+							     		[#if media.type?upper_case == 'SWF']
+							     			<p class="flash_p">
+												<embed height="300" width="400" type="application/x-shockwave-flash"
+												quality="high" src="${base+media.path}" wmode="transparent"
+												align="center"></embed>
+											</p>
+										[/#if]
+									[/#list]
+								[/#if]
+					     	<!-- 视频end -->
+					     	
+					     	<!-- 图片begin -->
+				             [#if content.pictures?? && content.pictures?size > 0]
+				             <div id="gallery" class="ad-gallery">
+							    <div class="ad-image-wrapper"> </div>
+							    <div class="ad-controls"> </div>
+							    <div class="ad-nav">
+							      <div class="ad-thumbs">
+							        <ul class="ad-thumb-list">
+							        	 [#list content.pictures as p]
+							        	 <li>
+							        	 	<a href="${base+p.originalPath!}" >
+							        	 		<img class="image txt-img" src="${base+p.minThumb!}" title="${p.description}" />
+							        	 	</a>
+							        	 </li>
+							        	 [/#list]
+							        </ul>
+							      </div>
+							    </div>
+							  </div>
+							  [/#if]
+					     	<!-- 图片end -->
+					     	<!-- 文本begin -->
+					     		[#if txt??]
+					            	<iframe id="info-content-frame" style="width: 90%;margin-left:5%;overfolw:auto;" frameborder="0" scrolling="no" allowTransparency="true" ></iframe>
+					            [/#if]
+					            [#include "../include/page_content.html"/]
+					     	<!-- 文本end -->
+					     	<!-- 附件begin -->
+					     	[#if content.attachments?? && content.attachments?size > 0]
+							   <div style="clear:both;"></div>
+							     <div class="attach_div">
+							     	 <span>   附件列表：</span>
+								  	 <ul class="attach_list">
+								   		[#list content.attachments as attach]
+								   		<li><a class="attach_title" id="attach${attach_index}" title="${attach.name}">${attach.name}</a></li>
+								   		[/#list]
+								   	 </ul>
+							     </div>
+						   [/#if]
+					     	<!-- 附件end -->			
+              	   </div>
+              </div>
+              <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

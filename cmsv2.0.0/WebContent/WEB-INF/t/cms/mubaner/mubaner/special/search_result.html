@@ -1,0 +1,36 @@
+[#include "../include/head.html"/]
+  <div class="sub_tittle">
+    <p>搜索</p>
+    <div class="breadcrump"> <span>您所在的位置：</span><a href="${indexUrl}">首页</a><span>></span><a href="" id="current">搜索</a> </div>
+  </div>
+  
+  <div class="sub_content">
+  	[#if q??]
+		  		[@cms_lucene_page q=q descLen='100' titlen='45' append='...' count='10' siteId=site.id]
+    <div class="sub_search_tittle">您好！您搜索<span>“${q}”</span>内容如下：</div>
+       <div class="newslist">
+       <ul id="red">
+      			 [#if tag_list?size > 0]
+		            [#list tag_list as a]
+          				<li class="new_search"><span>${a.releaseDate?string('yyyy-MM-dd')}</span><a href="${a.url}" title="${a.title}">[@text_cut s=a.title append=append len=titlen /]</a></li>
+         			[/#list]
+		        [#else]
+		        	<p>暂无搜索结果!</p>
+		        [/#if]
+       </ul>
+    </div>
+       
+      					<script>
+							jQuery("#red > li > a").each(function(){
+								var stringObj=jQuery(this).text();
+								var str='<font style="color:red;">${q}</font>';
+								var newstr=stringObj.replace(new RegExp("${q}","g"),str);
+								jQuery(this).html(newstr);
+							});
+						</script>
+		  		[#include "../include/page.html"/]
+				[/@cms_lucene_page]
+	[/#if]
+  </div>
+  
+[#include "../include/footer.html"/]

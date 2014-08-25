@@ -1,0 +1,87 @@
+[#include "../include/head.html"/] 
+<script type="text/javascript">
+var isSubmit=false;
+	function save(){
+		jQuery("#emailForm").validate( {
+			submitHandler : function(form) {
+				jQuery(form).ajaxSubmit( {
+					"success" : function(data) {
+						if(data.status==0) {
+							var name=jQuery('#name').val();
+							var email=jQuery('#email').val();
+							var telephone=jQuery('#telephone').val();
+							var title=jQuery('#title').val();
+							var message=jQuery('#message').val();
+							MessageController.addMessage(name,email,telephone,title,message,function(){
+								Message.success("#id","操作成功");
+								isSubmit=true;
+								jQuery("#button2").click();
+							})
+						}else if(data.status==1) {
+							if(isSubmit){
+								Message.error("#id","您已经成功提交信息了")																
+							}else{
+							Message.error("#id","验证码错误");
+							$("#guestbookCaptcha").click();
+							}
+						}else {
+							Message.success("#id","信息提交失败");
+						}
+					},
+					"dataType" : "json"
+				});
+			}
+		});
+		
+	}
+</script>
+
+<div class="sub_tittle">
+[#include "../include/mbx.html"/]
+</div>
+  <div class="mailbox">
+  <form id="emailForm" action="${base}/email.jspx" method="post">
+  <table>
+        <tr>
+             <td class="mb_name">姓名</td>
+             <td><input type="text" class="mb_frame" name="name" id="name" vld="{required:true,maxlength:20}" size="30"/></td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">邮箱</td>
+             <td><input type="text" class="mb_frame" name="email" id="email" vld="{required:true,email:true}" size="40"/></td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">电话</td>
+             <td><input type="text" class="mb_frame" name="telephone" id="telephone" vld="{digits:true}" size="40"/></td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">主题</td>
+             <td><input type="text" class="mb_frame" name="title" id="title" vld="{required:true,maxlength:20}" size="60"/></td>
+        </tr>
+        
+        <tr>
+             <td class="mb_name">内容</td>
+             <td><textarea style="width: 441px; height: 114px;resize:none;" name="message" id="message" vld="{required:true,maxlength:300}"></textarea></td>
+        </tr>
+        <tr>
+             <td class="mb_name" style="padding-bottom:10px;">验证码</td>
+             <td><input type="text" class="mb_frame" vld="{required:true,maxlength:20}" size="60" name="captcha"/>
+			  	<span><img align="middle" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+			  </td>
+             
+        </tr>
+        <tr>
+             <td class="mb_name"></td>
+             <td><input class="button_submit" type="submit" onclick="save()" id="id" value="提交" alt="提交按钮" /></td>
+        </tr>
+  </table>
+  </form>
+  <script type="text/javascript">
+				$('#message').textCounter(300);
+			</script>
+			
+  </div>
+[#include "../include/footer.html"/] 

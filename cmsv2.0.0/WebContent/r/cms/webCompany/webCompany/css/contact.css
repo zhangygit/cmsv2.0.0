@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+#contact{ overflow:hidden}
+.tel{ width:260px; margin:20px; float:left; margin-left:20px}
+.tel p{ height:22px; line-height:22px; color:#787878; text-align:left}
+.teltop{ padding-top:10px; padding-left:15px;}
+.tel p span{ font-size:14px; font-weight:bolder; height:40px; line-height:40px; line-height:22px;}
+.tel .dong{ overflow:hidden; height:30px; line-height:30px}
+.tel .tu{ float:left;}
+.tel .zi{ float:left; color:#787878;}
+.tel .budong{ clear:both; margin-left:50px; color:#787878; text-align:left; height:20px; line-height:20px}
+.map{ margin-left:20px; float:left; width:604px; margin-top:20px; text-align:right;}
+.map a{ margin-right:15px; color:Red; text-decoration:underline; margin-bottom:10px;}
+#need{ width:900px; margin:20px; background:#FCFCFC; overflow:hidden; border:1px solid #E0E0E0; padding:10px;}
+#need .need1{ width:400px; height:47px; margin-left:20px;}
+.need2{ overflow:hidden; width:800px; margin:0 auto; border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;height:50px; line-height:50px;}
+.need2 .xinxi{ width:200px; margin:0px; float:left; text-align:left;}
+.need2 .xinxi label{ font-size:14px; font-family:"黑体"; font-weight:800; color:#7A7A7A}
+.need2 .xinxi input{ width:130px; height:20px; border:1px solid #e0e0e0}
+.need3 { overflow:hidden; width:800px; border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0; margin:0 auto; clear:both}
+.need3 .need3left{ width:399px; float:left; border-right:1px solid #e0e0e0; height:50px; line-height:50px;}
+.need3 .need3right{ width:400px; float:left; height:50px; line-height:50px;}
+.need3 label{ font-size:14px; font-family:"黑体"; font-weight:800; color:#7A7A7A}
+.need3  input{ width:300px; height:25px; border:1px solid #e0e0e0}
+#need  .need4{ width:800px; margin:0 auto; clear:both; padding-bottom:20px}
+#need  .need4 .xuanze{ height:45px; line-height:45px; font-size:14px; font-weight:800; color:#7a7a7a; font-family:"黑体";}
+#need  .need4 .choose{ list-style:none; overflow:hidden}
+#need  .need4 .choose li{ width:144px; height:58px; float:left; margin-right:10px; text-align:left; text-indent:10px;  }
+#need  .need4 .choose li a{ background:url(../images/2013-04-25_095126.jpg) no-repeat; width:144px; height:58px; float:left; font-size:14px; color:#fff; font-family:"微软雅黑"; font-weight:800; cursor:pointer;}
+#need  .need4 .choose li a span{ display:block; text-align:center; height:58px; line-height:28px;}
+#need  .need4 .choose li a:hover{ background:url(../images/2013-04-25_095106.jpg) no-repeat; width:144px; height:58px; float:left}
+ #need  .need4 .choose .clickina a{ background:url(../images/2013-04-25_095106.jpg) no-repeat; width:144px; height:58px; float:left}
+
+#need .need5{ width:800px; margin:0 auto; overflow:hidden; padding-top:10px}
+#need .need5 .need5_1 span{ font-size:14px; font-family:"黑体"; font-weight:800; color:#7A7A7A; height:200px;}
+#need .need5 .need5_1 textarea{ width:670px; height:200px; border:#e0e0e0 1px solid}
+#need .need5 .need5_2{ width:200px; float:right; margin-right:30px}
+#need .need5 .need5_2 .button{ float:left; width:78px; height:27px; line-height:27px; margin-right:10px; margin-top:10px}
+#need .need5 .need5_2 .button input{ float:left;background:url(../images/2013-04-25_095207.jpg) no-repeat; color:#fff; width:78px; height:27px; line-height:27px; font-size:14px; border:none; cursor:pointer; margin-left:10px}
+#need .need5 .need5_2 .button input:hover{ float:left; background:url(../images/2013-04-25_095154.jpg) no-repeat; color:#fff; width:78px; height:27px; line-height:27px;}
+
+#need .need6{ width:800px; clear:both; border-top:1px solid #e0e0e0; margin-left:40px;margin-top:20px ; padding-top:10px}
+#need .need6 .nn1{ text-align:left; margin-left:1px;}
+
+
+
+

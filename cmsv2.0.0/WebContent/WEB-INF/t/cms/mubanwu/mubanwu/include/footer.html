@@ -1,0 +1,13 @@
+[@cms_friendlink_list]
+ 	<div class="link">
+    	<ul>
+        	<li>友情链接</li>
+ 	[#list tag_list as a]
+            <li><a href="${a.domain}" target="black">${a.name!'暂无友情链接'}</a></li>
+        [/#list]
+            <div class="clear"></div>
+
+        </ul>
+    </div>
+ [/@cms_friendlink_list]	
+<div class="addr">${site.copyrightInformation!'暂无版权信息'}</div>

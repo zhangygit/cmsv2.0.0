@@ -1,0 +1,88 @@
+[#include "../include/header.html"/]
+<script type="text/javascript" src="${resSys}/flowplayer/flowplayer-3.2.6.min.js?${VERSION}"></script>
+<script type="text/javascript" src="/${res}/js/jquery.ad-gallery.pack.js?${VERSION}"></script>
+<link href="/${res}/css/jquery.ad-gallery.css" type="text/css" rel="stylesheet" />
+<style>
+.attach_div{margin-top:10px;}
+.attach_div *{font-size:14px;}
+.attach_list li a{color:#1F7DE9;text-decoration: underline;}
+.ad-gallery {
+ 	margin-left: 1.5px;
+    margin-top: 56px;
+    width: 960px;
+}
+</style>
+<script>
+jQuery(document).ready(function(){
+  jQuery('.ad-gallery').adGallery({loader_image:"/${res}/images/loader.gif"});
+});
+
+</script>
+<!--banner-->
+<div class="banner wr">
+  <div class="interx"><img src="http://www.fena.cn/UpFiles/Article/2014/3/6/thumb_2014030661862237.jpg" height="197" /></div>
+</div><!--banner end-->
+
+<!--contain-->
+<div class="contain">
+  [#include "../include/crumb.html"/]
+    <!--box-->
+  <div class="box clearfix">
+ <div class="details">
+      
+      <h1 class="tit-case">${content.title}</h1>
+      
+      <!--gallery-->
+      [#if content.pictures?? && content.pictures?size > 0]
+            <div id="gallery" class="ad-gallery">
+		    <div class="ad-image-wrapper"> </div>
+		    <div class="ad-controls"> </div>
+		    <div class="ad-nav">
+		      <div class="ad-thumbs">
+		        <ul class="ad-thumb-list">
+		        	 [#list content.pictures as p]
+		        	 
+		        	 [#if p_index > 9]
+		        	 [#break /]
+		        	 [/#if]
+		        	 
+		        	 <li>
+		        	 	<a href="${base+p.originalPath!}" >
+		        	 		<img class="image txt-img" src="${base+p.minThumb!}" longdesc="[#if p.description?? && p.description != '']${p.description}[#else][/#if]" style="width: 150px; height: 100px; opacity: 1;" />
+		        	 	</a>
+		        	 	
+		        	 </li>
+		        	 
+		        	 [/#list]
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+	[/#if]
+     <!--gallery end--> 
+      
+ </div>
+ 
+  </div>
+  <!--box end-->
+  <!--case-infobox-->
+    <!--case-infobox end-->
+
+  <!--rel-box-->
+  <div class="rel-box">
+    <h3 class="reltit">浏览了该案例的客户还浏览了</h3>
+    <ul class="rel-caselist clearfix">
+    <li><a href="http://www.fena.cn/biaozhun/biaozhunal/24.html"><img src="http://www.fena.cn/UpFiles/2013/11/16/thumb_2013111640239765.jpg" title="拍卖、投资贷款企业网站建设" alt="拍卖、投资贷款企业网站建设"/></a></li>
+<li><a href="http://www.fena.cn/shuangyu/zywal/23.html"><img src="http://www.fena.cn/UpFiles/2013/11/16/thumb_2013111637454109.jpg" title="化工生物药业企业网站建设" alt="化工生物药业企业网站建设"/></a></li>
+<li><a href="http://www.fena.cn/biaozhun/biaozhunal/21.html"><img src="http://www.fena.cn/UpFiles/2013/11/15/thumb_2013111575533441.jpg" title="文化传播礼品企业网站建设" alt="文化传播礼品企业网站建设"/></a></li>
+<li><a href="http://www.fena.cn/biaozhun/biaozhunal/20.html"><img src="http://www.fena.cn/UpFiles/2013/11/15/thumb_2013111574696817.jpg" title="花木园林企业网站建设" alt="花木园林企业网站建设"/></a></li>
+<li><a href="http://www.fena.cn/biaozhun/biaozhunal/18.html"><img src="http://www.fena.cn/UpFiles/2013/11/15/thumb_2013111561305673.jpg" title="智能科技数码企业网站建设" alt="智能科技数码企业网站建设"/></a></li>
+ 
+    </ul>
+  </div>
+  <!--rel-box end-->
+  [#include "../include/service.html"/]
+<!--contain end-->
+
+<!--bottom-->
+[#include "../include/footer.html"/]

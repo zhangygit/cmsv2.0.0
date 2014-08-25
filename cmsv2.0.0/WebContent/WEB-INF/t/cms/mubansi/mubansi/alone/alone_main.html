@@ -1,0 +1,60 @@
+[#include "../include/header.html"/]
+<script type="text/javascript" src="/${res}/js/jquery.ad-gallery.pack.js"></script>
+<script type="text/javascript" src="/${res}/js/jquery.ad-gallery.js"></script>
+<script type="text/javascript" src="${resource_url}thirdparty/jquery/flowplayer/v3.2.6/flowplayer-3.2.6.min.js?${VERSION}"></script>
+<link href="/${res}/css/jquery.ad-gallery.css" type="text/css" rel="stylesheet" />
+<script>
+jQuery(document).ready(function(){
+	if(jQuery("#text").length !=0&&jQuery("#text").val()!="" ){
+		setTimeout(onEditorReady, 400);
+	}
+});
+
+function autoTOHeight(){
+	 var doc = document.getElementById('info-content-frame').contentWindow.document;
+	 var height=Math.max(doc.body.scrollHeight,doc.documentElement.scrollHeight);
+	 jQuery("#info-content-frame").height(doc.body.clientHeight+80);
+}
+function onEditorReady(){
+	var doc = document.getElementById('info-content-frame').contentWindow.document;
+	doc.open();
+	doc.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><style>p{word-break: break-all; word-wrap:break-word;}</style><body>'+ jQuery("#text").val() +'</body></html>');
+	doc.close();
+	window.setInterval("autoTOHeight()",200);
+}
+
+</script>
+<div class="center">
+[#if channel.channelTxtSet[0]??]
+	<input name="text" id="text" value="${channel.channelTxtSet[0].txt?replace("\"", "&quot;")}" type="hidden">
+[/#if]
+    [#include "../include/left_column.html"/]
+      <div class="right">
+         [#include "../include/location.html"/]
+         <div class="sub-cont">
+              <img src="/${res}/images/subcont-top.jpg" class="sub-cont-top" />
+              <div class="sub-cont-text">
+              	   <div class="">
+					     	<!-- 图片begin -->
+					     	 <div class="content_img">
+					     	 		[#if channel.contentImg??]
+					     	 			<span class="c_img">
+						                    <img src="${base}/${channel.contentImg!}"/></br>
+						                 </span>
+					     	 		[/#if]
+				             </div>
+				             <!-- 图片end -->
+					     	<!-- 文本begin -->
+					     		[#if channel.channelTxtSet[0]??]
+					            	<iframe id="info-content-frame" style="width: 90%;margin-left:5%;overfolw:auto;" frameborder="0" scrolling="no" allowTransparency="true" ></iframe>
+					            [/#if]
+					            [#include "../include/page_content.html"/]
+					     	<!-- 文本end -->
+              	   </div>
+              </div>
+              <img src="/${res}/images/subcont-bottom.jpg" class="sub-cont-top" />
+         </div>
+      </div>
+      <div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

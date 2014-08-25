@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.name}</title>
+[#include "../include/head.html" /]
+</head>
+<script type="text/javascript">
+var indexContentArr = [];
+var nowContentIndex = 0;
+function preContent(){
+	if(nowContentIndex == 0){
+		nowContentIndex = indexContentArr.length;
+	}
+	nowContentIndex--;
+	var content = indexContentArr[nowContentIndex];
+		jQuery("#imgPath").attr('src',content.img); 
+		jQuery("#description").html(content.description); 
+}
+function nextContent(){
+	if(nowContentIndex == indexContentArr.length - 1){
+		nowContentIndex = -1;
+	}
+	nowContentIndex++;
+	var content = indexContentArr[nowContentIndex];
+	jQuery("#imgPath").attr('src',content.img); 
+	jQuery("#description").html(content.description); 
+}
+</script>
+<body>
+<div class="bg">
+    <div class="center_960">
+[#include "../include/left.html" /]
+       
+         
+       <div class="sec_right">
+          <img src="/${res}/images/sec_line.jpg"/>
+          <img class="sec_banner" src="/${res}/images/sec_banner.jpg"/>
+          
+          <div class="sec_content">
+             <div class="sec_location"><img class="sec_locationimg" src="/${res}/images/sec_location.jpg"/><a href="${base}">首页</a>&nbsp;>&nbsp;${channel.name}</div>
+           <div class="sec_classpics">
+           [#if content.pictures?? && content.pictures?size > 0]
+           	<div style="width:50px;float:left;margin-top:150px;"><a href="javascript:preContent();"><img src="/${res}/images/arrow_hover_03.png" /></a></div>
+                 [#list content.pictures as p]
+                 	<script>
+	           			indexContentArr["${p_index}"] = {img:"${base}/${p.imgPath}",description:"${p.description!}"};
+	            	</script>
+                 	[#if p_index = 0]
+                 		 <span style="float:left;margin-top:20px;width:550px; text-align:center;" >
+	                    <img id="imgPath" src="${base}/${p.imgPath}" style="max-width:500px; max-height:367px;"/></br>
+	                    <span id="description" style="font-size:12px;word-wrap:break-word;">${p.description!}</span></br>
+	                    </span>
+	                [/#if]
+                 [/#list]
+          <div style="width:50px;float:right;margin-top:150px;"><a href="javascript:nextContent();"><img src="/${res}/images/arrow_hover_05.png" /></a></div>
+          [/#if]
+           </div> 
+          </div>
+       
+       </div>
+       
+       <div class="clear"></div>
+    
+    </div>
+    
+[#include "../include/footer.html" /]
+</div>
+</body>
+</html>

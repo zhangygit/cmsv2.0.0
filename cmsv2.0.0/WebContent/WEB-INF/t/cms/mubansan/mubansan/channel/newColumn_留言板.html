@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${channel.name}</title>
+[#include "../include/head.html" /]
+</head>
+<script type="text/javascript">
+		jQuery(function() {
+			jQuery("#guestbookForm").validate( {
+				submitHandler : function(form) {
+					jQuery(form).ajaxSubmit( {
+						"success" : function(data) {
+							if(data.status==0) {
+								Message.success("#id","留言提交成功");
+								location.href=location.href;
+							}else if(data.status==1) {
+								Message.error("#id","验证码错误");
+								$("#guestbookCaptcha").click();
+							}else {
+								Message.success("#id","留言提交失败");
+							}
+						},
+						"dataType" : "json"
+					});
+				}
+			});
+		});
+</script>
+<body>
+	<div class="mian_980">
+     [#include "../include/top.html" /]
+         <!--nav start-->
+[#include "../include/nav.html" /]
+        <!--nav end-->
+        <!--left start-->
+        	[#include "../include/leftMenu.html" /]
+        <!--left end-->
+        <!--right start-->
+        	<div class="sub_right">
+            	[#include "../include/mbx.html" /]
+                <!--留言板 start-->
+                <div class="liuyanban">
+         <form id="guestbookForm" action="${guestbookUrl}" method="post" >       
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="liuyan_table">
+            <tr>
+			  <td width="20%" height="50" align="right" valign="middle">类别：</td>
+			  <td width="80%" height="50">
+			  <select name="ctgId" class="i-txt" style="width:60px;">
+				[@cms_guestbook_ctg_list siteId = site.id]
+				[#list tag_list as ctg]
+					<option value="${ctg.id}">${ctg.name}</option>
+				[/#list]
+				[/@cms_guestbook_ctg_list]
+			  </select>	          </td>
+			  </tr>
+                  <tr>
+                    <td width="20%" height="50" align="right" valign="middle">标题：</td>
+                    <td width="80%" height="50"><label>
+                      <input name="title" type="text"  class="liu_input i-txt" vld="{required:true}" id="textfield" size="50"/>
+                    </label></td>
+                  </tr>
+                  <tr>
+                    <td height="50" align="right" valign="top">内容：</td>
+                    <td height="50"><label>
+                      <textarea name="content" id="textarea" vld="{required:true,maxlength:250}" style="width:300px;max-width:490px;max-height:135px;" rows="5"  class="textarea i-large"></textarea>
+                    </label></td>
+                  </tr>
+                  <tr>
+					  <td width="20%" height="50" align="right" valign="middle">验证码：</td>
+					  <td><input class="mb-tittle i-txt" style="width:80px;margin-top:13px;" type="text" name="captcha" vld="{required:true}"/>
+					  	<span><img align="top" id="guestbookCaptcha" src="${base}/captcha.svl" onclick="this.src='${base}/captcha.svl?d='+new Date()"/></span>
+					  </td>
+					</tr>
+                  <tr>
+                    <td height="116" colspan="2" align="center" valign="middle">
+                      <input type="submit" style="cursor:pointer;" name="button" id="id" value=""   class="liu_button"/>
+                      <input type="reset" style="cursor:pointer;" name="button2" id="button2" value="" class="liu_button liu_button_1"/>
+                   </td>
+                </tr>
+                </table>
+			</form>
+</div>
+                 	<!--留言内 容 start-->
+                 	[@cms_guestbook_page siteId=site.id titLen='18' append='...' checked='6' count=channel.pageSize orderBy='4']
+	            	[#list tag_list as m]
+                    <div class="liuyan_line">
+                        <div class="liuyan_top">
+                                <span class="liuyan_name">${m.titleHtml!}<em>${m.createTime}</em></span>
+                            ${m.contentHtml!}
+                        </div>
+                        <div class="liuyan_bottom">
+                        	<span class="liuyan_san"><img src="/${res}/images/liuyan_san.jpg" width="19" height="10" /></span>
+                        	<span class="color"> 管理员回复：</span>${m.replyHtml!}<span class="liuyan_b_time">${(m.replayTime?string('yyyy-MM-dd HH:mm:ss'))!}</span>
+                      </div>
+                    </div>
+                    [/#list]
+	      		[#include "../include/page.html"/]
+	             [/@cms_guestbook_page]   
+          <!--留言内 容 end-->
+            </div>
+                 <!---留言板 end-->
+        <!--right end-->
+        <!-- copy start-->
+       	 [#include "../include/footer.html" /]
+        <!-- copy end-->
+        <script type="text/javascript">
+				$('#textarea').textCounter(250);
+		</script>
+    </div>
+</body>
+</html>

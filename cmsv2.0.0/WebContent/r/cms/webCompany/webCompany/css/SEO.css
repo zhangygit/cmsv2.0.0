@@ -1,0 +1,67 @@
+﻿@charset "utf-8";
+/* CSS Document */
+#datu{ clear:both; width:1080px; margin:10px 10px;}
+.tuiguang{ clear:both; overflow:hidden; width:760px ; margin:15px 10px; font-family:"微软雅黑"}
+.tuiguang .tuileft{ float:left; width:119px;}
+.tuiguang .tuiright{ float:right; width:640px;}
+.tuiguang .tuiright h1{ height:35px; height:35px; color:#679A00; font-size:18px; text-align:left}
+.tuiguang p{ text-align:left; line-height:200%; color:#8B8B8B;}
+.you{ margin:15px 10px; clear:both; font-family:"微软雅黑"}
+.you h4{ width:200px; background:#679A00; height:45px; line-height:45px; font-size:18px; color:#fff;}
+.you ul{ list-style:none; margin-top:10px;}
+.you ul li{ height:20px; line-height:35px; background:url(../images/2013-04-26_111531.jpg) no-repeat left; text-indent:2em;text-align:left; line-height:200%; color:#8B8B8B;}
+.qubie{margin:15px 10px; clear:both; font-family:"微软雅黑"}
+.qubie h2{ color:#679A00; text-align:left; height:45px; line-height:45px}
+.qubie ul{ list-style:none; margin-top:10px;}
+.qubie ul li{ width:326px; height:79px; margin-bottom:20px; color:#FFF; line-height:79px; font-size:16px; font-weight:bold; padding-left:20px;}
+.qubie .yi{ float:left; background:url(../images/2013-04-26_111433.jpg) no-repeat;}
+.qubie .er{ float:left; background:url(../images/2013-04-26_111507.jpg) no-repeat;}
+.qubie .san{ float:left; background:url(../images/2013-04-26_111457.jpg) no-repeat;}
+.qubie .si{ float:left; background:url(../images/2013-04-26_111520.jpg) no-repeat;}
+.qubie .two{ margin-left:50px;}
+.kuang{ margin:10px 0px;  background:#F2F2F2; padding:20px; width:750px}
+.kuang p{ text-align:200%; text-align:left; text-indent:2em; color:#679A01}
+.gong{ margin:15px 0px; clear:both; overflow:hidden;}
+.gong ul{ list-style:none;}
+.gong li{width:200px; background:#679A00; margin-top:10px; height:45px; margin-left:20px; line-height:45px; color:#fff; float:left;}
+.gong li a{ color:#fff; font-size:18px;}
+.gong li a:hover{color:#6A6A6A;}
+.hou{ border:1px solid #EFEFEF; background:#FAFAFA; height:300px; margin:20px 0px;width:760px;}
+.hou p{ text-align:left; height:45px; line-height:45px; color:#8B8B8B; text-indent:2em }
+/*============ka hu an li start============*/
+.list{ width:720px; margin:20px 0px 0px 20px;}
+.list dl{ width:228px; font-family:"微软雅黑"; text-align:left; float:left }
+.list dd{ font-size:12px; color:#ACACAC; height:30px; line-height:30px;}
+.list .list1{ color:#679A00;font-size:24px; height:35px; line-height:35px;}
+.list .list1 a{color:#679A00; font-size:18px;}
+.list .senced{ margin:0px 10px;}
+.fenye{ width:400px; list-style:none; padding:20px; margin:0 auto; clear:both}
+.fenye li{ float:left; width:75px; height:31px; line-height:31px; margin-left:10px;}
+.fenye .last a{ background:#D2D2D2; color:#434343; width:75px; height:31px; line-height:31px; float:left}
+.fenye .last a:hover{background:#679A00; color:#fff; width:75px; height:31px; line-height:31px}
+
+.warp{width:720px; margin:20px 0px 0px 20px; font-family:"微软雅黑"; text-align:left; border-bottom:1px dashed #ccc; }
+.warp h1{ background:url(../images/2013-04-26_141250.jpg) left no-repeat; height:40px; line-height:40px; font-size:14px; color:#333333; text-align:left; text-indent:30px; font-weight:600}
+.warp h1 a{ font-size:14px; color:#333333;}
+.warp h1 a:hover{color:#679A00;}
+.warp p{ line-height:200%; text-align:left; color:#B4B4B4}
+
+
+.duibi{ margin:15px 10px; clear:both; font-family:"微软雅黑"; overflow:hidden}
+.duibi h4{ width:250px; margin-left:24px; background:#679A00; height:45px; line-height:45px; font-size:18px; color:#fff;}
+.duibi ul{ list-style:none; margin-top:10px; width:260px; float:left}
+.duibi ul li{ height:20px; line-height:20px; background:url(../images/2013-04-26_111531.jpg) no-repeat left; text-indent:2em;text-align:left; line-height:200%; color:#8B8B8B; float:left;}
+.duileft{ margin-left:20px;overflow:hidden;}
+.duileft li{  height:20px; line-height:20px; color:red;}
+.duiright{ margin-left:230px; overflow:hidden;}
+.duiright li{  height:20px; line-height:20px; color:red;}
+.block{ background:#EBF2DE; height:150px; margin:10px 0px}
+
+
+
+
+
+
+
+
+

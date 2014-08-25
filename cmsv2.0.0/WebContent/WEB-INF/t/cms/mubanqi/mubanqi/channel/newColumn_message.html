@@ -1,0 +1,70 @@
+ [#include "../include/top.html"/]
+<div class="child_container">
+	<div class="lc_container">
+		<h4>关于我们</h4>
+		<div class="side_nav">
+			<ul>
+				<li><a href="about-21.html">公司简介</a></li>
+				<li><a href="about-79.html">荣誉资质</a></li>
+			</ul>
+		</div>
+
+
+		<div class="right_box">
+			<h3>
+				<span><a href="contact.html" class="more"></a></span><a class="chn">联系我们</a><a
+					href="javascript:void(0)" class="eng">LINK</a>
+			</h3>
+			<div class="contact_list">
+				<b><img src="/${res}/images/pic1.jpg" /></b>
+				<div class="contact">
+					<span><div id="edit_contact_eidt">
+							联系电话：<span
+								ondblclick="autoEdit('contact','contact_set','contact_tel')">0592-5505028,5505029</span><br>
+							Email：<span
+								ondblclick="autoEdit('contact','contact_set','contact_email')">kefu@3135.com</span><br>
+							联系人：<span
+								ondblclick="autoEdit('contact','contact_set','contact_user')">3135智能建站</span><br>
+							联系地址：<span
+								ondblclick="autoEdit('contact','contact_set','contact_address')">福建省厦门市湖里区台湾街5号606室（科瑞大厦A栋）</span>
+						</div></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rc_container">
+		<h3>
+			<span>当前位置：<a href="index.html">首页</a> > <a
+				href="comment.html">留言反馈</a>
+			</span>留言反馈<a href="javascript:void(0)" class="eng"> / COMMENT</a>
+		</h3>
+		<div class="about_page">
+			<script type="text/javascript" src="skin/js/validator.js"></script>
+			<div class="msg">
+				<form action="http://themes84.3135.com/comment.html?action=save"
+					method="post" id="myform">
+					<ul>
+						<li><b>请您留言：</b></li>
+						<li><span class="fl">您的姓名：</span><input name="info[name]"
+							type="text" class="input" require="true" datatype="require"
+							msg="请填写" />[必填]</li>
+						<li><span class="fl">联系电话：</span><input name="info[phone]"
+							type="text" class="input" require="true" datatype="number"
+							msg="请填写" /></li>
+						<li><span class="fl">电子邮件：</span><input name="info[email]"
+							type="text" class="input" /></li>
+						<li><span class="fl">留言内容：</span>
+						<textarea name="info[comment]" cols="75" rows="10"
+								class="textarea lr" require="true" datatype="require" msg="请填写"></textarea></li>
+						<li><span class="fl">&nbsp;</span><input type="submit"
+							value="提交" class="btn2" /> <input type="reset" value="重置"
+							class="btn2" /> <a href="comment55f4.html?action=info">[查看详情]</a></li>
+					</ul>
+				</form>
+			</div>
+			<script>$('#myform').checkForm();</script>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+[#include "../include/footer.html"/]

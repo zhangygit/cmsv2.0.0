@@ -1,0 +1,31 @@
+  <!--nav start-->
+        <div class="nav">
+        	<ul class="sf-menu" id="main_sub">
+            	<li><a href="${indexUrl}">首页</a></li>
+              [@cms_channel_list count='8'] 
+              	[#if tag_list?size >0 ]
+              	[#list tag_list as a]
+                <li>|</li>
+                <li><a [#if a.child?? && a.child?size>0]href="#"[#else]href="${a.url}"[/#if]>${a.name} </a>
+                	[@cms_channel_list parentId = a.id]
+                		[#if tag_list?size > 0]
+                		<ul class="xiala">
+                			[#list tag_list as b]
+                			<li><a href="${b.url}">${b.name}</a>|</li>		
+                			[/#list]
+                		</ul>
+                		[/#if]
+                	[/@cms_channel_list]
+                </li>
+                [/#list]
+                [/#if]
+              [/@cms_channel_list]
+            </ul>
+            <script>
+                	jQuery("#main_sub").superfish();
+                </script>
+        </div>
+        <!--nav end-->
+<script>
+	jQuery('.sf-with-ul > span').hide();
+</script>

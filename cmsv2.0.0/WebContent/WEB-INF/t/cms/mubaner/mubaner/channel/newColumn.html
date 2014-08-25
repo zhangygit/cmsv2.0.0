@@ -1,0 +1,26 @@
+[#include "../include/head.html"/] 
+[#include "../include/leftMenu.html"/]   
+  <div class="sub_right">
+     <div class="sub_tittle710">
+       [#include "../include/mbx.html"/] 
+    </div>
+    
+    <div class="sub_content">
+		[@cms_content_page channelId=channel.id count=channel.pageSize titlen='45' append='...']
+	       <div class="newslist">
+	       <ul>
+	       	[#if tag_list??]
+	       		[#list tag_list as con]
+	          		<li class="new_search"><span>${con.releaseDate?string('yyyy-MM-dd')}</span><a href="${con.url}">[@text_cut s=con.title len=titlen append=append /]</a></li>
+	          	[/#list]
+	        [/#if]  
+	       </ul>
+	       </div>
+      [#include "../include/page.html"/]
+      [/@cms_content_page]
+    </div>
+    
+  </div>
+  
+  <div class="clear"></div>
+[#include "../include/footer.html"/] 

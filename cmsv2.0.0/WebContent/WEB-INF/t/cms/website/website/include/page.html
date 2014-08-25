@@ -1,0 +1,26 @@
+           [#assign p=tag_pagination/]
+			<div class="pages">
+				<div class="plist">
+				<font color="red">${p.pageNo}</font> /${p.totalPage} 页
+				 ${channel.pageSize}篇/页
+ 					<a title="firstPage" href="${hrefFormer}_1${hrefLatter}">首页</a>
+ 					<a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>
+				 [#if p.totalPage > 6]  
+					[#if p.pageNo+5 gt p.totalPage]  
+						[#assign begin=p.pageNo - (6-(p.totalPage - p.pageNo + 1))/]  
+						[#assign end=p.totalPage/]  
+					[#elseif p.pageNo-5 lt 1]  
+						[#assign begin=1/]  
+						[#assign end=6/]  
+					[#else]  
+						[#assign begin=p.pageNo - 5/]  
+						[#assign end=p.pageNo + 5/]  
+					[/#if]  
+				[#else]  
+					[#assign begin=1/]  
+					[#assign end=p.totalPage/]  
+				[/#if]
+					<a title="nextPage" href="${hrefFormer+'_'+p.nextPage+hrefLatter}">下一页</a>
+					<a title="lastPage" href="${hrefFormer+'_'+p.totalPage+hrefLatter}">末页</a>
+				</div>
+			</div>

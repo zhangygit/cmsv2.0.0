@@ -1,0 +1,198 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.name}</title>
+<meta name="keywords" content="企业网站建设,网页设计制作,企业网站设计,企业网站制作">
+<meta name="description"
+	content="飞浪网络技术有限公司业务主要集中于企业网站建设、网页设计制作、企业网站设计、企业网站制作、网站推广服务，互联网应用服务和电子商务应用服务。专注点包含单页设计、PS切图、web前端开发等，同时对网站建设和制作过程中注重网站的人性化，注重网站交互性的,并且符合搜索引擎收录要求。 ">
+<link href="/${res}/css/css.css" rel="stylesheet" type="text/css" />
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css" />
+<script src="${resSys}/jquery.js?${VERSION}" type="text/javascript"></script>
+<script src="${resSys}/front.js?${VERSION}" type="text/javascript"></script>
+<script type="text/javascript" src="/${res}/js/MSClass.js?${VERSION}"></script>
+<script type="text/javascript" src="/${res}/js/popmenu.js?${VERSION}"></script>
+<script type="text/javascript" src="/${res}/js/tab.js?${VERSION}"></script>
+<script type="text/javascript" src="/${res}/js/jquery.scroll-follow.js?${VERSION}"></script>
+</head>
+<script  type="text/javascript">
+jQuery(document).ready(function(){
+	jQuery("#case_6").show();
+	jQuery(".tabul li").click(function(){
+		jQuery(this).siblings().find("a").removeClass("on");
+		jQuery(this).find("a").addClass("on");
+		var caseId = jQuery(this).attr("id");
+		jQuery("#case_"+caseId).siblings().hide();
+		jQuery("#case_"+caseId).show();
+		
+	});
+});
+</script>
+<body class="pagebg2" id="home">
+	<!--onlinebox-->
+	<!--onlinebox end-->
+	<!--top-->
+	<div class="top wr">
+		<div class="top-con clearfix">
+			<h1>
+			</h1>
+		</div>
+		<div class="mainnavbox">
+			<div class="mainnav">
+				<ul>
+					<li class="nobg"><a class ="select" href="${base}">首页</a></li>
+					<li><span>企业网站建设</span>
+						<ul>
+							[@cms_channel id="8"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+							[@cms_channel id="9"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+							[@cms_channel id="10"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+							[@cms_channel id="11"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+							[@cms_channel id="12"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+						</ul>
+					</li>
+					[@cms_channel id="3"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+					[@cms_channel id="4"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+					[@cms_channel id="5"]<li><a href="${tag_bean.url}">${tag_bean.name}</a></li>[/@cms_channel]
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--top end-->
+	<!--banner-->
+	<div class="i-banner wr">
+		<div class="inter">
+
+			<div id="JINGDONGBox">
+				<ul id="JINGDONGContentID">
+					[@cms_channel id="8"]<li><a href="${tag_bean.url}">
+						<img src="/${res}/images/thumb_2014071958886253.jpg"
+							alt="${tag_bean.name}" title="${tag_bean.name}" /></a></li>[/@cms_channel]
+					[@cms_channel id="9"]<li><a href="${tag_bean.url}">
+						<img src="/${res}/images/jingmei.jpg" alt="${tag_bean.name}"
+							title="${tag_bean.name}" /></a></li>[/@cms_channel]
+					[@cms_channel id="10"]<li><a href="${tag_bean.url}">
+						<img src="/${res}/images/thumb_2014022448063085.jpg"
+							alt="${tag_bean.name}" title="${tag_bean.name}" /></a></li>[/@cms_channel]
+				</ul>
+			</div>
+			<ul id="JINGDONGNumID">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			new Marquee(
+					{
+						MSClass : [ "JINGDONGBox", "JINGDONGContentID",
+								"JINGDONGNumID" ],
+						Direction : 2,
+						Step : 4,
+						Width : 1004,
+						Height : 397,
+						Timer : 20,
+						DelayTime : 5000,
+						WaitTime : 0,
+						ScrollStep : 0,
+						SwitchType : 2,
+						AutoStart : true
+					})
+		</script>
+	</div>
+	<div class="i-banbtn wr"></div>
+	<!--banner end-->
+
+	<!--我的服务-->
+	<div class="i-myservice wr">
+		<div class="contain">
+			<h2 class="ititle-service">
+				我们的服务
+				<em>Service</em>
+			</h2>
+			<ul class="service-list iservice">
+				<li><a href="Activity/index.html">
+					<img src="/${res}/images/i1.jpg" class="imgbox" alt="宣传单页设计,专题页面设计" title="单页设计" />
+						<div class="text">
+							<h3>单页营销网站建设</h3>
+							视觉型强、攻心设计
+						</div>
+						<div class="mask"></div>
+						<div class="price">800元/页</div>
+						<div class="mask2"></div>
+						<div class="descr">适合：竞价单页、家电活动单页、专题页设计及单页网站、电商网站设计等</div> 
+					</a>
+				</li>
+				<li class="yel"><a href="biaozhun/index.html">
+						<img src="/${res}/images/i2.jpg" class="imgbox" alt="网页设计与制作,企业网站设计,企业网站制作" title="企业网站建设" />
+						<div class="text">
+							<h3>精美型企业网站建设</h3>
+							设计精美、制作精细
+						</div>
+						<div class="mask"></div>
+						<div class="price">2800元/套</div>
+						<div class="mask2"></div>
+						<div class="descr">网站美观、大气，风格独特；客户体验性强；域名、空间一条龙服务；售后服务有保障；非常适合企业建立自己的宣传形象型网站。
+						</div> </a></li>
+				<li class="pur"><a href="kaifa/index.html">
+						<img src="/${res}/images/i3.jpg" class="imgbox" alt="定制企业网站设计,程序开发" />
+						<div class="text">
+							<h3>前端网页风格设计</h3>
+							按需设计、按量报价
+						</div>
+						<div class="mask"></div>
+						<div class="price">500元/主页起</div>
+						<div class="mask2"></div>
+						<div class="descr">企业主页、行业主页、营销单页、应用界面设计与制作</div> </a></li>
+				<li class="blue"><a href="jingmei/index.html">
+						<img src="/${res}/images/i4.jpg" class="imgbox" alt="网页设计与制作,企业网站设计,企业网站制作" title="企业网站建设" />
+						<div class="text">
+							<h3>高端品牌型企业网站建设</h3>
+							设计高端、创意新颖、是企业建立品牌网站的首选
+						</div>
+						<div class="mask"></div>
+						<div class="price">4800元/套</div>
+						<div class="mask2"></div>
+						<div class="descr">适合对网页界面、精细程度要求比较高的企业，用来宣传企业品牌形象、树立企业文化、思想、内涵。</div>
+				</a></li>
+				<li class="green"><a href="tuiguang/index.html">
+						<img src="/${res}/images/i5.jpg" class="imgbox" alt="网页设计与制作,企业网站设计,企业网站制作" title="企业网站建设" />
+						<div class="text">
+							<h3>营销策划型企业网站建设</h3>
+							网站seo优化、网站排名推广、营销型网站
+						</div>
+						<div class="mask"></div>
+						<div class="price">8000元/套</div>
+						<div class="mask2"></div>
+						<div class="descr">适合：企业网站建设和推广于一体的企业，重视SEO排名推广。</div> </a></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!--我的服务end-->
+	<div class="wr">
+		<!--contain-->
+
+		<div class="contain">
+
+			<div class="title-box">
+				<h2>
+					我们的案例<em>Case</em>
+				</h2>
+				<ul class="tabul">
+					[@cms_channel id="6"]<li id="${tag_bean.id}"><a class="on" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+					[@cms_channel id="13"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+					[@cms_channel id="14"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+					[@cms_channel id="15"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+				</ul>
+			</div>
+			<div id="show_box">
+			[#include "../include/index_case.html"/]
+			</div>
+			<div class="space"></div>
+
+
+		</div>
+		<!--contain end-->
+	</div>
+	<!--bottom-->
+[#include "../include/footer.html"/]

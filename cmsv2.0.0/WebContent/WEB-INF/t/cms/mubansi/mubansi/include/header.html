@@ -1,0 +1,122 @@
+   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>${site.name}</title>
+<script src="${resSys}/jquery.js?${VERSION}" type="text/javascript"></script>
+<script type="text/javascript" src="${base}/thirdparty/jquery/superfish/superfish.js"></script>
+<script type="text/javascript" src="/${res}/js/tymb4Global.js"></script>
+<script type="text/javascript" src="/${res}/js/change.js"></script>
+<link type="text/css" href="/${res}/css/css.css" rel="stylesheet" />
+<link type="text/css" href="/${res}/css/focus.css" rel="stylesheet" />
+<script type="text/javascript" src="/datacenter/dwr/interface/SecurityAuthenticationController.js"></script>   
+<script type="text/javascript" src="/datacenter/dwr/interface/UserController.js"></script>  
+<script>
+jQuery(document).ready(function(){
+	jQuery.focus('.focus');
+	jQuery('.btn').remove();
+	Tymb4Global.initLoginDiv("${base}");
+})
+
+</script>
+
+</head>
+[#assign indexUrl = base + '/' + site.path + "/index.jhtml"]
+[#assign searchUrl = base + '/' + site.path + "/search.jspx"]
+[#assign guestbookUrl = base + '/' + site.path + "/guestbook.jspx"]
+[#assign loginUrl = base + '/' + site.path + "/login.jspx"]
+<body>
+<div class=" header">
+  <div class="w1166">
+  <div class="header-center">
+    <div class="top">
+      
+        <div class="logo"><a href="${indexUrl}"><img [#if site.logoPath?? && site.logoPath != '']src="${base+site.logoPath}"[#else]src="/${res}/images/logo.gif"[/#if] /></a></div>
+        <div class="login login_div"> <a href="${loginUrl}">登录</a> <img src="/${res}/images/login-line.jpg" /> <a href="/datacenter">进入数字校园</a></div>
+        <div class="login logout_div hide">
+        <span id="loginName" style="float:left; "></span><a href="javascript:Tymb4Global.loginOut();">退出</a><img src="/${res}/images/login-line.jpg" /> <a href="/datacenter">进入数字校园</a>
+        </div>
+        <div class="search">
+          <form autocomplete="off" action="${searchUrl}" onsubmit="return cheackSearch();" target="_blank" >
+	          <table>
+	            <tr>
+	              <td><input id="searchKey" name="q" type="text" [#if q??]class="searching search-in" [#else]class="default_search search-in"[/#if] value="${q!'请输入关键字...'}" onfocus="onFocusSearch(this);" onblur="onBlurSearch(this);" /></td>
+	              <td><input type="submit" class="button-search" value="搜索" alt="搜索" /></td>
+	            </tr>
+	          </table>
+          </form>
+        </div>
+    </div>
+    
+    <div class="nav">
+    <ul id="nav">
+        <li class="outer_li"><a class="outer_a" href="${indexUrl}" title="首页">首页</a></li>
+        [@cms_channel_list parentId=""]
+        	[#if tag_list?size > 1]
+	        	[#list tag_list as son]
+	        		[#if son_index > 0]
+	        		<li class="outer_li"><a class="outer_a" href="${son.url}" title="${son.name}">${son.name}</a>
+	        			[@cms_channel_list parentId=son.id]
+	        				[#if tag_list?size > 0]
+	        					<ul class="sub-nav">
+			        				[#list tag_list as sub]
+			        					<li class="inner_li"><a class="inner_a" href="${sub.url}" title="${sub.name}">${sub.name}</a></li>
+			        				[/#list]
+			        	 			<div class="clear"></div>
+		        				</ul>
+	        				[/#if]
+	        			[/@cms_channel_list]
+	        		</li>
+	        		[/#if]
+	        		[#if son_index = 8]
+	        			[#break/]
+	        		[/#if]
+	        	[/#list]
+        	[/#if]
+        [/@cms_channel_list]
+    </ul>
+    </div>
+    <script>
+    	jQuery('#nav').find('.outer_li:last').attr('id','nav-last');
+    	jQuery('#nav').find('.inner_li:last').attr('id','sub-nav-last');
+    	jQuery('#nav').superfish({
+    		delay:0,
+    		speed:'fast'
+    	});
+    </script>
+  </div>
+  
+
+     <div class="banner-bg">
+         <div class="banner-pic focus" id="tets">
+               <ul>
+               [@cms_channel path="banner"]
+     	  		 [#if tag_bean??]
+	     	  		 [@cms_content_list channelId=tag_bean.id orderBy='4']
+	     	  		 	[#if tag_list?size>0]
+	     	  		 		[#assign bannerImgCount=0]
+	     	  		 		[#list tag_list as a]
+	     	  		 			[#list a.pictures as p]
+	     	  		 			[#assign bannerImgCount=1]
+	     	  		 			<li><a><img src="${base+p.imgPath}" /></a></li>
+	     	  		 			[/#list]
+	     	  		 		[/#list]
+	     	  		 		[#if bannerImgCount=0]
+	     	  		 		<li><a><img src="/${res}/images/banner-pic.jpg" /></a></li>
+	     	  		 		[/#if]
+	     	  		 	[#else]
+	     	  		 	<li><a><img src="/${res}/images/banner-pic.jpg" /></a></li>
+	     	  		 	[/#if]
+	     	  		 [/@cms_content_list]
+     	  		 [#else]
+     	  		 <li><a><img src="/${res}/images/banner-pic.jpg" /></a></li>
+     	  		 [/#if]
+     	  		 [/@cms_channel]
+               </ul>
+               <a href="javascript:;" class="arrow-red-l"><img src="/${res}/images/arrow-red-l.jpg" /></a>
+               <a href="javascript:;" class="arrow-red-r"><img src="/${res}/images/arrow-red-r.jpg" /></a>
+           </div>
+     </div>
+  </div>   
+  
+</div>

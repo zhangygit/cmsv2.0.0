@@ -1,0 +1,50 @@
+[#include "../include/header_page2.html"/]
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	var columnId = '${channel.id}';
+	jQuery("#head_"+columnId).find("a").addClass("select");
+	jQuery("#case_6").show();
+	jQuery(".tabul li").click(function(){
+		jQuery(this).siblings().find("a").removeClass("on");
+		jQuery(this).find("a").addClass("on");
+		var caseId = jQuery(this).attr("id");
+		jQuery("#case_"+caseId).siblings().hide();
+		jQuery("#case_"+caseId).show();
+		
+	});
+});
+</script>
+	<!--banner-->
+	<div class="banner wr">
+		<div class="interx">
+			<img
+				src="http://www.fena.cn/UpFiles/Article/2014/3/6/thumb_2014030661862237.jpg"
+				height="197" />
+		</div>
+	</div>
+	<!--banner end-->
+
+	<!--contain-->
+	<div class="contain">
+
+		<div class="title-box">
+			<h2>
+				我们的案例<em>Case</em>
+			</h2>
+			<ul class="tabul">
+				[@cms_channel id="6"]<li id="${tag_bean.id}"><a class="on" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="13"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="14"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+				[@cms_channel id="15"]<li id="${tag_bean.id}"><a class="" title="${tag_bean.name}">${tag_bean.name}</a></li>[/@cms_channel]
+
+			</ul>
+		</div>
+		<div id="show_box">
+		[#include "../include/include_case.html"/]
+		</div>
+		
+	</div>
+	<!--contain end-->
+
+	<!--bottom-->
+[#include "../include/footer.html"/]

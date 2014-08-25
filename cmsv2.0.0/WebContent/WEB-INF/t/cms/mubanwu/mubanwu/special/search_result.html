@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+[#include "../include/head.html"/]
+<title>搜索页</title>
+</head>
+
+<body>
+<div class="wrapper">
+<!--head S-->
+	[#include "../include/top.html"/]
+ <!--head E-->
+
+ <div class="contain">
+  <!--左侧菜单_S-->
+<!--左侧菜单_E--
+<!--右侧菜单_S-->
+<div class="fl subr" style="margin-left:90px;">
+	  <div class="bar">
+    <div class="posi">位置：<a href="${indexUrl}">首页</a><span>></span><a href="">搜索页</a></div>
+    <h5 class="m_bar">搜索页</h5>
+</div>
+      [#if q??]
+  		[@cms_lucene_page q=q  titlen='45' append='...' count='10' siteId=site.id]
+      <div class="wraplist">
+  		<div class="steart_font">搜索<strong>"${q!}"</strong>获得约${tag_list?size}条结果</div>
+      <div class="newlist">
+      [#if tag_list?size > 0]
+      	<ul>
+      	[#list tag_list as a]
+	        [#if a??]
+        	<li><span>${a.releaseDate?string('yyyy-MM-dd')}</span><a href="${a.url}" title="${a.title}">[@text_cut s=a.title len=titlen append=append /]</a></li>
+        	[/#if]
+		[/#list]
+        </ul>
+        [#else]
+				<div class="no_info">暂无搜索结果</div>         
+        [/#if]
+        </div>
+      </div>
+      <!--页码_S-->
+        [#include "../include/page.html"/]
+                 <!--新闻列表end-->
+     <!--页码_E-->
+                  [/@cms_lucene_page]	
+	[/#if]	
+</div>
+<!--右侧菜单_E-->
+<div class="clear"></div>
+ </div>
+ <!--foot S-->
+[#include "../include/footer.html" /]
+ <!--foot E-->
+ 
+</div>
+</body>
+</html>

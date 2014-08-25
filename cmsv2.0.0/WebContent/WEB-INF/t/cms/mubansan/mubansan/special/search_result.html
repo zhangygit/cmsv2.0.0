@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索页</title>
+[#include "../include/head.html"/]
+<style>
+.seart_mian{clear:both;float:left;border-left:none;width:970px;}
+.seart_line{padding-left:none;}
+</style>
+</head>
+
+<body>
+	<div class="mian_980">
+        [#include "../include/top.html"/]
+         <!--nav start-->
+       [#include "../include/nav.html"/]
+        <!--nav end-->
+        <!--left start-->
+        <!--left end-->
+        <!--right start-->
+       	  <div class="sub_right seart_mian">
+            	<div class="sub_right_title">
+                    <span class="sub_sort_nav"><a href="${indexUrl}">首页</a> > <a href="">搜索页</a></span>
+                  
+                </div>
+                [#if q??]
+  		[@cms_lucene_page q=q descLen='100' titLen='45' append='...' count='10' siteId=site.id]
+                  <div class="steart_font">搜索<strong>"${q!}"</strong>获得约${tag_list?size}条结果</div>
+                <!--新闻列表 start-->
+                <div class="m_l_line news_line seart_line">
+                	[#if tag_list?size > 0]
+                	<ul id="red">
+                		[#list tag_list as a]
+	          				[#if a??]
+                    	<li><img src="/${res}/images/dian.png" width="3" height="3" /><a href="${a.url}" style="[#if a.titCol??]color:${a.titCol}[/#if]">[@text_cut s = a.title len=titLen append=append /]</a><span class="time">${a.releaseDate?string('yyyy-MM-dd')}</span></li>
+                    	 	[/#if]
+          	  			[/#list]
+                      </ul>      
+                      [#else]
+				<div class="no_info">暂无搜索结果</div>         
+                      [/#if]		
+                      <script>
+					jQuery("#red > li > a").each(function(){
+						var stringObj=jQuery(this).text();
+						var str='<strong style="color:red;">${q}</strong>';
+						var newstr=stringObj.replace(new RegExp("${q}","g"),str);
+						jQuery(this).html(newstr);
+					});
+				</script>
+                 </div>
+                 [#include "../include/page.html"/]
+                 <!--新闻列表end-->
+                  [/@cms_lucene_page]	  
+         [/#if]
+            </div>
+        <!--right end-->
+        <!-- copy start-->
+       	  [#include "../include/footer.html"/]
+        <!-- copy end-->
+    </div>
+</body>
+</html>
